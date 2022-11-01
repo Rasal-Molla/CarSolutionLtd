@@ -24,6 +24,8 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [AdminController::class, 'Dashboard']);
 Route::get('/user', [UserController::class, 'List']);
+Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.create');
+Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
 Route::get('/service', [ServiceController::class, 'List']);
 Route::get('/category', [CategoryController::class, 'List']);
 Route::get('/service-center', [ServiceCenterController::class, 'List']);
