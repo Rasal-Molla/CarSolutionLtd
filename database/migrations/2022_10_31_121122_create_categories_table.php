@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 25);
             $table->string('model', 50);
-            $table->string('tires_type', 50);
+            $table->string('wheel_type', 50);
             $table->string('engines_type', 100);
             $table->timestamps();
         });

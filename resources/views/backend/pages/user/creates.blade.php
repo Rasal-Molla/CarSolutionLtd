@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container bg-white">
+<div class="container bg-white mt-3">
     <h2 class="text-dark">New user create form</h2>
     <form action="{{route('user.form')}}" method="POST">
         @csrf
@@ -43,7 +43,7 @@
             <input class="form-check-input" type="checkbox" name="remember"> Remember me
             </label>
         </div>
-        <button type="submit" class="btn btn-outline-success mt-3 mb-3">Submit</button>
+        <button type="submit" class="btn btn-outline-danger mt-3 mb-3">Submit</button>
     </form>
 </div>
 @endsection
