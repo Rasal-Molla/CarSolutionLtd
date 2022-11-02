@@ -28,6 +28,8 @@ Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.c
 Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
 Route::get('/service', [ServiceController::class, 'List']);
 Route::get('/category', [CategoryController::class, 'List']);
+Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
+Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
 Route::get('/service-center', [ServiceCenterController::class, 'List']);
 Route::get('/appointment', [AppointmentController::class, 'Appoint']);
 Route::get('/payment', [PaymentController::class, 'Gateway']);

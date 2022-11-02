@@ -35,7 +35,7 @@
                 <select class="form-select" id="gender" name="gender" placeholder="Enter address">
                     <option>Male</option>
                     <option>Female</option>
-             </select>
+                </select>
         </div>
         <br>
         <div class="form-check mb-3">
