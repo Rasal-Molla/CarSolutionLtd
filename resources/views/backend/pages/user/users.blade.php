@@ -1,53 +1,38 @@
 @extends('backend.master')
 
 @section('content')
-<div class="container pt-3">
+<div class="container pt-3 bg-secondary m-3">
   <h2>User List</h2>
-  <a href="{{route('user.create')}}" class="btn btn-outline-success">Create User</a>
-<table class="table table-hover table-dark pt-5">
+  <a href="{{route('user.create')}}" class="btn btn-success">Create User</a>
+<table class="table table-hover table-dark pt-5 my-3">
   <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">phone</th>
-      <th scope="col">Password</th>
       <th scope="col">Address</th>
-      <th scope="col">Birthdate</th>
       <th scope="col">Gender</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
+    @foreach($user_list as $data)
+  
     <tr>
-      <th scope="row">1</th>
-      <td>Smith</td>
-      <td>smith@gmail.com</td>
-      <td>01700565431</td>
-      <td>********</td>
-      <td>America</td>
-      <td>10/10/1990</td>
-      <td>Male</td>
+      <th scope="row">{{$data->id}}</th>
+      <td>{{$data->name}}</td>
+      <td>{{$data->email}}</td>
+      <td>{{$data->phone}}</td>
+      <td>{{$data->address}}</td>
+      <td>{{$data->gender}}</td>
+      <td>
+        <a href="" class="btn btn-outline-info">View</a>
+        <a href="" class="btn btn-outline-success">Update</a>
+        <a href="" class="btn btn-outline-danger">Delete</a>
+      </td>
     </tr>
-    <tr>
-    <th scope="row">2</th>
-      <td>Steven</td>
-      <td>steven@gmail.com</td>
-      <td>01700569831</td>
-      <td>********</td>
-      <td>Canada</td>
-      <td>08/05/1987</td>
-      <td>Male</td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-      <td>Carolina</td>
-      <td>carolina@gmail.com</td>
-      <td>01700325431</td>
-      <td>********</td>
-      <td>England</td>
-      <td>10/09/1998</td>
-      <td>Female</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
 </div>

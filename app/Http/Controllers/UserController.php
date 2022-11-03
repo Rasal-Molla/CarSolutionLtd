@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function List(){
-        return view('backend.pages.user.users');
+
+        $user_list=User::all();
+        //dd($user_list);
+
+        return view('backend.pages.user.users',compact('user_list'));
     }
 
     public function Create()
@@ -19,8 +23,9 @@ class UserController extends Controller
     public function Form(Request $request)
     {
 
-      
-       User::create([
+    
+    User::create
+        ([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>$request->pswd,
@@ -28,9 +33,8 @@ class UserController extends Controller
             'phone'=>$request->phone,
             'birth_date'=>$request->birth_date,
             'gender'=>$request->gender
-       ]);
-
-       return redirect()->back();
+        ]);
+        return redirect()->back();
 
     }
 }
