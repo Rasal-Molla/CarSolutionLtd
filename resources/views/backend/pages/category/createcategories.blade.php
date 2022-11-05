@@ -16,8 +16,8 @@
             <input type="text" class="form-control" id="model" placeholder="Enter vehicle model" name="model">
         </div>
         <div class="mb-3">
-            <label for="tires_type" class="form-label">Tires Type:</label>
-            <input type="text" class="form-control" id="tires_type" placeholder="Enter tires type" name="tires_type">
+            <label for="wheel_type" class="form-label">Tires Type:</label>
+            <input type="text" class="form-control" id="wheel_type" placeholder="Enter tires type" name="wheel_type">
         </div>
         <div class="mb-3 mt-3">
             <label for="engiens_type" class="form-label">Engine Type:</label>

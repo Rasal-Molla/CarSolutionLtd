@@ -26,11 +26,22 @@ Route::get('/', [AdminController::class, 'Dashboard']);
 Route::get('/user', [UserController::class, 'List']);
 Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.create');
 Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
+
+
 Route::get('/service', [ServiceController::class, 'List']);
 Route::get('/category', [CategoryController::class, 'List']);
 Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
 Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
+
+
 Route::get('/service-center', [ServiceCenterController::class, 'List']);
+Route::get('/service-center/make', [ServiceCenterController::class, 'Make'])->name('servicecenter.make');
+Route::post('/service-center/form', [ServiceCenterController::class, 'Form'])->name('servicecenter.form');
+Route::get('/service-center/total', [ServiceCenterController::class, 'Total'])->name('servicecenter.total');
+Route::get('/service-center/pending', [ServiceCenterController::class, 'Pending'])->name('servicecenter.pending');
+Route::get('/service-center/ratting', [ServiceCenterController::class, 'Ratting'])->name('servicecenter.ratting');
+
+
 Route::get('/appointment', [AppointmentController::class, 'Appoint']);
 Route::get('/payment', [PaymentController::class, 'Gateway']);
 Route::get('/feedback', [FeedbackController::class, 'Message']);
