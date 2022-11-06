@@ -29,6 +29,10 @@ Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
 
 
 Route::get('/service', [ServiceController::class, 'List']);
+Route::get('/service/create', [ServiceController::class, 'Create'])->name('service.create');
+Route::post('/service/form', [ServiceController::class, 'Form'])->name('service.form');
+
+
 Route::get('/category', [CategoryController::class, 'List']);
 Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
 Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
