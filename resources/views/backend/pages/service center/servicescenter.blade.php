@@ -76,6 +76,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{$service_list->links()}}
                         </div>
                     </div>
                 </div>

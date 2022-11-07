@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 class ServiceCenterController extends Controller
 {
     public function List(){
-        $service_list=Service_center::all();
-        //dd($service_list);
+        $service_list=Service_center::paginate(3);
         return view('backend.pages.service center.servicescenter', compact('service_list'));
     }
 
@@ -19,6 +18,10 @@ class ServiceCenterController extends Controller
 
     public function Form(Request $request){
         
+        $request->validate(
+            ['phone'=>'required|unique:service_centers'],
+            ['phone'=>'Phone number already used, Please give unused number.']);
+
         Service_center::create([
             'name'=>$request->name,
             'email'=>$request->email,

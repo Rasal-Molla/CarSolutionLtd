@@ -8,26 +8,32 @@
     <div class="bg-secondary rounded h-100 p-4 m-3 ">
         <h3 class="mb-4">Service Center Form</h3>
             <form action="{{route('servicecenter.form')}}" method="POST">
+                @if($errors->any())
+                    @foreach($errors->all() as $message)
+                        <p class="alert alert-danger">{{$message}}</p>
+                    @endforeach
+                @endif
+
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Service Center Name:</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter service center name" name="name">
+                    <input required type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter service center name" name="name">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email Address:</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                    <input required type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone Number:</label>
-                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+                    <input required type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location:</label>
-                    <input type="text" class="form-control" id="location" placeholder="Enter your location" name="location">
+                    <input required type="text" class="form-control" id="location" placeholder="Enter your location" name="location">
                 </div>
                 <div class="mb-4">
                     <label for="service_type" class="form-label">Service Type:</label>
-                    <input type="text" class="form-control" id="service_type" placeholder="Enter service type" name="service_type">
+                    <input required type="text" class="form-control" id="service_type" placeholder="Enter service type" name="service_type">
                 </div>
                 <select name="service_hour" class="form-select mb-3" aria-label="Default select example">
                     <option selected>Select service hour</option>
