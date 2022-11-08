@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaymentController;
@@ -36,6 +38,16 @@ Route::post('/service/form', [ServiceController::class, 'Form'])->name('service.
 Route::get('/category', [CategoryController::class, 'List']);
 Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
 Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
+
+
+Route::get('/brand', [BrandController::class, 'List']);
+Route::get('/brand/create', [BrandController::class, 'Create'])->name('brand.create');
+Route::post('/brand/form', [BrandController::class, 'Form'])->name('brand.form');
+
+
+Route::get('/model', [CarModelController::class, 'List']);
+Route::get('/model/create', [CarModelController::class, 'Create'])->name('model.create');
+Route::post('/model/form', [CarModelController::class, 'Form'])->name('model.form');
 
 
 Route::get('/service-center', [ServiceCenterController::class, 'List']);
