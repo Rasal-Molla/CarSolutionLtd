@@ -28,10 +28,9 @@ class UserController extends Controller
         ([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>$request->pswd,
+            'password'=>$request->password,
             'address'=>$request->address,
             'phone'=>$request->phone,
-            'birth_date'=>$request->birth_date,
             'gender'=>$request->gender
         ]);
         return redirect()->back();

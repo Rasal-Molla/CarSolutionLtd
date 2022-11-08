@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('phone', 20)->unique();
             $table->string('password', 20);
             $table->string('address', 150);
-            $table->string('birth_date', 20);
             $table->string('gender', 50);
             $table->rememberToken();
             $table->timestamps();

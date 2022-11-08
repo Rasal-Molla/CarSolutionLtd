@@ -2,48 +2,45 @@
 
 
 @section('content')
-<div class="container bg-white mt-3">
-    <h2 class="text-dark">New user create form</h2>
-    <form action="{{route('user.form')}}" method="POST">
-        @csrf
-    <div class="mb-3 mt-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <div class="mb-3">
-            <label for="pwd" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="address" class="form-label">Address:</label>
-            <input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="phone" class="form-label">Phone:</label>
-            <input type="select" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="birth_date" class="form-label">Birth Date:</label>
-            <input type="date" class="form-control" id="birth_date" name="birth_date">
-        </div>
-        <div>
-        <label for="gender" class="form-label">Gender:</label>
-                <select class="form-select" id="gender" name="gender" placeholder="Enter address">
-                    <option>Male</option>
-                    <option>Female</option>
+
+<div class="container-fluid col-sm-12 col-xl-12">
+    <div class="bg-secondary rounded h-100 p-4 m-3 ">
+        <h3 class="mb-4">User Form</h3>
+            <form action="{{route('user.form')}}" method="POST">
+
+                @csrf
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input required type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter user name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address:</label>
+                    <input required type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number:</label>
+                    <input required type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="form-label">Address:</label>
+                    <input required type="text" class="form-control" id="address" placeholder="Enter address" name="address">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password:</label>
+                    <input required type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                </div>
+                <select name="gender" class="form-select mb-3" aria-label="Default select example">
+                    <option selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Fmale">Female</option>                
                 </select>
-        </div>
-        <br>
-        <div class="form-check mb-3">
-            <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" name="remember"> Remember me
-            </label>
-        </div>
-        <button type="submit" class="btn btn-outline-danger mt-3 mb-3">Submit</button>
-    </form>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
 </div>
+
 @endsection
