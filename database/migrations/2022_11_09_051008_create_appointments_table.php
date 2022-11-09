@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('phone', 20);
-            $table->string('email', 50)->unique();
-            $table->string('location', 150);
-            $table->text('description',)->nullable();
+            $table->string('name',150);
+            $table->string('phone',20)->unique();
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('brand_id')->constrained('brands');
+            $table->foreignId('car_model_id')->constrained('car_models');
+            $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });
     }

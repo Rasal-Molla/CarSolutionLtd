@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 25);
-            $table->string('model', 50);
-            $table->string('wheel_type', 50);
-            $table->string('engines_type', 100);
+            $table->string('name', 25)->unique();
+            $table->string('description', 50)->nullable();
+            $table->string('status', 50)->default('Active');
             $table->timestamps();
         });
     }

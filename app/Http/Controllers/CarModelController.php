@@ -9,7 +9,7 @@ class CarModelController extends Controller
 {
     public function List(){
 
-        $model_list=Car_model::paginate(1);
+        $model_list=Car_model::paginate(5);
 
         return view('backend.pages.carmodel.list', compact('model_list'));
     }

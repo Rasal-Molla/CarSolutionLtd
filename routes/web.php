@@ -59,6 +59,10 @@ Route::get('/service-center/ratting', [ServiceCenterController::class, 'Ratting'
 
 
 Route::get('/appointment', [AppointmentController::class, 'Appoint']);
+Route::get('/appointment/create', [AppointmentController::class, 'Create'])->name('appointment.create');
+Route::post('/appointment/form', [AppointmentController::class, 'Form'])->name('appointment.form');
+
+
 Route::get('/payment', [PaymentController::class, 'Gateway']);
 Route::get('/feedback', [FeedbackController::class, 'Message']);
 Route::get('/report', [ReportController::class, 'List']);
