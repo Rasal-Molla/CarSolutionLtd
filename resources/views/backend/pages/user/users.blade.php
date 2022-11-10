@@ -23,6 +23,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -35,6 +36,9 @@
                             @foreach($user_list as $data)
                             <tr>
                                 <th scope="row">{{$data->id}}</th>
+                                <td>
+                                    <img width="100px" style="border-radius:10px" src="{{url('/uploads/'. $data->image)}}" alt="User_Image">
+                                </td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->phone}}</td>

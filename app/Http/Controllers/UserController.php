@@ -22,7 +22,21 @@ class UserController extends Controller
 
     public function Form(Request $request)
     {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required',
+            'phone'=>'required|unique:users,phone',
+            'gender'=>'required',
+            'image'=>'required'
+        ]);
 
+        $fileName=null;
+        if($request->hasFile('image'))
+        {
+            $fileName=date('Ymdhmi'). '.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads',$fileName);
+        }
     
     User::create
         ([
@@ -31,9 +45,10 @@ class UserController extends Controller
             'password'=>$request->password,
             'address'=>$request->address,
             'phone'=>$request->phone,
-            'gender'=>$request->gender
+            'gender'=>$request->gender,
+            'image'=>$fileName
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('message','Form submitted successfully');
 
     }
 }

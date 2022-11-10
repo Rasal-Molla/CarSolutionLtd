@@ -20,11 +20,11 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Category Name:</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter category name" name="name">
+                    <input required type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter category name" name="name">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="brand_name" aria-describedby="emailHelp" placeholder="Enter description" name="description">
+                    <input required type="text" class="form-control" id="brand_name" aria-describedby="emailHelp" placeholder="Enter description" name="description">
                 </div>
                 <label for="status" class="form-label">Status:</label>
                 <select name="status" class="form-select mb-3" aria-label="Default select example">
