@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('brand_name', 150)->unique();
             $table->string('status', 150)->default('Active');
             $table->text('description')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }

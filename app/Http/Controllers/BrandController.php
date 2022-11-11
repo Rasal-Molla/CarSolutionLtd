@@ -22,15 +22,25 @@ class BrandController extends Controller
 
         $request->validate([
 
-            'brand_name'=>'required|unique:brands'
-
+            'brand_name'=>'required|unique:brands',
+            'status'=>'required',
+            'image'=>'required'
         ]);
+
+        $imageName=null;
+        if($request->hasFile('image'))
+        {
+            $imageName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $imageName);
+        }
+
 
         Brand::create([
             'brand_name'=>$request->brand_name,
             'description'=>$request->description,
-            'status'=>$request->status
+            'status'=>$request->status,
+            'image'=>$imageName
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('message','Brand added successfully');
     }
 }
