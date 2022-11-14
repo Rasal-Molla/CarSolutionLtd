@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -50,5 +51,29 @@ class UserController extends Controller
         ]);
         return redirect()->back()->with('message','Form submitted successfully');
 
+    }
+
+    public function Login(){
+
+        return view('backend.pages.login');
+    }
+
+    public function Dologin(Request $request){
+
+        $credintials=$request->except('_token');
+        //dd($credintials);
+        if(Auth::attempt($credintials))
+        {   //dd('login hoice');
+            return redirect()->route('dashboard')->with('message', 'Login successfully');
+        }
+        //dd('login hoynai');
+        return redirect()->back()->with('message', 'Invalid credintials');
+    }
+
+    public function Logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }
