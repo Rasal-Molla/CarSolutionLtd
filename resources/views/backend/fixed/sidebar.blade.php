@@ -15,16 +15,16 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{route('dashboard')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{url('/user')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Users</a>
-                    <a href="{{url('/service')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Services</a>
-                    <a href="{{url('/category')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Categories</a>
-                    <a href="{{url('/service-center')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Services Centers</a>
-                    <a href="{{url('/appointment')}}" class="nav-item nav-link"><i class="fa fa-info-circle me-2"></i>Appointments</a>
-                    <a href="{{url('/brand')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Brand</a>
-                    <a href="{{url('/model')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Car Model</a>
-                    <a href="{{url('/payment')}}" class="nav-item nav-link"><i class="fa fa-credit-card me-2"></i>Payment</a>
-                    <a href="{{url('/feedback')}}" class="nav-item nav-link"><i class="fa fa-comments me-2"></i>Feedback</a>
-                    <a href="{{url('/report')}}" class="nav-item nav-link"><i class="fa fa-flag me-2"></i>Reports</a>
+                    <a href="{{route('user')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Users</a>
+                    <a href="{{route('service')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Services</a>
+                    <a href="{{route('category')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Categories</a>
+                    <a href="{{route('servicecenter')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Services Centers</a>
+                    <a href="{{route('appointment')}}" class="nav-item nav-link"><i class="fa fa-info-circle me-2"></i>Appointments</a>
+                    <a href="{{route('brand')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Brand</a>
+                    <a href="{{route('model')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Car Model</a>
+                    <a href="{{route('payment')}}" class="nav-item nav-link"><i class="fa fa-credit-card me-2"></i>Payment</a>
+                    <a href="{{route('feedback')}}" class="nav-item nav-link"><i class="fa fa-comments me-2"></i>Feedback</a>
+                    <a href="{{route('report')}}" class="nav-item nav-link"><i class="fa fa-flag me-2"></i>Reports</a>
                 </div>
             </nav>
         </div>
