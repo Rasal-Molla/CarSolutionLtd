@@ -13,7 +13,7 @@
                 <a href="" class="nav-item nav-link">Brands</a>
                 <a href="" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
-                <a href="" class="nav-item nav-link">Loing</a>
+                <a href="" class="nav-item nav-link">Login</a>
             </div>
         </div>
     </nav>
