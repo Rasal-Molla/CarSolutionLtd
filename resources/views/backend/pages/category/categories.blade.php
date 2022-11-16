@@ -24,6 +24,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Category Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Status</th>
@@ -34,6 +35,9 @@
                             @foreach($list as $data)
                             <tr>
                                 <th scope="row">{{$data->id}}</th>
+                                <td>
+                                    <img width="50px" src="{{url('/uploads/'.$data->image)}}" alt="Category Image">
+                                </td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->description}}</td>
                                 <td>{{$data->status}}</td>

@@ -18,12 +18,35 @@ class ServiceController extends Controller
     }
 
     public function Form(Request $request){
-        
+
+        //dd($request->all());
+        $request->validate([
+
+            'service_name'=>'required',
+            'price'=>'required|numeric',
+            'status'=>'required',
+            'image'=>'required'
+
+        ]);
+
+        $fileName=null;
+        if($request->hasFile('image'))
+        {
+            $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $fileName);
+        }
+        //dd($imageName);
+
         Service::create([
 
-            'service_name'=>$request->service_name
+            'service_name'=>$request->service_name,
+            'price'=>$request->price,
+            'description'=>$request->description,
+            'status'=>$request->status,
+            'image'=>$fileName
         ]);
-        return redirect()->back();
+        
+        return redirect()->back()->with('message','Service added successfully');
     }
     
 }

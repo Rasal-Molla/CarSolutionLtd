@@ -25,7 +25,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Service Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -33,7 +36,12 @@
                                     @foreach($service_list as $list)
                                     <tr>
                                         <th scope="row">{{$list->id}}</th>
+                                        <td>
+                                            <img width="120px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
+                                        </td>
                                         <td>{{$list->service_name}}</td>
+                                        <td>{{$list->price}}</td>
+                                        <td>{{$list->status}}</td>
                                         <td>
                                             <a class="btn btn-success" href="">Update</a>
                                             <a class="btn btn-danger" href="">Delete</a>

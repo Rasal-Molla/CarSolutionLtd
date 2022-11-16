@@ -33,7 +33,7 @@ class BrandController extends Controller
             $imageName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('/uploads', $imageName);
         }
-
+        //dd($imageName);
 
         Brand::create([
             'brand_name'=>$request->brand_name,

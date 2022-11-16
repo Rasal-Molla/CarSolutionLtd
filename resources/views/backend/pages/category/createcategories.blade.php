@@ -31,6 +31,10 @@
                     <option selected value="Active">Active</option>
                     <option value="Inactive">Inactive</option>                
                 </select>
+                <div class="mb-4">
+                    <label for="image" class="form-label">Select Image:</label>
+                    <input required name="image" class="form-control bg-dark" type="file" id="image">
+                </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Remember me</label>

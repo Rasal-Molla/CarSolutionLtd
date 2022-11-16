@@ -27,7 +27,6 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Brand image</th>
                                 <th scope="col">Brand Name</th>
-                                <th scope="col">Description</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -37,10 +36,9 @@
                             <tr>
                                 <th scope="row">{{$list->id}}</th>
                                 <td>
-                                    <img width="120px" src="{{url('/uploads/'.$list->image)}}" alt="Brand_image">
+                                    <img width="50px" src="{{url('/uploads/'.$list->image)}}" alt="Brand_image">
                                 </td>
                                 <td>{{$list->brand_name}}</td>
-                                <td>{{$list->description}}</td>
                                 <td>{{$list->status}}</td>
                                 <td>
                                     <a href="" class="btn btn-outline-info">View</a>

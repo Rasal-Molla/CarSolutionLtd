@@ -25,16 +25,25 @@ class CategoryController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'status'=>'required'
+            'status'=>'required',
+            'image'=>'required'
         ]);
 
+        $catImage=null;
+        if($request->hasFile('image'))
+        {
+            $catImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $catImage);
+        }
+        //dd($request->all());
         Category::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            'status'=>$request->status
+            'status'=>$request->status,
+            'image'=>$catImage
 
         ]);
 
-        return redirect()->back()->with('message','Form submitted successfully');
+        return redirect()->back()->with('message','New category added');
     }
 }

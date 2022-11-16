@@ -15,7 +15,7 @@
             @endif
 
             @if(session()->has('message'))
-                <p class="alter alter-success">{{session()->get('message')}}</p>
+                <p class="alert alert-success">{{session()->get('message')}}</p>
             @endif
 
                 @csrf
@@ -33,7 +33,7 @@
                 </select>
                 <div class="mb-4">
                     <label for="image" class="form-label">Select Image:</label>
-                    <input name="image" class="form-control bg-dark" type="file" id="image">
+                    <input required name="image" class="form-control bg-dark" type="file" id="image">
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

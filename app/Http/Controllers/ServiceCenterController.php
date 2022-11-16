@@ -18,9 +18,13 @@ class ServiceCenterController extends Controller
 
     public function Form(Request $request){
         
-        $request->validate(
-            ['phone'=>'required|unique:service_centers'],
-            ['phone'=>'Phone number already used, Please give unused number.']);
+        $request->validate([
+            
+            'phone'=>'required|unique:service_centers',
+            'email'=>'required|email',
+            'phone'=>'required',
+            'location'=>'required'
+            ]);
 
         Service_center::create([
             'name'=>$request->name,
@@ -31,7 +35,7 @@ class ServiceCenterController extends Controller
             'service_hour'=>$request->service_hour
 
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('message','Added new service center');
     }
 
     public function Total(){
