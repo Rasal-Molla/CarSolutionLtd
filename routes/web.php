@@ -60,6 +60,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::get('/category', [CategoryController::class, 'List'])->name('category');
     Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
     Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
+    Route::get('/category/delete/{category_id}', [CategoryController::class, 'Delete'])->name('category.delete');
+    Route::get('/category/view/{category_id}', [CategoryController::class, 'View'])->name('category.view');
     
     
     Route::get('/brand', [BrandController::class, 'List'])->name('brand');

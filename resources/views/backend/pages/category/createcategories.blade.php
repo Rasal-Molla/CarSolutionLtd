@@ -6,7 +6,7 @@
 <div class="container-fluid col-sm-12 col-xl-12">
     <div class="bg-secondary rounded h-100 p-4 m-3 ">
         <h3 class="mb-4">Create Category</h3>
-            <form action="{{route('category.form')}}" method="POST">
+            <form action="{{route('category.form')}}" method="POST" enctype="multipart/form-data">
             @if($errors->any())
                 @foreach($errors->all() as $message)
                 <p class="alert alert-danger">{{$message}}</p>

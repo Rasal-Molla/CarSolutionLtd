@@ -26,24 +26,32 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Category Name</th>
-                                <th scope="col">Description</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($list as $data)
+
+                        @if(session()->has('message'))
+                            <p class="alert alert-success">{{session()->get('message')}}</p>
+                        @endif
+
+                        @if(session()->has('error'))
+                            <p class="alert alert-success">{{session()->get('error')}}</p>
+                        @endif
+
+                            @foreach($list as $key=>$data)
                             <tr>
-                                <th scope="row">{{$data->id}}</th>
+                                <th scope="row">{{$key+1}}</th>
                                 <td>
                                     <img width="50px" src="{{url('/uploads/'.$data->image)}}" alt="Category Image">
                                 </td>
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->description}}</td>
                                 <td>{{$data->status}}</td>
                                 <td>
+                                    <a class="btn btn-info" href="{{route('category.view', $data->id)}}">View</a>
                                     <a class="btn btn-success" href="">Update</a>
-                                    <a class="btn btn-danger" href="">Delete</a>
+                                    <a class="btn btn-danger" href="{{route('category.delete',$data->id)}}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

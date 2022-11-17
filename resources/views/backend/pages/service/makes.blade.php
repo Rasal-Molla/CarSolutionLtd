@@ -6,7 +6,7 @@
 <div class="container-fluid col-sm-12 col-xl-12">
     <div class="bg-secondary rounded h-100 p-4 m-3 ">
         <h3 class="mb-4">Service Form</h3>
-            <form action="{{route('service.form')}}" method="POST">
+            <form action="{{route('service.form')}}" method="POST" enctype="multipart/form-data">
             
             @if($errors->any())
                 @foreach($errors->all() as $message)
@@ -15,7 +15,7 @@
             @endif
 
             @if(session()->has('message'))
-                <p class="alter alter-success">{{session()->get('message')}}</p>
+                <p class="alert alert-success">{{session()->get('message')}}</p>
             @endif
 
                 @csrf

@@ -46,4 +46,30 @@ class CategoryController extends Controller
 
         return redirect()->back()->with('message','New category added');
     }
+
+    public function Delete($category_id){
+
+        $data=Category::find($category_id);
+        if($data)
+        {
+            $data->delete();
+            return redirect()->back()->with('message','Category delete successfully.');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Category not found.');
+        }
+
+        //   Product::findOrFail($product_id)->delete();
+        //   return redirect()->back()->with('message','product deleted successfully.');
+
+    }
+
+    public function View($category_id){
+
+        $viewData=Category::find($category_id);
+
+        return view('backend.pages.category.view', compact('viewData'));
+
+    }
 }
