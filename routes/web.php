@@ -7,7 +7,13 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\Frontend\HomeAboutController;
+use App\Http\Controllers\Frontend\HomeBookingController;
+use App\Http\Controllers\Frontend\HomeBrandController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\HomeServiceCenter;
+use App\Http\Controllers\Frontend\HomeServiceCenterController;
+use App\Http\Controllers\Frontend\HomeServiceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceCenterController;
@@ -28,8 +34,12 @@ use Illuminate\Routing\Controllers\Middleware;
 
 // Frontend panel route start here
 
-Route::get('/', [HomeController::class, 'Home'])->name('home');
-
+Route::get('/', [HomeController::class, 'Home'])->name('Home');
+Route::get('/service-center', [HomeServiceCenterController::class, 'List'])->name('Home.serviceCenter');
+Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.service');
+Route::get('/brand/list', [HomeBrandController::class, 'List'])->name('Home.brand');
+Route::get('/booking-us', [HomeBookingController::class, 'Book'])->name('Home.book');
+Route::get('/about-us', [HomeAboutController::class, 'About'])->name('Home.about');
 
 
 

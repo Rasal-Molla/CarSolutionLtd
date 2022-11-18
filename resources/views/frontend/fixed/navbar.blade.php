@@ -7,11 +7,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="" class="nav-item nav-link active">Home</a>
-                <a href="" class="nav-item nav-link">About</a>
-                <a href="" class="nav-item nav-link">Services</a>
-                <a href="" class="nav-item nav-link">Brands</a>
-                <a href="" class="nav-item nav-link">Booking</a>
+                <a href="{{route('Home')}}" class="nav-item nav-link active">Home</a>
+                <a href="{{route('Home.about')}}" class="nav-item nav-link">About</a>
+                <a href="{{route('Home.service')}}" class="nav-item nav-link">Services</a>
+                <a href="{{route('Home.serviceCenter')}}" class="nav-item nav-link">Service Center</a>
+                <a href="{{route('Home.brand')}}" class="nav-item nav-link">Brands</a>
+                <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
                 <a href="" class="nav-item nav-link">Login</a>
             </div>
