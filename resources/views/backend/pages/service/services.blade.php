@@ -33,18 +33,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                @if(session()->has('message'))
+                                    <p class="alert alert-success">{{session()->get('message')}}</p>
+                                @endif
+
+                                @if(session()->has('error'))
+                                    <p class="alert alert-success">{{session()->get('error')}}</p>
+                                @endif
                                     @foreach($service_list as $list)
                                     <tr>
                                         <th scope="row">{{$list->id}}</th>
                                         <td>
-                                            <img width="120px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
+                                            <img width="70px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
                                         </td>
                                         <td>{{$list->service_name}}</td>
                                         <td>{{$list->price}}</td>
                                         <td>{{$list->status}}</td>
                                         <td>
                                             <a class="btn btn-success" href="">Update</a>
-                                            <a class="btn btn-danger" href="">Delete</a>
+                                            <a class="btn btn-danger" href="{{route('service.delete',$list->id)}}">Delete</a>
                                         </td>
                                     </tr>
                                     @endforeach

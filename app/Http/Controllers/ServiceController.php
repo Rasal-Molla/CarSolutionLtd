@@ -48,5 +48,19 @@ class ServiceController extends Controller
         
         return redirect()->back()->with('message','Service added successfully');
     }
+
+    public function Delete($service_id)
+    {
+        $service_delete=Service::find($service_id);
+        if($service_delete)
+        {
+            $service_delete->delete();
+            return redirect()->back()->with('message','Service deleted successfully');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Service not found');
+        }
+    }
     
 }

@@ -43,4 +43,24 @@ class BrandController extends Controller
         ]);
         return redirect()->back()->with('message','Brand added successfully');
     }
+
+    public function Delete($brand_id)
+    {
+        $brand_delete = Brand::find($brand_id);
+        if($brand_delete)
+        {
+            $brand_delete->delete();
+            return redirect()->back()->with('message','Brand deleted successfully');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Brand not found');
+        }
+    }
+
+    public function View($brand_id)
+    {
+        $brand_view=Brand::find($brand_id);
+        return view('backend.pages.brand.view', compact('brand_view'));
+    }
 }

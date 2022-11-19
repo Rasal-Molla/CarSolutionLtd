@@ -32,18 +32,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($brand_list as $list)
+                        @if(session()->has('message'))
+                            <p class="alert alert-success">{{session()->get('message')}}</p>
+                        @endif
+                        @if(session()->has('error'))
+                            <p class="alert alert-danger">{{session()->get('error')}}</p>
+                        @endif
+                        @foreach($brand_list as $key=>$list)
                             <tr>
-                                <th scope="row">{{$list->id}}</th>
+                                <th scope="row">{{$key+1}}</th>
                                 <td>
                                     <img width="50px" src="{{url('/uploads/'.$list->image)}}" alt="Brand_image">
                                 </td>
                                 <td>{{$list->brand_name}}</td>
                                 <td>{{$list->status}}</td>
                                 <td>
-                                    <a href="" class="btn btn-outline-info">View</a>
+                                    <a href="{{route('brand.view', $list->id)}}" class="btn btn-outline-info">View</a>
                                     <a href="" class="btn btn-outline-success">Update</a>
-                                    <a href="" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{route('brand.delete', $list->id)}}" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

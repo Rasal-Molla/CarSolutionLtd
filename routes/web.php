@@ -65,6 +65,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::get('/service', [ServiceController::class, 'List'])->name('service');
     Route::get('/service/create', [ServiceController::class, 'Create'])->name('service.create');
     Route::post('/service/form', [ServiceController::class, 'Form'])->name('service.form');
+    Route::get('/service/delete/{service_id}', [ServiceController::class,'Delete'])->name('service.delete');
     
     
     Route::get('/category', [CategoryController::class, 'List'])->name('category');
@@ -77,6 +78,9 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::get('/brand', [BrandController::class, 'List'])->name('brand');
     Route::get('/brand/create', [BrandController::class, 'Create'])->name('brand.create');
     Route::post('/brand/form', [BrandController::class, 'Form'])->name('brand.form');
+    Route::get('/brand/delete/{brand_id}', [BrandController::class, 'Delete'])->name('brand.delete');
+    Route::get('/brand/view/{brand_id}', [BrandController::class, 'View'])->name('brand.view');
+
     
     
     Route::get('/model', [CarModelController::class, 'List'])->name('model');
