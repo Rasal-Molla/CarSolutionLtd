@@ -41,9 +41,9 @@
                                 @if(session()->has('error'))
                                     <p class="alert alert-success">{{session()->get('error')}}</p>
                                 @endif
-                                    @foreach($service_list as $list)
+                                    @foreach($service_list as $key=>$list)
                                     <tr>
-                                        <th scope="row">{{$list->id}}</th>
+                                        <th scope="row">{{$key+1}}</th>
                                         <td>
                                             <img width="70px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
                                         </td>
