@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Frontend\HomeAboutController;
@@ -60,6 +59,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::get('/user', [UserController::class, 'List'])->name('user');
     Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.create');
     Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
+    Route::get('/user/delete/{user_id}', [UserController::class, 'Delete'])->name('user.delete');
     
     
     Route::get('/service', [ServiceController::class, 'List'])->name('service');
@@ -80,15 +80,10 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::post('/brand/form', [BrandController::class, 'Form'])->name('brand.form');
     Route::get('/brand/delete/{brand_id}', [BrandController::class, 'Delete'])->name('brand.delete');
     Route::get('/brand/view/{brand_id}', [BrandController::class, 'View'])->name('brand.view');
-
-    
-    
-    Route::get('/model', [CarModelController::class, 'List'])->name('model');
-    Route::get('/model/create', [CarModelController::class, 'Create'])->name('model.create');
-    Route::post('/model/form', [CarModelController::class, 'Form'])->name('model.form');
     
     
     Route::get('/service-center', [ServiceCenterController::class, 'List'])->name('servicecenter');
+    Route::get('service-center/delete/{service_center_id}', [ServiceCenterController::class, 'Delete'])->name('service.center.delete');
     Route::get('/service-center/make', [ServiceCenterController::class, 'Make'])->name('servicecenter.make');
     Route::post('/service-center/form', [ServiceCenterController::class, 'Form'])->name('servicecenter.form');
     Route::get('/service-center/total', [ServiceCenterController::class, 'Total'])->name('servicecenter.total');

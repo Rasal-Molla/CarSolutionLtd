@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\Car_model;
 use App\Models\Service;
 
 class AppointmentController extends Controller
@@ -21,9 +20,8 @@ class AppointmentController extends Controller
 
         $list=Category::all();
         $brand_list=Brand::all();
-        $model_list=Car_model::all();
         $service_list=Service::all();
-        return view('backend.pages.appointment.create',compact('list','brand_list','model_list','service_list'));
+        return view('backend.pages.appointment.create',compact('list','brand_list','service_list'));
     }
 
     public function Form(Request $request){
@@ -33,7 +31,6 @@ class AppointmentController extends Controller
             'phone'=>'required',
             'category_id'=>'required',
             'brand_id'=>'required',
-            'car_model_id'=>'required',
             'service_id'=>'required'
         ]);
 
@@ -43,7 +40,6 @@ class AppointmentController extends Controller
             'phone'=>$request->phone,
             'category_id'=>$request->category_id,
             'brand_id'=>$request->brand_id,
-            'car_model_id'=>$request->car_model_id,
             'service_id'=>$request->service_id
 
         ]);

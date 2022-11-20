@@ -53,6 +53,21 @@ class UserController extends Controller
 
     }
 
+    public function Delete($id)
+    {
+        $customer=User::find($id);
+        if($customer)
+        {
+            $customer->delete();
+            return redirect()->back()->with('message','Customer deleted successfully');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Customer not found');
+        }
+
+    }
+
     public function Login(){
 
         return view('backend.pages.login');

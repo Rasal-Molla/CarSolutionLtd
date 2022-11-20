@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('phone',20)->unique();
             $table->foreignId('category_id')->constrained('categories');
             $table->foreignId('brand_id')->constrained('brands');
-            $table->foreignId('car_model_id')->constrained('car_models');
             $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });

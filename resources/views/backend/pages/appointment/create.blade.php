@@ -38,12 +38,7 @@
                     <option value="{{$brand->id}}">{{$brand->brand_name}}</option> 
                 @endforeach               
                 </select>
-                <label for="car_model" class="form-label">Model:</label>
-                <select name="car_model_id" class="form-select mb-3" aria-label="Default select example">
-                @foreach($model_list as $model)
-                    <option value="{{$model->id}}">{{$model->model_name}}</option> 
-                @endforeach               
-                </select>
+                
                 <label for="service" class="form-label">Service:</label>
                 <select name="service_id" class="form-select mb-3" aria-label="Default select example">
                 @foreach($service_list as $service)

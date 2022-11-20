@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('location', 200); // Service center location
             $table->string('service_type', 150); 
             $table->string('service_hour', 150);
+            $table->string('password', 25);
+            $table->string('image');
             $table->timestamps();
         });
         

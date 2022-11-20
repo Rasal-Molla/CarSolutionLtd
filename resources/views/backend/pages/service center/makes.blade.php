@@ -7,7 +7,7 @@
 <div class="container-fluid col-sm-12 col-xl-12">
     <div class="bg-secondary rounded h-100 p-4 m-3 ">
         <h3 class="mb-4">Service Center Form</h3>
-            <form action="{{route('servicecenter.form')}}" method="POST">
+            <form action="{{route('servicecenter.form')}}" method="POST" enctype="multipart/form-data">
                 @if($errors->any())
                     @foreach($errors->all() as $message)
                         <p class="alert alert-danger">{{$message}}</p>
@@ -39,11 +39,19 @@
                     <label for="service_type" class="form-label">Service Type:</label>
                     <input required type="text" class="form-control" id="service_type" placeholder="Enter service type" name="service_type">
                 </div>
+                <label for="service_hour" class="form-label">Service hour:</label>
                 <select name="service_hour" class="form-select mb-3" aria-label="Default select example">
-                    <option selected>Select service hour</option>
-                    <option value="24 hour">24 Hour</option>
+                    <option selected value="24 hour">24 Hour</option>
                     <option value="12 hour">12 Hour</option>                
                 </select>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password:</label>
+                    <input required type="text" class="form-control" id="password" placeholder="Enter password" name="password">
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="form-label">Select Image:</label>
+                    <input name="image" class="form-control bg-dark" type="file" id="image">
+                </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>

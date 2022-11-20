@@ -18,7 +18,7 @@
     <div class="row g-4">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
-                <h3 class="mb-4">User List</h3>
+                <h3 class="mb-4">Customer List</h3>
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,11 +33,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($user_list as $data)
+                        @if(session()->has('message'))
+                            <p class="alert alert-success">{{session()->get('message')}}</p>
+                        @endif
+                        @if(session()->has('error'))
+                            <p class="alert alert-success">{{session()->get('error')}}</p>
+                        @endif
+                            @foreach($user_list as $key=>$data)
                             <tr>
-                                <th scope="row">{{$data->id}}</th>
+                                <th scope="row">{{$key+1}}</th>
                                 <td>
-                                    <img width="100px" style="border-radius:10px" src="{{url('/uploads/'. $data->image)}}" alt="User_Image">
+                                    <img width="70px" style="border-radius:10px" src="{{url('/uploads/'. $data->image)}}" alt="User_Image">
                                 </td>
                                 <td>{{$data->name}}</td>
                                 <td>{{$data->email}}</td>
@@ -45,9 +51,8 @@
                                 <td>{{$data->address}}</td>
                                 <td>{{$data->gender}}</td>
                                 <td>
-                                    <a href="" class="btn btn-outline-info">View</a>
                                     <a href="" class="btn btn-outline-success">Update</a>
-                                    <a href="" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{route('user.delete',$data->id)}}" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

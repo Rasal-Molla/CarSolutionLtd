@@ -54,24 +54,40 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Location</th>
                                         <th scope="col">Service Type</th>
                                         <th scope="col">Service Hour</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($service_list as $data)
+
+                                @if(session()->has('message'))
+                                    <p class="alert alert-success">{{session()->get('message')}}</p>
+                                @endif
+
+                                @if(session()->has('error'))
+                                    <p class="alert alert-success">{{session()->get('error')}}</p>
+                                @endif
+                                    @foreach($service_list as $key=>$data)
                                     <tr>
-                                        <th scope="row">{{$data->id}}</th>
+                                        <th scope="row">{{$key+1}}</th>
+                                        <td>
+                                            <img width="70px" src="{{url('/uploads/'.$data->image)}}" alt="Image">
+                                        </td>
                                         <td>{{$data->name}}</td>
                                         <td>{{$data->email}}</td>
                                         <td>{{$data->phone}}</td>
                                         <td>{{$data->location}}</td>
                                         <td>{{$data->service_type}}</td>
                                         <td>{{$data->service_hour}}</td>
+                                        <td>
+                                            <a class="btn btn-danger" href="{{route('service.center.delete',$data->id)}}">Delete</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
