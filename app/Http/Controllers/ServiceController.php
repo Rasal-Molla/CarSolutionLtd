@@ -62,5 +62,35 @@ class ServiceController extends Controller
             return redirect()->back()->with('error','Service not found');
         }
     }
+
+    public function Edit($service_id)
+    {   
+        $service_list=Service::find($service_id);
+        return view('backend.pages.service.edit', compact('service_list'));
+    }
+
+    public function Update(Request $request, $service_id)
+    {
+        $service_list=Service::find($service_id);
+        //dd($service_list);
+        $fileName=$service_list->image;
+        if($request->hasFile('image'))
+        {
+            $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $fileName);
+        }
+        //dd($imageName);
+
+        $service_list->update([
+
+            'service_name'=>$request->service_name,
+            'price'=>$request->price,
+            'description'=>$request->description,
+            'status'=>$request->status,
+            'image'=>$fileName
+        ]);
+        
+        return redirect()->route('service')->with('update','Service updated successfully');
+    }
     
 }

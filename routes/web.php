@@ -32,7 +32,7 @@ use Illuminate\Routing\Controllers\Middleware;
 */
 
 // Frontend panel route start here
-
+Route::get('/user/login', [UserController::class, 'Userlogin'])->name('user.login');
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 Route::get('/service-center', [HomeServiceCenterController::class, 'List'])->name('Home.serviceCenter');
 Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.service');
@@ -66,6 +66,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::get('/service/create', [ServiceController::class, 'Create'])->name('service.create');
     Route::post('/service/form', [ServiceController::class, 'Form'])->name('service.form');
     Route::get('/service/delete/{service_id}', [ServiceController::class,'Delete'])->name('service.delete');
+    Route::get('/service/edit/{service_id}', [ServiceController::class, 'Edit'])->name('service.edit');
+    Route::put('/service/update/{service_id}', [ServiceController::class, 'Update'])->name('service.update');
     
     
     Route::get('/category', [CategoryController::class, 'List'])->name('category');

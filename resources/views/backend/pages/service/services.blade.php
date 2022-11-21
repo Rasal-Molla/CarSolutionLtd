@@ -41,6 +41,10 @@
                                 @if(session()->has('error'))
                                     <p class="alert alert-success">{{session()->get('error')}}</p>
                                 @endif
+
+                                @if(session()->has('update'))
+                                    <p class="alert alert-success">{{session()->get('update')}}</p>
+                                @endif
                                     @foreach($service_list as $key=>$list)
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
@@ -51,7 +55,7 @@
                                         <td>{{$list->price}}</td>
                                         <td>{{$list->status}}</td>
                                         <td>
-                                            <a class="btn btn-success" href="">Update</a>
+                                            <a class="btn btn-success" href="{{route('service.edit',$list->id)}}">Update</a>
                                             <a class="btn btn-danger" href="{{route('service.delete',$list->id)}}">Delete</a>
                                         </td>
                                     </tr>

@@ -14,7 +14,7 @@
                 <a href="{{route('Home.brand')}}" class="nav-item nav-link">Brands</a>
                 <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
-                <a href="" class="nav-item nav-link">Login</a>
+                <a href="{{route('user.login')}}" class="nav-item nav-link">Login</a>
             </div>
         </div>
     </nav>
