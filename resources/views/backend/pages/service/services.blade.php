@@ -49,10 +49,10 @@
                                     <tr>
                                         <th scope="row">{{$key+1}}</th>
                                         <td>
-                                            <img width="70px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
+                                            <img width="50px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
                                         </td>
                                         <td>{{$list->service_name}}</td>
-                                        <td>{{$list->price}}</td>
+                                        <td>{{$list->price}} BDT</td>
                                         <td>{{$list->status}}</td>
                                         <td>
                                             <a class="btn btn-success" href="{{route('service.edit',$list->id)}}">Update</a>

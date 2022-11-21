@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ServiceController extends Controller
 {
@@ -74,8 +75,11 @@ class ServiceController extends Controller
         $service_list=Service::find($service_id);
         //dd($service_list);
         $fileName=$service_list->image;
+        $removeFile  = public_path().'/uploads/'.$fileName;
+        File::delete($removeFile);
         if($request->hasFile('image'))
         {
+
             $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('/uploads', $fileName);
         }

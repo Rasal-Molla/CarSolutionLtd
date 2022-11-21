@@ -13,9 +13,7 @@
                 <p class="alert alert-danger">{{$message}}</p>
                 @endforeach
             @endif
-
                 @csrf
-
                 <div class="mb-3">
                     <label for="service_name" class="form-label">Service Name:</label>
                     <input value="{{$service_list->service_name}}" required type="text" class="form-control" id="service_name" aria-describedby="emailHelp" placeholder="Enter service center name" name="service_name">
