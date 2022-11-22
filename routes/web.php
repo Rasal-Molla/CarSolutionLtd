@@ -75,6 +75,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
     Route::get('/category/delete/{category_id}', [CategoryController::class, 'Delete'])->name('category.delete');
     Route::get('/category/view/{category_id}', [CategoryController::class, 'View'])->name('category.view');
+    Route::get('/category/edit/{category_id}', [CategoryController::class, 'Edit'])->name('category.edit');
+    Route::put('/category/update/{category_id}', [CategoryController::class, 'Update'])->name('category.update');
     
     
     Route::get('/brand', [BrandController::class, 'List'])->name('brand');

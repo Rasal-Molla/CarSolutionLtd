@@ -50,7 +50,7 @@
                                 <td>{{$data->status}}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{route('category.view', $data->id)}}">View</a>
-                                    <a class="btn btn-success" href="">Update</a>
+                                    <a class="btn btn-success" href="{{route('category.edit', $data->id)}}">Update</a>
                                     <a class="btn btn-danger" href="{{route('category.delete',$data->id)}}">Delete</a>
                                 </td>
                             </tr>

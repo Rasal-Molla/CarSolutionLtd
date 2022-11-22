@@ -75,11 +75,10 @@ class ServiceController extends Controller
         $service_list=Service::find($service_id);
         //dd($service_list);
         $fileName=$service_list->image;
-        $removeFile  = public_path().'/uploads/'.$fileName;
-        File::delete($removeFile);
         if($request->hasFile('image'))
         {
-
+            $removeFile  = public_path().'/uploads/'.$fileName;
+            File::delete($removeFile);
             $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('/uploads', $fileName);
         }

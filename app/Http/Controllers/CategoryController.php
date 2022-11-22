@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -72,4 +73,33 @@ class CategoryController extends Controller
         return view('backend.pages.category.view', compact('viewData'));
 
     }
+
+    public function Edit($category_id)
+    {
+        $category_data=Category::find($category_id);
+        return view('backend.pages.category.edit',compact('category_data'));
+    }
+
+    public function Update(Request $request, $category_id)
+    {   $catUpdate=Category::find($category_id);
+        $catImage=$catUpdate->image;
+        if($request->hasFile('image'))
+        {   
+            $removeFile=public_path().'/uploads/'.$catImage;
+            File::delete($catImage);
+            $catImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $catImage);
+        }
+        //dd($request->all());
+        $catUpdate->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'status'=>$request->status,
+            'image'=>$catImage
+
+        ]);
+
+        return redirect()->back()->with('message','Category Updated!');
+    }
+
 }
