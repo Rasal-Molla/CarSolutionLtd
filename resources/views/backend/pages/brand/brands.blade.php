@@ -38,6 +38,9 @@
                         @if(session()->has('error'))
                             <p class="alert alert-danger">{{session()->get('error')}}</p>
                         @endif
+                        @if(session()->has('update'))
+                            <p class="alert alert-success">{{session()->get('update')}}</p>
+                        @endif
                         @foreach($brand_list as $key=>$list)
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
@@ -48,7 +51,7 @@
                                 <td>{{$list->status}}</td>
                                 <td>
                                     <a href="{{route('brand.view', $list->id)}}" class="btn btn-outline-info">View</a>
-                                    <a href="" class="btn btn-outline-success">Update</a>
+                                    <a href="{{route('brand.edit', $list->id)}}" class="btn btn-outline-success">Update</a>
                                     <a href="{{route('brand.delete', $list->id)}}" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>

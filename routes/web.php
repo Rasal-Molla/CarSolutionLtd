@@ -84,7 +84,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
     Route::post('/brand/form', [BrandController::class, 'Form'])->name('brand.form');
     Route::get('/brand/delete/{brand_id}', [BrandController::class, 'Delete'])->name('brand.delete');
     Route::get('/brand/view/{brand_id}', [BrandController::class, 'View'])->name('brand.view');
-    
+    Route::get('/brand/edit/{brand_id}', [BrandController::class, 'Edit'])->name('brand.edit');
+    Route::put('/brand/update/{brand_id}', [BrandController::class, 'Update'])->name('brand.update');
     
     Route::get('/service-center', [ServiceCenterController::class, 'List'])->name('servicecenter');
     Route::get('service-center/delete/{service_center_id}', [ServiceCenterController::class, 'Delete'])->name('service.center.delete');

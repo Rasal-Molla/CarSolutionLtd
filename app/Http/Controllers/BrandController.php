@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
@@ -63,4 +64,32 @@ class BrandController extends Controller
         $brand_view=Brand::find($brand_id);
         return view('backend.pages.brand.view', compact('brand_view'));
     }
+
+    public function Edit($brand_id)
+    {
+        $brand_data=Brand::find($brand_id);
+        return view('backend.pages.brand.edit', compact('brand_data'));
+    }
+
+    public function Update(Request $request, $brand_id)
+    {
+        $brand_update=Brand::find($brand_id);
+        $imageName=$brand_update->image;
+        if($request->hasFile('image'))
+        {
+            $removeBrand=public_path().'/uploads/'.$imageName;
+            File::delete($removeBrand);
+            $imageName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $imageName);
+        }
+
+        $brand_update->update([
+            'brand_name'=>$request->brand_name,
+            'description'=>$request->description,
+            'status'=>$request->status,
+            'image'=>$imageName
+        ]);
+        return redirect()->route('brand')->with('update','Brand updated successfully');
+    }
+
 }
