@@ -39,6 +39,9 @@
                         @if(session()->has('error'))
                             <p class="alert alert-success">{{session()->get('error')}}</p>
                         @endif
+                        @if(session()->has('update'))
+                            <p class="alert alert-success">{{session()->get('update')}}</p>
+                        @endif
 
                             @foreach($list as $key=>$data)
                             <tr>

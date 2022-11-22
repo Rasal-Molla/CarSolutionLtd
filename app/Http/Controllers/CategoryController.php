@@ -86,7 +86,7 @@ class CategoryController extends Controller
         if($request->hasFile('image'))
         {   
             $removeFile=public_path().'/uploads/'.$catImage;
-            File::delete($catImage);
+            File::delete($removeFile);
             $catImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('/uploads', $catImage);
         }
@@ -99,7 +99,7 @@ class CategoryController extends Controller
 
         ]);
 
-        return redirect()->back()->with('message','Category Updated!');
+        return redirect()->route('category')->with('update','Category Updated!');
     }
 
 }
