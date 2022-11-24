@@ -470,4 +470,99 @@
     </div>
     <!-- Customer End -->
 
+<!--SignUp Modal Start -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">SignUp Please</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form action="{{route('user.signup')}}" method="POST" enctype="multipart/form-data">
+            @if($errors->any())
+                @foreach($errors->all as $messaege)
+                <p class="alert alert-danger">{{$message}}</p>
+                @endforeach
+            @endif
+
+            @csrf
+        <div class="modal-body">
+        <div>
+            <label for="">Name</label>
+            <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+        </div>
+        <div>
+            <label for="">Phone</label>
+            <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+        </div>
+        <div>
+            <label for="">Address</label>
+            <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+        </div>
+        <div>
+            <label for="">Password</label>
+            <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+            <button type="submit" class="btn btn-primary">SignUp</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--SignUp Modal End -->
+
+<!--Login Modal Start -->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login Please</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form action="{{route('user.login')}}" method='post'>
+            @if($errors->any())
+                @foreach($errors->all as $messaege)
+                <p class="alert alert-danger">{{$message}}</p>
+                @endforeach
+            @endif
+
+            @csrf
+        <div class="modal-body">
+        <div>
+            <label for="">Email</label>
+            <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+        </div>
+        <div>
+            <label for="">Password</label>
+            <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Login Modal end -->
+
+
+
+
+
 @endsection

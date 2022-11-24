@@ -14,7 +14,13 @@
                 <a href="{{route('Home.brand')}}" class="nav-item nav-link">Brands</a>
                 <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
-                <a href="{{route('user.login')}}" class="nav-item nav-link">Login</a>
+                @auth
+                <a href="" class="nav-item nav-link"> {{auth()->user()->name}}</a>
+                <a href="{{route('user.logout')}}" class="nav-item nav-link">Logout</a>
+                @else
+                <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
+                <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#signup">SignUp</a>
+                @endauth
             </div>
         </div>
     </nav>
