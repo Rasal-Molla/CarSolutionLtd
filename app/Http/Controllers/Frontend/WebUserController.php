@@ -41,10 +41,19 @@ class WebUserController extends Controller
         ]);
 
         $credientials=$request->except('_token');
-        if(Auth::attempt($credientials))
-        {
-            notify()->success('Login success!');
-            return redirect()->back();
+        if(Auth::attempt($credientials)){
+
+            if(auth()->user()->role=='customer'){
+                notify()->success('Login success!');
+                return redirect()->back();
+            }
+            else
+            {
+                Auth::logout();
+                notify()->error('You are not a customer!');
+                return redirect()->route('login');
+            }
+           
         }
         return redirect()->back();
 

@@ -15,8 +15,20 @@
                 <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
                 @auth
-                <a href="" class="nav-item nav-link"> {{auth()->user()->name}}</a>
-                <a href="{{route('user.logout')}}" class="nav-item nav-link">Logout</a>
+
+                <div class="dropdown">
+                <a href="" class="nav-item nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{auth()->user()->name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <a href="" data-toggle="modal" data-target="#profile" class="dropdown-item" class="dropdown-item" type="button">Profile</a>
+                    <a href="" data-toggle="modal" data-target="#update" class="dropdown-item" type="button">Setting</a>
+                    <a href="" data-toggle="modal" data-target="#booking" class="dropdown-item" type="button">Booking</a>
+                    <a href="" class="dropdown-item" type="button">Payment</a>
+                    <a href="" class="dropdown-item" type="button">Invoice</a>
+                    <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
+                </div>
+                </div>
                 @else
                 <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
                 <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#signup">SignUp</a>

@@ -6,11 +6,11 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\Frontend\CustomerProfileController;
 use App\Http\Controllers\Frontend\HomeAboutController;
 use App\Http\Controllers\Frontend\HomeBookingController;
 use App\Http\Controllers\Frontend\HomeBrandController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\HomeServiceCenter;
 use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\HomeServiceController;
 use App\Http\Controllers\Frontend\WebUserController;
@@ -36,8 +36,10 @@ use Illuminate\Routing\Controllers\Middleware;
 Route::post('/user/signup', [WebUserController::class, 'SignUp'])->name('user.signup');
 Route::post('/user/login', [WebUserController::class, 'Login'])->name('user.login');
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
+    Route::get('/user/profile', [CustomerProfileController::class, 'Profile'])->name('customer.profile');
+    Route::get('/user/edit', [CustomerProfileController::class, 'Edit'])->name('customer.edit');
 });
 
 Route::get('/', [HomeController::class, 'Home'])->name('Home');

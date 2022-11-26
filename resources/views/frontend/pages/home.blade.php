@@ -481,11 +481,6 @@
         </button>
       </div>
         <form action="{{route('user.signup')}}" method="POST" enctype="multipart/form-data">
-            @if($errors->any())
-                @foreach($errors->all as $messaege)
-                <p class="alert alert-danger">{{$message}}</p>
-                @endforeach
-            @endif
 
             @csrf
         <div class="modal-body">
@@ -520,6 +515,141 @@
 </div>
 
 <!--SignUp Modal End -->
+
+
+<!--profile Modal Start -->
+
+
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Customer Details</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+        <div class="img-container">
+            <img class="w-25 h-auto" src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png" alt="">
+        </div>
+        <div>
+           <p>Name: Minhaz</p>
+           <p>Email: minhaz123@gmail.com</p>
+           <p>Phone: 01700585588</p>
+           <p>Address: Uttara, Sector-10</p>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--profile Modal End -->
+
+
+
+<!--Setting Modal Start -->
+
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Customer Setting</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            @csrf
+        <div class="modal-body">
+        <div>
+            <label for="">Name</label>
+            <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+        </div>
+        <div>
+            <label for="">Phone</label>
+            <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+        </div>
+        <div>
+            <label for="">Address</label>
+            <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+        </div>
+        <div>
+            <label for="">Password</label>
+            <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Setting Modal End -->
+
+
+<!--Booking Modal start -->
+
+<div class="modal fade" id="booking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Booking Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body table-responsive">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Service Center</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Service</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>01700585588</td>
+                <td>CarService</td>
+                <td>Audi</td>
+                <td>Sports</td>
+                <td>Air filter</td>
+                <td>1500 BDT</td>
+                <td>Pending</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!--Booking Modal End -->
+
 
 <!--Login Modal Start -->
 

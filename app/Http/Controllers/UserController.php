@@ -78,10 +78,18 @@ class UserController extends Controller
         $credintials=$request->except('_token');
         //dd($credintials);
         if(Auth::attempt($credintials))
-        {   //dd('login hoice');
-            return redirect()->route('dashboard')->with('message', 'Login successfully');
+        {   
+            if(auth()->user()->role=='admin')
+            {
+                return redirect()->route('dashboard')->with('message', 'Login successfully');
+            }
+            else
+            {
+                Auth::logout();
+                notify()->error('You are not a admin');
+            }
         }
-        //dd('login hoynai');
+
         return redirect()->back()->with('message', 'Invalid credintials');
     }
 

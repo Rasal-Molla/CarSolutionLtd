@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class Customer
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,14 @@ class Admin
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
-        if(auth()->user()->role=='admin')
-        {
+    {
+        if(auth()->user()->role=='customer')
+        {   
             return $next($request);
+            notify()->success('Login success!');
         }
-            return redirect()->route('Home');
+            
+            return redirect()->back();
+        
     }
 }
