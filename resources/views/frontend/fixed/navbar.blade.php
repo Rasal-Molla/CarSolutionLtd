@@ -38,12 +38,12 @@
                     {{auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Profile</a>
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Edit</a>
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Request</a>
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Category</a>
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Service</a>
-                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Completed</a>
+                    <a href="" data-toggle="modal" data-target="#serviceProfile" class="dropdown-item" type="button">Profile</a>
+                    <a href="" data-toggle="modal" data-target="#edit" class="dropdown-item" type="button">Edit</a>
+                    <a href="" data-toggle="modal" data-target="#request" class="dropdown-item" type="button">Request</a>
+                    <a href="" data-toggle="modal" data-target="#category" class="dropdown-item" type="button">Category</a>
+                    <a href="" data-toggle="modal" data-target="#service" class="dropdown-item" type="button">Service</a>
+                    <a href="" data-toggle="modal" data-target="#complete" class="dropdown-item" type="button">Completed</a>
                     <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Payment</a>
                     <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Invoice</a>
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
