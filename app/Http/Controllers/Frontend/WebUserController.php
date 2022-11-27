@@ -41,9 +41,20 @@ class WebUserController extends Controller
         ]);
 
         $credientials=$request->except('_token');
-        if(Auth::attempt($credientials)){
 
-            if(auth()->user()->role=='customer'){
+        if(Auth::attempt($credientials))
+        {
+            // First in_array procedure
+            //$data=auth()->user()->role;
+            //$array=['customer','service_center'];
+            //if(in_array($data,$array))
+
+            // Second in_array procedure
+            //$data=auth()->user()->role;
+            //if(in_array($data,['customer','service_center']))
+
+            if(in_array(auth()->user()->role,['customer','service_center']))
+            {
                 notify()->success('Login success!');
                 return redirect()->back();
             }
@@ -65,5 +76,31 @@ class WebUserController extends Controller
         notify()->success('Logout success!');
         return redirect()->route('Home');
     }
+
+    public function Service_signup(Request $request)
+    {
+        $request->validate([
+
+            'name'=>'required',
+            'email'=>'required|email',
+            'phone'=>'required',
+            'address'=>'required',
+            'password'=>'required'
+
+        ]);
+
+        User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'password'=>bcrypt($request->password),
+            'role'=>'service_center'
+        ]);
+
+        return redirect()->route('Home');
+    }
+
+
 
 }

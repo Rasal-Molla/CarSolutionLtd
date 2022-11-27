@@ -16,12 +16,14 @@
                 <a href="" class="nav-item nav-link">Contact</a>
                 @auth
 
+                @if(auth()->user()->role=='customer')
+
                 <div class="dropdown">
                 <a href="" class="nav-item nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="" data-toggle="modal" data-target="#profile" class="dropdown-item" class="dropdown-item" type="button">Profile</a>
+                    <a href="" data-toggle="modal" data-target="#profile" class="dropdown-item" type="button">Profile</a>
                     <a href="" data-toggle="modal" data-target="#update" class="dropdown-item" type="button">Setting</a>
                     <a href="" data-toggle="modal" data-target="#booking" class="dropdown-item" type="button">Booking</a>
                     <a href="" class="dropdown-item" type="button">Payment</a>
@@ -29,6 +31,26 @@
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
                 </div>
                 </div>
+
+                @else
+                <div class="dropdown">
+                <a href="" class="nav-item nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{auth()->user()->name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Profile</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Edit</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Request</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Category</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Service</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Completed</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Payment</a>
+                    <a href="" data-toggle="modal" data-target="#" class="dropdown-item" type="button">Invoice</a>
+                    <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
+                </div>
+                </div>
+                @endif
+
                 @else
                 <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
                 <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#signup">SignUp</a>

@@ -480,77 +480,78 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form action="{{route('user.signup')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Customer SignUp</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Service Center SignUp</button>
-                        </li>
-                    </ul>
-                    <!--SignUp Modal Start for customer-->
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> 
-                            <div>
-                                <label for="">Name</label>
-                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
-                            </div>
-                            <div>
-                                <label for="">Email</label>
-                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
-                            </div>
-                            <div>
-                                <label for="">Phone</label>
-                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
-                            </div>
-                            <div>
-                                <label for="">Address</label>
-                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
-                            </div>
-                            <div>
-                                <label for="">Password</label>
-                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-                                <button type="submit" class="btn btn-primary">SignUp</button>
-                            </div>
-                        </div>
-                    <!--SignUp Modal end for customer-->
-
-                    <!--SignUp Modal Start for service center-->
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <div>
-                                <label for="">Name</label>
-                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
-                            </div>
-                            <div>
-                                <label for="">Email</label>
-                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
-                            </div>
-                            <div>
-                                <label for="">Phone</label>
-                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
-                            </div>
-                            <div>
-                                <label for="">Address</label>
-                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
-                            </div>
-                            <div>
-                                <label for="">Password</label>
-                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-                                <button type="submit" class="btn btn-primary">SignUp</button>
-                            </div>
-                        </div>
-                        <!--SignUp Modal end for service center-->
+            <div class="modal-body">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Customer</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Service-Center</button>
                     </div>
-                </form>
+                </nav>
+                <!--SignUp Modal start for customer-->
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <form action="{{route('user.signup')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                            <div>
+                                <label for="">Name</label>
+                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+                            </div>
+                            <div>
+                                <label for="">Email</label>
+                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+                            </div>
+                            <div>
+                                <label for="">Phone</label>
+                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+                            </div>
+                            <div>
+                                <label for="">Address</label>
+                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+                            </div>
+                            <div>
+                                <label for="">Password</label>
+                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+                                <button type="submit" class="btn btn-primary">SignUp</button>
+                            </div>
+                    </form>
+                </div>
+                <!--SignUp Modal end for customer--> 
+
+                <!--SignUp Modal start for service center--> 
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <form action="{{route('service.signup')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                            <div>
+                                <label for="">Name</label>
+                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+                            </div>
+                            <div>
+                                <label for="">Email</label>
+                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+                            </div>
+                            <div>
+                                <label for="">Phone</label>
+                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+                            </div>
+                            <div>
+                                <label for="">Address</label>
+                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+                            </div>
+                            <div>
+                                <label for="">Password</label>
+                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
+                                <button type="submit" class="btn btn-primary">SignUp</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+            <!--SignUp Modal end for service center-->  
             </div>
         </div>
     </div>

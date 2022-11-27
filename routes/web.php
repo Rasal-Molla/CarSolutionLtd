@@ -33,7 +33,8 @@ use Illuminate\Routing\Controllers\Middleware;
 */
 
 // Frontend panel route start here
-Route::post('/user/signup', [WebUserController::class, 'SignUp'])->name('user.signup');
+Route::post('/user/customer/signup', [WebUserController::class, 'SignUp'])->name('user.signup');
+Route::post('/user/service-center/signup', [WebUserController::class, 'Service_signup'])->name('service.signup');
 Route::post('/user/login', [WebUserController::class, 'Login'])->name('user.login');
 
 Route::group(['middleware'=>'auth', 'customer'],function(){
@@ -41,6 +42,14 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/user/profile', [CustomerProfileController::class, 'Profile'])->name('customer.profile');
     Route::get('/user/edit', [CustomerProfileController::class, 'Edit'])->name('customer.edit');
 });
+
+Route::group(['middleware'=>'auth', 'servicecenter'],function(){
+    Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
+
+});
+
+
+
 
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 Route::get('/service-center', [HomeServiceCenterController::class, 'List'])->name('Home.serviceCenter');
