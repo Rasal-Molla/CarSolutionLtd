@@ -13,6 +13,10 @@ use App\Http\Controllers\Frontend\HomeBrandController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\HomeServiceController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCProfileController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCRequestController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
 use App\Http\Controllers\Frontend\WebUserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
@@ -43,10 +47,24 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/user/edit', [CustomerProfileController::class, 'Edit'])->name('customer.edit');
 });
 
-Route::group(['middleware'=>'auth', 'servicecenter'],function(){
+Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'],function(){
     Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
 
+    Route::get('/profile', [SCProfileController::class, 'Profile'])->name('scprofile');
+
+    Route::get('/service', [SCServiceController::class, 'List'])->name('scservice.list');
+    Route::get('/service/service-form', [SCServiceController::class, 'Form'])->name('scservice.form');
+
+
+    Route::get('/category',[SCCategoryController::class, 'List'])->name('sccategory.list');
+    Route::get('/category/form', [SCCategoryController::class, 'Form'])->name('sccategory.form');
+
+
+    Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');
+
+    
 });
+
 
 
 

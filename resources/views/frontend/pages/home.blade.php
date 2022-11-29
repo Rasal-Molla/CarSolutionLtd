@@ -752,19 +752,7 @@
             </button>
         </div>
             <div class="modal-body">
-            <div class="img-container">
-                <img class="w-25 h-auto" src="https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651__340.png" alt="">
-            </div>
-            <div>
-            <p>Service Center: Car Corner Ltd.</p>
-            <p>Name: Minhaz</p>
-            <p>Email: carcorner@gmail.com</p>
-            <p>Phone: 01700585560</p>
-            <p>Address: Gulshan-2</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-            </div>
+            
         </div>
         </div>
     </div>
@@ -826,169 +814,13 @@
 <!--Edit Modal End -->
 
 
-<!--Request info Modal start -->
-
-<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Request Info</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-            <div class="modal-body table-responsive">
-                <table class="table table-striped">
-                <thead>
-                    <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Servive</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>01700585588</td>
-                    <td>CarService</td>
-                    <td>Audi</td>
-                    <td>Sports</td>
-                    <td>Air filter</td>
-                    <td>1500 BDT</td>
-                    <td>
-                        <select name="" id="">
-                            <option selected value="pending">Pending</option>
-                            <option value="accept">Accept</option>
-                            <option value="relesed">Relesed</option>
-                        </select>
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Request info Modal End -->
-
-
-
-<!--Category Modal start -->
-
-<div class="modal fade" id="category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Car Category Form</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-            <form action="" method="POST" enctype="multipart/form-data">
-                @csrf
-            <div class="modal-body">
-            <div>
-                <label for="">Category Name</label>
-                <input required name="category_name" type="text" class="form-control" placeholder="Enter category name">
-            </div>
-            <div>
-                <label for="">Description</label>
-                <input required name="description" type="email" class="form-control" placeholder="Enter description">
-            </div>
-            <label for="">Status</label>
-            <div>
-                <select class="form-control" name="status" id="">
-                <option selected value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                </select>
-            </div>
-            <div>
-                <label for="">Image</label>
-                <input required name="image" type="file" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
-</div>
-
-<!--Category Modal end -->
-
-
-<!--Service Modal start -->
-
-<div class="modal fade" id="service" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Service Form</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-            <form action="" method="POST" enctype="multipart/form-data">
-                @csrf
-            <div class="modal-body">
-            <div>
-                <label for="">Service Name</label>
-                <input required name="service_name" type="text" class="form-control" placeholder="Enter name">
-            </div>
-            <div>
-                <label for="">Price</label>
-                <input required name="service_center" type="text" class="form-control" placeholder="Enter price">
-            </div>
-            <div>
-                <label for="">Description</label>
-                <input required name="description" type="email" class="form-control" placeholder="Enter description">
-            </div>
-            <label for="">Status</label>
-            <div>
-                <select class="form-control" name="status" id="">
-                <option selected value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                </select>
-            </div>
-            <div>
-                <label for="">Image</label>
-                <input required name="image" type="file" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
-</div>
-
-<!--Service Modal end -->
-
-
-
-<!--Request info Modal start -->
+<!--Complete Modal start -->
 
 <div class="modal fade" id="complete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Request Info</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Completed Info</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -1000,7 +832,6 @@
                     <th scope="col">ID</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Servive</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
@@ -1014,7 +845,6 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>01700585588</td>
-                    <td>CarService</td>
                     <td>Audi</td>
                     <td>Sports</td>
                     <td>Air filter</td>
@@ -1034,8 +864,7 @@
     </div>
 </div>
 
-<!--Request info Modal End -->
-
+<!--Complete Modal End -->
 
 
 @endsection
