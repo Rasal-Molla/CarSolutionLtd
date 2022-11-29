@@ -23,9 +23,8 @@
                     {{auth()->user()->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="" data-toggle="modal" data-target="#profile" class="dropdown-item" type="button">Profile</a>
-                    <a href="" data-toggle="modal" data-target="#update" class="dropdown-item" type="button">Setting</a>
-                    <a href="" data-toggle="modal" data-target="#booking" class="dropdown-item" type="button">Booking</a>
+                    <a href="{{route('customer.profile')}}" class="dropdown-item" type="button">Profile</a>
+                    <a href="{{route('customer.booking')}}" class="dropdown-item" type="button">Booking</a>
                     <a href="" class="dropdown-item" type="button">Payment</a>
                     <a href="" class="dropdown-item" type="button">Invoice</a>
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
@@ -39,11 +38,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="{{route('scprofile')}}" class="dropdown-item" type="button">Profile</a>
-                    <a href="" class="dropdown-item" type="button">Edit</a>
                     <a href="{{route('screquest.list')}}" class="dropdown-item" type="button">Request</a>
                     <a href="{{route('sccategory.list')}}" class="dropdown-item" type="button">Category</a>
                     <a href="{{route('scservice.list')}}" class="dropdown-item" type="button">Service</a>
-                    <a href="" class="dropdown-item" type="button">Completed</a>
+                    <a href="{{route('sccompleted.list')}}" class="dropdown-item" type="button">Completed</a>
                     <a href="" class="dropdown-item" type="button">Payment</a>
                     <a href="" class="dropdown-item" type="button">Invoice</a>
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>

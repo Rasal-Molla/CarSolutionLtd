@@ -6,7 +6,8 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\Frontend\CustomerProfileController;
+use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
+use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
 use App\Http\Controllers\Frontend\HomeAboutController;
 use App\Http\Controllers\Frontend\HomeBookingController;
 use App\Http\Controllers\Frontend\HomeBrandController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\HomeServiceController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCCompletedController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCProfileController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCRequestController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
@@ -43,8 +45,11 @@ Route::post('/user/login', [WebUserController::class, 'Login'])->name('user.logi
 
 Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
+
     Route::get('/user/profile', [CustomerProfileController::class, 'Profile'])->name('customer.profile');
-    Route::get('/user/edit', [CustomerProfileController::class, 'Edit'])->name('customer.edit');
+
+    Route::get('/booking-info', [CustomerBookingController::class, 'BookingInfo'])->name('customer.booking');
+
 });
 
 Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'],function(){
@@ -61,6 +66,9 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
 
 
     Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');
+
+
+    Route::get('/complete', [SCCompletedController::class, 'List'])->name('sccompleted.list');
 
     
 });
