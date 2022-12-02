@@ -21,31 +21,27 @@
             </div>
         </div>
         <div class="col-md-3">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{route('scprofile.edit')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                     <div>
                         <label for="">Name</label>
-                        <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+                        <input required name="name" value="{{auth()->user()->name}}" type="text" class="form-control" required placeholder="Enter name">
                     </div>
                     <div>
                         <label for="">Service Center</label>
-                        <input required name="service_center" type="text" class="form-control" required placeholder="Enter service center">
+                        <input required name="service_center" value="{{auth()->user()->name}}" type="text" class="form-control" required placeholder="Enter service center">
                     </div>
                     <div>
                         <label for="">Email</label>
-                        <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+                        <input required name="email" value="{{auth()->user()->email}}" type="email" class="form-control" required placeholder="Enter email">
                     </div>
                     <div>
                         <label for="">Phone</label>
-                        <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+                        <input required name="phone" value="{{auth()->user()->phone}}" type="text" class="form-control" required placeholder="Enter number">
                     </div>
                     <div>
                         <label for="">Address</label>
-                        <input required name="address" type="text" class="form-control" required placeholder="Enter address">
-                    </div>
-                    <div>
-                        <label for="">Password</label>
-                        <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+                        <input required name="address" value="{{auth()->user()->address}}" type="text" class="form-control" required placeholder="Enter address">
                     </div>
                         <button type="submit" class=" btn btn-success mt-3" >EDIT</button>
                     </div>

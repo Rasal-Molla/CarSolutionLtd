@@ -494,23 +494,27 @@
                         @csrf
                             <div>
                                 <label for="">Name</label>
-                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+                                <input required name="name" type="text" class="form-control" placeholder="Enter name">
                             </div>
                             <div>
                                 <label for="">Email</label>
-                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+                                <input required name="email" type="email" class="form-control" placeholder="Enter email">
                             </div>
                             <div>
                                 <label for="">Phone</label>
-                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+                                <input required name="phone" type="text" class="form-control" placeholder="Enter number">
                             </div>
                             <div>
                                 <label for="">Address</label>
-                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+                                <input required name="address" type="text" class="form-control" placeholder="Enter address">
+                            </div>
+                            <div>
+                                <label for="">Image</label>
+                                <input required name="image" type="file" class="form-control">
                             </div>
                             <div>
                                 <label for="">Password</label>
-                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+                                <input required name="password" type="password" class="form-control" placeholder="Enter password">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>
@@ -526,23 +530,27 @@
                         @csrf
                             <div>
                                 <label for="">Name</label>
-                                <input required name="name" type="text" class="form-control" required placeholder="Enter name">
+                                <input required name="name" type="text" class="form-control" placeholder="Enter name">
                             </div>
                             <div>
                                 <label for="">Email</label>
-                                <input required name="email" type="email" class="form-control" required placeholder="Enter email">
+                                <input required name="email" type="email" class="form-control" placeholder="Enter email">
                             </div>
                             <div>
                                 <label for="">Phone</label>
-                                <input required name="phone" type="text" class="form-control" required placeholder="Enter number">
+                                <input required name="phone" type="text" class="form-control" placeholder="Enter number">
                             </div>
                             <div>
                                 <label for="">Address</label>
-                                <input required name="address" type="text" class="form-control" required placeholder="Enter address">
+                                <input required name="address" type="text" class="form-control" placeholder="Enter address">
+                            </div>
+                            <div>
+                                <label for="">Image</label>
+                                <input required name="image" type="file" class="form-control">
                             </div>
                             <div>
                                 <label for="">Password</label>
-                                <input required name="password" type="password" class="form-control" required placeholder="Enter password">
+                                <input required name="password" type="password" class="form-control" placeholder="Enter password">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Closed</button>

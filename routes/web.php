@@ -47,8 +47,11 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
 
     Route::get('/user/profile', [CustomerProfileController::class, 'Profile'])->name('customer.profile');
+    Route::put('/user/update', [CustomerProfileController::class, 'Update'])->name('customer.profileUpdate');
 
     Route::get('/booking-info', [CustomerBookingController::class, 'BookingInfo'])->name('customer.booking');
+    Route::get('/booking/form', [CustomerBookingController::class, 'Form'])->name('customer.bookingForm');
+    Route::post('/booking/store', [CustomerBookingController::class, 'Store'])->name('customer.bookingStore');
 
 });
 
@@ -56,13 +59,17 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
     Route::get('/user/logout', [WebUserController::class, 'Logout'])->name('user.logout');
 
     Route::get('/profile', [SCProfileController::class, 'Profile'])->name('scprofile');
+    Route::post('/profile/edit', [SCProfileController::class, 'Edit'])->name('scprofile.edit');
 
     Route::get('/service', [SCServiceController::class, 'List'])->name('scservice.list');
     Route::get('/service/service-form', [SCServiceController::class, 'Form'])->name('scservice.form');
+    Route::post('/service/store', [SCServiceController::class, 'Store'])->name('scservice.store');
+    Route::get('/service/edit/{service_id}', [SCServiceController::class, 'UpdateForm'])->name('scservice.updateform');
+    Route::put('/service/update/{service_id}', [SCServiceController::class, 'UpdateStore'])->name('scservice.update');
+    Route::get('/service/delete/{service_id}', [SCServiceController::class, 'Delete'])->name('scservice.delete');
 
 
     Route::get('/category',[SCCategoryController::class, 'List'])->name('sccategory.list');
-    Route::get('/category/form', [SCCategoryController::class, 'Form'])->name('sccategory.form');
 
 
     Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');

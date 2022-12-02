@@ -12,6 +12,9 @@
             <div class="mb-3">
             <h2>Booking Information</h2>
             </div>
+            <div>
+                <a href="{{route('customer.bookingForm')}}" class="btn btn-success">Book Now</a>
+            </div>
         <table class="table table-striped">
                 <thead>
                 <tr>
@@ -28,21 +31,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($bookingList as $key=>$list)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>01700585588</td>
-                    <td>CarService</td>
-                    <td>Audi</td>
-                    <td>Sports</td>
-                    <td>Air filter</td>
-                    <td>1500 BDT</td>
-                    <td>Pending</td>
+                    <th scope="row">{{$key+1}}</th>
+                    <td>{{$list->Customer_name}}</td>
+                    <td>{{$list->phone}}</td>
+                    <td>{{$list->service_center}}</td>
+                    <td>{{$list->brand}}</td>
+                    <td>{{$list->model}}</td>
+                    <td>{{$list->service}}</td>
+                    <td>{{$list->price}}</td>
+                    <td>{{$list->status}}</td>
                     <td>
                         <a href="" class="btn btn-success">Update</a>
                         <a href="" class="btn btn-danger">Delete</a>
                     </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

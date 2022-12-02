@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string('name', 150); //Service center name
             $table->string('email', 50)->unique(); // Service center email
             $table->string('phone', 50)->unique(); //Service center phone
-            $table->string('location', 200); // Service center location
-            $table->string('service_type', 150); 
-            $table->string('service_hour', 150);
-            $table->string('password', 25);
+            $table->string('address', 200); // Service center location
             $table->string('image');
             $table->timestamps();
         });

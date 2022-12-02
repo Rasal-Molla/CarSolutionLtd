@@ -74,20 +74,21 @@ class BrandController extends Controller
     public function Update(Request $request, $brand_id)
     {
         $brand_update=Brand::find($brand_id);
-        $imageName=$brand_update->image;
+        $brandImage=$brand_update->image;
         if($request->hasFile('image'))
-        {
-            $removeBrand=public_path().'/uploads/'.$imageName;
-            File::delete($removeBrand);
-            $imageName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('/uploads', $imageName);
+        {   
+            $removeFile=public_path().'/uploads/'.$brandImage;
+            File::delete($removeFile);
+            $brandImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads', $brandImage);
         }
-
+        //dd($request->all());
         $brand_update->update([
             'brand_name'=>$request->brand_name,
             'description'=>$request->description,
             'status'=>$request->status,
-            'image'=>$imageName
+            'image'=>$brandImage
+
         ]);
         return redirect()->route('brand')->with('update','Brand updated successfully');
     }

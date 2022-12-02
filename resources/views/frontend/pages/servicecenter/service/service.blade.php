@@ -25,17 +25,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($serviceList as $key=>$list)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>photo</td>
-                    <td>Air Filter</td>
-                    <td>2000 BDT</td>
-                    <td>Active</td>
+                    <th scope="row">{{$key+1}}</th>
                     <td>
-                        <a href="" class="btn btn-success">Update</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <img width="65px" src="{{url('/uploads/'.$list->image)}}" alt="Image">
+                    </td>
+                    <td>{{$list->service_name}}</td>
+                    <td>{{$list->price}}</td>
+                    <td>{{$list->status}}</td>
+                    <td>
+                        <a href="{{route('scservice.updateform', $list->id)}}" class="btn btn-success">Update</a>
+                        <a href="{{route('scservice.delete', $list->id)}}" class="btn btn-danger">Delete</a>
                     </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

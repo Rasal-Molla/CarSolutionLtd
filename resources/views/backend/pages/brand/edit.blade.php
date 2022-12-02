@@ -30,7 +30,7 @@
                 </select>
                 <div class="mb-4">
                     <label for="image" class="form-label">Select Image:</label>
-                    <input required name="image" class="form-control bg-dark" type="file" id="image">
+                    <input name="image" class="form-control bg-dark" type="file" id="image">
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

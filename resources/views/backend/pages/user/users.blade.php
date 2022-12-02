@@ -28,7 +28,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">Gender</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -49,7 +48,6 @@
                                 <td>{{$data->email}}</td>
                                 <td>{{$data->phone}}</td>
                                 <td>{{$data->address}}</td>
-                                <td>{{$data->gender}}</td>
                                 <td>
                                     <a href="" class="btn btn-outline-success">Update</a>
                                     <a href="{{route('user.delete',$data->id)}}" class="btn btn-outline-danger">Delete</a>
