@@ -25,26 +25,35 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
-                    <th scope="col">Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach($bookingList as $key=>$list)
                 <tr>
                     <th scope="row">{{$key+1}}</th>
                     <td>{{$list->Customer_name}}</td>
                     <td>{{$list->phone}}</td>
-                    <td>{{$list->service_center}}</td>
-                    <td>{{$list->brand}}</td>
+                    <td>{{$list->serviceCenter->name}}</td>
+                    <td>{{$list->brand->brand_name}}</td>
                     <td>{{$list->model}}</td>
-                    <td>{{$list->service}}</td>
-                    <td>{{$list->price}}</td>
+                    <td>{{$list->service->service_name}}</td>
                     <td>{{$list->status}}</td>
                     <td>
-                        <a href="" class="btn btn-success">Update</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        @if($list->status == 'Pending')
+                        <a href="{{route('customer.bookingEdit', $list->id)}}" class="btn btn-success">Update</a>
+                        <a href="{{route('customer.bookingDelete', $list->id)}}" class="btn btn-danger">Delete</a>
+                        @elseif($list->status == 'Approved')
+
+                            Progressing
+
+                        @else
+                        
+                            Done
+                        
+                        @endif
                     </td>
                     </tr>
                     @endforeach

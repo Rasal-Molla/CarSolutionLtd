@@ -6,20 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Brand;
 use App\Models\Service;
-use App\Models\Service_center;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CustomerBookingController extends Controller
 {
     public function BookingInfo()
     {
-        $bookingList=Booking::where('customer_id', auth()->user()->id)->get();
+        $bookingList=Booking::where('user_id', auth()->user()->id)->get();
         return view('frontend.pages.customer.booking.booking', compact('bookingList'));
     }
 
     public function Form()
     {
-        $service_center=Service_center::all();
+        $service_center=User::where('role','service_center')->get();
         $service=Service::all();
         $brand=Brand::all();
         return view('frontend.pages.customer.booking.form', compact('service_center','service','brand',));
@@ -35,15 +35,59 @@ class CustomerBookingController extends Controller
         Booking::create([
             'customer_name'=>$request->customer_name,
             'phone'=>$request->phone,
-            'service_center'=>$request->service_center,
-            'brand'=>$request->brand,
+            'service_center_id'=>$request->service_center,
+            'brand_id'=>$request->brand,
             'model'=>$request->model,
-            'service'=>$request->service,
+            'service_id'=>$request->service,
             'special_request'=>$request->special_request,
-            'customer_id'=>auth()->user()->id
+            'user_id'=>auth()->user()->id
         ]);
 
         notify()->success('Booking successfully!');
         return redirect()->route('customer.booking');
+
     }
+
+    public function Edit($booking_id)
+    {
+        $service_center=User::where('role', 'service_center')->get();
+        $service=Service::all();
+        $brand=Brand::all();
+        $booking = Booking::find($booking_id);
+        return view('frontend.pages.customer.booking.edit', compact('service_center','service','brand','booking'));
+    }
+
+    public function Update(Request $request, $booking_id)
+    {
+        $bookingUpdate=Booking::find($booking_id);
+        $bookingUpdate->update([
+
+            'service_center_id'=>$request->service_center,
+            'brand_id'=>$request->brand,
+            'service_id'=>$request->service,
+            'model'=>$request->model,
+            'special_request'=>$request->special_request
+
+        ]);
+
+        notify()->success('Booking Updated!');
+        return redirect()->route('customer.booking');
+    }
+
+    public function Delete($booking_id)
+    {
+        $delete=Booking::find($booking_id);
+        if($delete)
+        {
+            $delete->delete();
+            notify()->success('Delete Successfully!');
+            return redirect()->back();
+        }
+        else
+        {
+            notify()->error('No booking found!');
+        }
+
+    }
+
 }

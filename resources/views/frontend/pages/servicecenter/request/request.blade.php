@@ -22,31 +22,29 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
+                    <th scope="col">Special Request</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($bookingInfo as $key=>$data)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>01700585588</td>
-                    <td>Audi</td>
-                    <td>Sports</td>
-                    <td>Air filter</td>
-                    <td>1500 BDT</td>
+                    <th scope="row">{{$key+1}}</th>
+                    <td>{{$data->Customer_name}}</td>
+                    <td>{{$data->phone}}</td>
+                    <td>{{$data->brand->brand_name}}</td>
+                    <td>{{$data->model}}</td>
+                    <td>{{$data->service->service_name}}</td>
+                    <td>{{$data->special_request}}</td>
+                    <td>{{$data->price}}</td>
+                    <td>{{$data->status}}</td>
                     <td>
-                        <select name="" id="">
-                            <option selected value="pending">Pending</option>
-                            <option value="accept">Accept</option>
-                            <option value="relesed">Relesed</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-success">Update</button>
+                        <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
                     </td>
                     </tr>
+                    @endforeach
                 </tbody>
                 </table>
             </div>

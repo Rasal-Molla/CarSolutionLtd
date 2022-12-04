@@ -25,6 +25,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ServiceCenterController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Customer;
 use Illuminate\Routing\Controllers\Middleware;
 
 /*
@@ -52,6 +53,10 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/booking-info', [CustomerBookingController::class, 'BookingInfo'])->name('customer.booking');
     Route::get('/booking/form', [CustomerBookingController::class, 'Form'])->name('customer.bookingForm');
     Route::post('/booking/store', [CustomerBookingController::class, 'Store'])->name('customer.bookingStore');
+    Route::get('/booking/edit/{booking_id}', [CustomerBookingController::class, 'Edit'])->name('customer.bookingEdit');
+    Route::put('/booking/update/{booking_id}', [CustomerBookingController::class, 'Update'])->name('customer.bookingUpdate');
+    Route::get('/booking/delete/{booking_id}', [CustomerBookingController::class, 'Delete'])->name('customer.bookingDelete');
+
 
 });
 
@@ -73,6 +78,8 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
 
 
     Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');
+    Route::get('/request/edit/{request_id}', [SCRequestController::class, 'Edit'])->name('screquest.editForm');
+    Route::put('/request/update/{request_id}', [SCRequestController::class, 'Update'])->name('screquest.update');
 
 
     Route::get('/complete', [SCCompletedController::class, 'List'])->name('sccompleted.list');
