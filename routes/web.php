@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
 use App\Http\Controllers\Frontend\HomeAboutController;
 use App\Http\Controllers\Frontend\HomeBookingController;
 use App\Http\Controllers\Frontend\HomeBrandController;
+use App\Http\Controllers\Frontend\HomeCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\HomeServiceController;
@@ -97,6 +98,7 @@ Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.
 Route::get('/brand/list', [HomeBrandController::class, 'List'])->name('Home.brand');
 Route::get('/booking-us', [HomeBookingController::class, 'Book'])->name('Home.book');
 Route::get('/about-us', [HomeAboutController::class, 'About'])->name('Home.about');
+Route::get('/category', [HomeCategoryController::class, 'Category'])->name('Home.category');
 
 
 

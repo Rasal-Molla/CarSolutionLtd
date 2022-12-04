@@ -12,6 +12,7 @@
                 <a href="{{route('Home.service')}}" class="nav-item nav-link">Services</a>
                 <a href="{{route('Home.serviceCenter')}}" class="nav-item nav-link">Service Center</a>
                 <a href="{{route('Home.brand')}}" class="nav-item nav-link">Brands</a>
+                <a href="{{route('Home.category')}}" class="nav-item nav-link">Category</a>
                 <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
                 <a href="" class="nav-item nav-link">Contact</a>
                 @auth

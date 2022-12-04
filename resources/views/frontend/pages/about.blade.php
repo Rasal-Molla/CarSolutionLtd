@@ -18,7 +18,7 @@
                 <div class="col-lg-6">
                     <h6 class="text-primary text-uppercase">// About Us //</h6>
                     <h1 class="mb-4"><span class="text-primary">CarSolution</span> Is The Best Place For Your Auto Care</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <p class="mb-4">It's an open platform for Bangladeshi. Customer & Service Center both are get the access to the platform. Even without registration you also view all the service , category & brands. We hope that everyone will be benifited.</p>
                     <div class="row g-4 mb-3 pb-3">
                         <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                             <div class="d-flex">
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>Professional & Expert</h6>
-                                    <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                    <span>All the Professional & Expert are provide the service to the customer. So that customer can get the best service from the service center.</span>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="ps-3">
                                     <h6>Quality Servicing Center</h6>
-                                    <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                    <span>Service center are well prepared to provide their service to the customer & they make sure the customer satisfaction as much as possible.</span>
                                 </div>
                             </div>
                         </div>
@@ -48,13 +48,12 @@
                                     <span class="fw-bold text-secondary">03</span>
                                 </div>
                                 <div class="ps-3">
-                                    <h6>Awards Winning Workers</h6>
-                                    <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                    <h6>Quality Workers</h6>
+                                    <span>Each end every service center higher quality workers, so they can get more and more booking from the customer. Behind reasone, they will be more benifited. Customer also fell relax for servicing.</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn btn-primary py-3 px-5">Read More<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
