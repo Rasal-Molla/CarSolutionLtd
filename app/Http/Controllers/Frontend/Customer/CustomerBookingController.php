@@ -35,8 +35,8 @@ class CustomerBookingController extends Controller
         ]);
 
         Booking::create([
-            'Customer_name'=>$request->customer_name,
-            'phone'=>$request->phone,
+            'Customer_name'=>auth()->user()->name,
+            'phone'=>auth()->user()->phone,
             'service_center_id'=>$request->service_center,
             'brand_id'=>$request->brand,
             'model'=>$request->model,
