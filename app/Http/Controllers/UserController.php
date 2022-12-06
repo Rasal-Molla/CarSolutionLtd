@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function List(){
 
-        $user_list=User::all();
+        $user_list=User::where('role', 'customer')->get();
         //dd($user_list);
 
         return view('backend.pages.user.users',compact('user_list'));

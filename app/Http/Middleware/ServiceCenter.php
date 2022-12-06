@@ -16,13 +16,13 @@ class ServiceCenter
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role=='service_center')
+        if(auth()->user()->role=='service_center' && auth()->user()->country == 'bangladesh')
         {
             notify()->success('Login success!');
             return $next($request);
 
         }
-        return redirect()->back();
+        return redirect()->route('login');
         
     }
 }

@@ -18,6 +18,7 @@ class WebUserController extends Controller
             'email'=>'required|email',
             'phone'=>'required',
             'address'=>'required',
+            'country'=>'required',
             'password'=>'required'
 
         ]);
@@ -34,6 +35,7 @@ class WebUserController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
+            'country'=>$request->country,
             'image'=>$customerImage,
             'password'=>bcrypt($request->password),
             'role'=>'customer'
@@ -63,7 +65,7 @@ class WebUserController extends Controller
             //$data=auth()->user()->role;
             //if(in_array($data,['customer','service_center']))
 
-            if(in_array(auth()->user()->role,['customer','service_center']))
+            if(in_array(auth()->user()->role,['customer','service_center']) && auth()->user()->country=='bangladesh')
             {
                 notify()->success('Login success!');
                 return redirect()->back();
@@ -72,7 +74,7 @@ class WebUserController extends Controller
             {
                 Auth::logout();
                 notify()->error('You are not a customer!');
-                return redirect()->route('login');
+                return redirect()->back();
             }
            
         }
@@ -95,6 +97,7 @@ class WebUserController extends Controller
             'email'=>'required|email',
             'phone'=>'required',
             'address'=>'required',
+            'country'=>'required',
             'password'=>'required'
 
         ]);
@@ -111,17 +114,10 @@ class WebUserController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
+            'country'=>$request->country,
             'image'=>$serviceCenterImage,
             'password'=>bcrypt($request->password),
             'role'=>'service_center'
-        ]);
-        
-        Service_center::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'address'=>$request->address,
-            'image'=>$serviceCenterImage
         ]);
         notify()->success('SignUp done!');
         return redirect()->route('Home');

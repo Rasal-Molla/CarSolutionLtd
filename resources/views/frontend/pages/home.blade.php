@@ -403,6 +403,13 @@
                                 <label for="">Address</label>
                                 <input required name="address" type="text" class="form-control" placeholder="Enter address">
                             </div>
+                            <label for="">Select Country</label>
+                            <select name="country" id="" class="form-control">
+                                <option value="bangladesh">Bangladesh</option>
+                                <option value="india">India</option>
+                                <option value="pakistan">Pakistan</option>
+                                <option value="nepal">Nepal</option>
+                            </select>
                             <div>
                                 <label for="">Image</label>
                                 <input required name="image" type="file" class="form-control">
@@ -439,6 +446,13 @@
                                 <label for="">Address</label>
                                 <input required name="address" type="text" class="form-control" placeholder="Enter address">
                             </div>
+                            <label for="">Select Country</label>
+                            <select name="country" id="" class="form-control">
+                                <option value="bangladesh">Bangladesh</option>
+                                <option value="india">India</option>
+                                <option value="pakistan">Pakistan</option>
+                                <option value="nepal">Nepal</option>
+                            </select>
                             <div>
                                 <label for="">Image</label>
                                 <input required name="image" type="file" class="form-control">

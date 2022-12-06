@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('special_request', 200)->nullable();
             $table->string('price', 150)->default('0.00');
             $table->string('status')->default('Pending');
+            $table->string('address');
+            $table->string('address_1')->nullable();
             $table->timestamps();
         });
     }

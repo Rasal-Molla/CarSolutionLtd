@@ -40,6 +40,7 @@ use Illuminate\Routing\Controllers\Middleware;
 |
 */
 
+
 // Frontend panel route start here
 Route::post('/user/customer/signup', [WebUserController::class, 'SignUp'])->name('user.signup');
 Route::post('/user/service-center/signup', [WebUserController::class, 'Service_signup'])->name('service.signup');
@@ -53,7 +54,10 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
 
     Route::get('/booking-info', [CustomerBookingController::class, 'BookingInfo'])->name('customer.booking');
     Route::get('/booking/form', [CustomerBookingController::class, 'Form'])->name('customer.bookingForm');
-    Route::post('/booking/store', [CustomerBookingController::class, 'Store'])->name('customer.bookingStore');
+
+    Route::get('/service-center/view/book-now/{booking_id}', [HomeServiceCenterController::class, 'BookingView'])->name('Home.serviceCenter.servicewise.bookingView');
+    Route::post('/service-center/view/book-now/store', [HomeServiceCenterController::class, 'Store'])->name('webservice.booking');
+
     Route::get('/booking/edit/{booking_id}', [CustomerBookingController::class, 'Edit'])->name('customer.bookingEdit');
     Route::put('/booking/update/{booking_id}', [CustomerBookingController::class, 'Update'])->name('customer.bookingUpdate');
     Route::get('/booking/delete/{booking_id}', [CustomerBookingController::class, 'Delete'])->name('customer.bookingDelete');
@@ -85,7 +89,7 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
 
     Route::get('/complete', [SCCompletedController::class, 'List'])->name('sccompleted.list');
 
-    
+
 });
 
 
@@ -94,6 +98,10 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
 
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 Route::get('/service-center', [HomeServiceCenterController::class, 'List'])->name('Home.serviceCenter');
+Route::get('/service-center/view/{service_center_id}', [HomeServiceCenterController::class, 'View'])->name('Home.servicecenter.view');
+
+
+
 Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.service');
 Route::get('/brand/list', [HomeBrandController::class, 'List'])->name('Home.brand');
 Route::get('/booking-us', [HomeBookingController::class, 'Book'])->name('Home.book');
@@ -121,16 +129,16 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.create');
         Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
         Route::get('/user/delete/{user_id}', [UserController::class, 'Delete'])->name('user.delete');
-        
-        
+
+
         Route::get('/service', [ServiceController::class, 'List'])->name('service');
         Route::get('/service/create', [ServiceController::class, 'Create'])->name('service.create');
         Route::post('/service/form', [ServiceController::class, 'Form'])->name('service.form');
         Route::get('/service/delete/{service_id}', [ServiceController::class,'Delete'])->name('service.delete');
         Route::get('/service/edit/{service_id}', [ServiceController::class, 'Edit'])->name('service.edit');
         Route::put('/service/update/{service_id}', [ServiceController::class, 'Update'])->name('service.update');
-        
-        
+
+
         Route::get('/category', [CategoryController::class, 'List'])->name('category');
         Route::get('/category/create-category', [CategoryController::class, 'CreateCategory'])->name('category.create');
         Route::post('/category/create-category/category-form', [CategoryController::class, 'Form'])->name('category.form');
@@ -138,8 +146,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/category/view/{category_id}', [CategoryController::class, 'View'])->name('category.view');
         Route::get('/category/edit/{category_id}', [CategoryController::class, 'Edit'])->name('category.edit');
         Route::put('/category/update/{category_id}', [CategoryController::class, 'Update'])->name('category.update');
-        
-        
+
+
         Route::get('/brand', [BrandController::class, 'List'])->name('brand');
         Route::get('/brand/create', [BrandController::class, 'Create'])->name('brand.create');
         Route::post('/brand/form', [BrandController::class, 'Form'])->name('brand.form');
@@ -147,7 +155,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/brand/view/{brand_id}', [BrandController::class, 'View'])->name('brand.view');
         Route::get('/brand/edit/{brand_id}', [BrandController::class, 'Edit'])->name('brand.edit');
         Route::put('/brand/update/{brand_id}', [BrandController::class, 'Update'])->name('brand.update');
-        
+
         Route::get('/service-center', [ServiceCenterController::class, 'List'])->name('servicecenter');
         Route::get('service-center/delete/{service_center_id}', [ServiceCenterController::class, 'Delete'])->name('service.center.delete');
         Route::get('/service-center/make', [ServiceCenterController::class, 'Make'])->name('servicecenter.make');
@@ -155,13 +163,13 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/service-center/total', [ServiceCenterController::class, 'Total'])->name('servicecenter.total');
         Route::get('/service-center/pending', [ServiceCenterController::class, 'Pending'])->name('servicecenter.pending');
         Route::get('/service-center/ratting', [ServiceCenterController::class, 'Ratting'])->name('servicecenter.ratting');
-        
-        
+
+
         Route::get('/appointment', [AppointmentController::class, 'Appoint'])->name('appointment');
         Route::get('/appointment/create', [AppointmentController::class, 'Create'])->name('appointment.create');
         Route::post('/appointment/form', [AppointmentController::class, 'Form'])->name('appointment.form');
-        
-        
+
+
         Route::get('/payment', [PaymentController::class, 'Gateway'])->name('payment');
         Route::get('/feedback', [FeedbackController::class, 'Message'])->name('feedback');
         Route::get('/report', [ReportController::class, 'List'])->name('report');

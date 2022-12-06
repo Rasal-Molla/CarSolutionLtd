@@ -16,7 +16,7 @@ class Customer
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role=='customer')
+        if(auth()->user()->role=='customer' && auth()->user()->country == 'bangladesh')
         {   
             return $next($request);
             notify()->success('Login success!');

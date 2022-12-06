@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
             'role'=>'admin',
             'password'=>bcrypt('12345'),
             'address'=>'Mirpur-10',
+            'country'=> 'bangladesh',
             'gender'=>'Male'
 
         ]);

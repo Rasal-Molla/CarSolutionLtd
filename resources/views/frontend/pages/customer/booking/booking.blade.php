@@ -5,15 +5,9 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-1">
-
-        </div>
-        <div class="col-10">
+        <div class="col-12">
             <div class="mb-3">
             <h2>Booking Information</h2>
-            </div>
-            <div>
-                <a href="{{route('customer.bookingForm')}}" class="btn btn-success">Book Now</a>
             </div>
         <table class="table table-striped">
                 <thead>
@@ -25,6 +19,8 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Address-1</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -40,6 +36,8 @@
                     <td>{{$list->brand->brand_name}}</td>
                     <td>{{$list->model}}</td>
                     <td>{{$list->service->service_name}}</td>
+                    <td>{{$list->address}}</td>
+                    <td>{{$list->address_1}}</td>
                     <td>{{$list->status}}</td>
                     <td>
                         @if($list->status == 'Pending')
@@ -50,17 +48,15 @@
                             Progressing
 
                         @else
-                        
+
                             Done
-                        
+
                         @endif
                     </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="col-1">
         </div>
     </div>
 </div>

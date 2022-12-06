@@ -14,7 +14,7 @@
                 <a href="{{route('Home.brand')}}" class="nav-item nav-link">Brands</a>
                 <a href="{{route('Home.category')}}" class="nav-item nav-link">Category</a>
                 <a href="{{route('Home.book')}}" class="nav-item nav-link">Booking</a>
-                <a href="" class="nav-item nav-link">Contact</a>
+                <a href="" class="nav-item nav-link">feedback</a>
                 @auth
 
                 @if(auth()->user()->role=='customer')

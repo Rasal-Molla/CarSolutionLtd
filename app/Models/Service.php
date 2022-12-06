@@ -13,6 +13,6 @@ class Service extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'service_center_id','id');
     }
 }

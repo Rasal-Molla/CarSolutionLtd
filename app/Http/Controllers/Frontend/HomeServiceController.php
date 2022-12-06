@@ -10,7 +10,13 @@ class HomeServiceController extends Controller
 {
     public function List()
     {
-        $serviceList=Service::all();
+        if(auth()->user()->role=='service_center'){
+            $serviceList=Service::where('service_center_id',auth()->user()->id)->get();
+        }
+        else{
+
+            $serviceList=Service::all();
+        }
         return view('frontend.pages.service', compact('serviceList'));
 
     }

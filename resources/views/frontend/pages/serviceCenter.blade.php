@@ -21,8 +21,8 @@
                             <h5 class="fw-bold mb-0">Name: {{$data->name}}</h5>
                             <span>Email: {{$data->email}}</span> <br>
                             <span>Phone: {{$data->phone}}</span> <br>
-                            <span>Location: {{$data->address}}</span>
-
+                            <span>Location: {{$data->address}}</span> <br>
+                            <a href="{{route('Home.servicecenter.view', $data->id)}}" class="btn btn-success mt-3">Details</a>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,9 @@ class CustomerBookingController extends Controller
 {
     public function BookingInfo()
     {
-        $bookingList=Booking::where('user_id', auth()->user()->id)->get();
+        $bookingList=Booking::where('user_id', auth()->user()->id)->with('serviceCenter')->get();
+
+        // dd($bookingList);
         return view('frontend.pages.customer.booking.booking', compact('bookingList'));
     }
 
@@ -27,18 +29,20 @@ class CustomerBookingController extends Controller
 
     public function Store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
             'model'=>'required',
-            'special_request'=>'required'
         ]);
 
         Booking::create([
-            'customer_name'=>$request->customer_name,
+            'Customer_name'=>$request->customer_name,
             'phone'=>$request->phone,
             'service_center_id'=>$request->service_center,
             'brand_id'=>$request->brand,
             'model'=>$request->model,
             'service_id'=>$request->service,
+            'address'=>auth()->user()->address,
+            'address_1'=>$request->addresa_1,
             'special_request'=>$request->special_request,
             'user_id'=>auth()->user()->id
         ]);
