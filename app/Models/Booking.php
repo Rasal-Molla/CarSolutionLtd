@@ -15,12 +15,12 @@ class Booking extends Model
     protected $guarded=[];
 
     public function serviceCenter(){
-       return $this->belongsTo(User::class);
+       return $this->belongsTo(User::class,'service_center_id','id');
     }
     public function brand(){
-       return $this->belongsTo(Brand::class);
+       return $this->belongsTo(Brand::class,'brand_id','id');
     }
     public function service(){
-       return $this->belongsTo(Service::class);
+       return $this->belongsTo(Service::class,'service_id','id');
     }
 }

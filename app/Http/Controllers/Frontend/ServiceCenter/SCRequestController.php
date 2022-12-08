@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Brand;
 use App\Models\Service;
-use App\Models\Service_center;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SCRequestController extends Controller
@@ -19,11 +19,12 @@ class SCRequestController extends Controller
 
     public function Edit($request_id)
     {
-        $service_center=Service_center::all();
+
         $service=Service::all();
         $brand=Brand::all();
         $requestInfo=Booking::find($request_id);
-        return view('frontend.pages.servicecenter.request.edit', compact('requestInfo','service_center','service','brand'));
+        $service_center = User::where('role','service_center')->get();
+        return view('frontend.pages.servicecenter.request.edit', compact('requestInfo','service','brand','service_center'));
     }
 
     public function Update(Request $request, $request_id)

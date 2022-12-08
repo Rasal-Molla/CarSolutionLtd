@@ -10,15 +10,25 @@ class HomeServiceController extends Controller
 {
     public function List()
     {
-        if(auth()->user()->role=='service_center'){
-            $serviceList=Service::where('service_center_id',auth()->user()->id)->get();
+        if(!auth()->user()){
+            $serviceList=Service::all();
+
+            return view('frontend.pages.service', compact('serviceList'));
+
         }
-        else{
+        elseif(auth()->user()->role=='service_center')
+        {
+            $serviceList=Service::where('service_center_id',auth()->user()->id)->get();
+            return view('frontend.pages.service', compact('serviceList'));
+        }
+        else
+        {
 
             $serviceList=Service::all();
+
+             return view('frontend.pages.service', compact('serviceList'));
+
         }
-        return view('frontend.pages.service', compact('serviceList'));
 
     }
-    
 }

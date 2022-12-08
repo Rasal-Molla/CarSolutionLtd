@@ -27,31 +27,6 @@ class CustomerBookingController extends Controller
         return view('frontend.pages.customer.booking.form', compact('service_center','service','brand',));
     }
 
-    public function Store(Request $request)
-    {
-        //dd($request->all());
-        $request->validate([
-            'model'=>'required',
-        ]);
-
-        Booking::create([
-            'Customer_name'=>auth()->user()->name,
-            'phone'=>auth()->user()->phone,
-            'service_center_id'=>$request->service_center,
-            'brand_id'=>$request->brand,
-            'model'=>$request->model,
-            'service_id'=>$request->service,
-            'address'=>auth()->user()->address,
-            'address_1'=>$request->addresa_1,
-            'special_request'=>$request->special_request,
-            'user_id'=>auth()->user()->id
-        ]);
-
-        notify()->success('Booking successfully!');
-        return redirect()->route('customer.booking');
-
-    }
-
     public function Edit($booking_id)
     {
         $service_center=User::where('role', 'service_center')->get();
@@ -92,6 +67,12 @@ class CustomerBookingController extends Controller
             notify()->error('No booking found!');
         }
 
+    }
+
+    public function Details($booking_id)
+    {
+        $bookingData=Booking::with('serviceCenter','service','brand')->find($booking_id);
+        return view('frontend.pages.customer.booking.details', compact('bookingData'));
     }
 
 }

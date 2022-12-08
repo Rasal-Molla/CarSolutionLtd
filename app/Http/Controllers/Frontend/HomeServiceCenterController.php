@@ -43,6 +43,7 @@ class HomeServiceCenterController extends Controller
             'model'=>$request->model,
             'service_id'=>$request->service_id,
             'special_request'=>$request->special_request,
+            'price'=>$request->price,
             'user_id'=>auth()->user()->id,
             'address'=>auth()->user()->address,
             'address_1'=>$request->address_1

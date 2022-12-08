@@ -13,7 +13,7 @@
                 </div>
             <div>
                 <form action="{{route('customer.bookingUpdate', $booking->id)}}" method="POST" enctype="multipart/form-data">
-                    @method('PUT')    
+                    @method('PUT')
                     @csrf
                     <div class="modal-body">
                     <div>
@@ -25,9 +25,9 @@
                         <input required value="{{auth()->user()->phone}}" name="phone" type="text" class="form-control" placeholder="Enter phone">
                     </div>
                     <label for="">Service Center</label>
-                    <select name="service_center" class="form-control" id="">
-                        @foreach($service_center as $data)
-                        <option required @if($booking->service_center_id==$data->id) selected @endif value="{{$data->id}}" class="form-control">{{$data->name}}</option>
+                    <select name="service_center_id" class="form-control" id="">
+                        @foreach($serviceCenter as $data)
+                        <option required @if($serviceCenter->service_center_id==$data->id) selected @endif value="{{$data->id}}" class="form-control">{{$data->name}}</option>
                         @endforeach
                     </select>
                     <label for="">Brand</label>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col-md-2">
-        </div> 
+        </div>
     </div>
 </div>
 @endsection

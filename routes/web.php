@@ -61,6 +61,7 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/booking/edit/{booking_id}', [CustomerBookingController::class, 'Edit'])->name('customer.bookingEdit');
     Route::put('/booking/update/{booking_id}', [CustomerBookingController::class, 'Update'])->name('customer.bookingUpdate');
     Route::get('/booking/delete/{booking_id}', [CustomerBookingController::class, 'Delete'])->name('customer.bookingDelete');
+    Route::get('/booking/details/{booking_id}', [CustomerBookingController::class, 'Details'])->name('customer.bookingDetails');
 
 
 });
@@ -104,7 +105,6 @@ Route::get('/service-center/view/{service_center_id}', [HomeServiceCenterControl
 
 Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.service');
 Route::get('/brand/list', [HomeBrandController::class, 'List'])->name('Home.brand');
-Route::get('/booking-us', [HomeBookingController::class, 'Book'])->name('Home.book');
 Route::get('/about-us', [HomeAboutController::class, 'About'])->name('Home.about');
 Route::get('/category', [HomeCategoryController::class, 'Category'])->name('Home.category');
 
@@ -155,19 +155,6 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/brand/view/{brand_id}', [BrandController::class, 'View'])->name('brand.view');
         Route::get('/brand/edit/{brand_id}', [BrandController::class, 'Edit'])->name('brand.edit');
         Route::put('/brand/update/{brand_id}', [BrandController::class, 'Update'])->name('brand.update');
-
-        Route::get('/service-center', [ServiceCenterController::class, 'List'])->name('servicecenter');
-        Route::get('service-center/delete/{service_center_id}', [ServiceCenterController::class, 'Delete'])->name('service.center.delete');
-        Route::get('/service-center/make', [ServiceCenterController::class, 'Make'])->name('servicecenter.make');
-        Route::post('/service-center/form', [ServiceCenterController::class, 'Form'])->name('servicecenter.form');
-        Route::get('/service-center/total', [ServiceCenterController::class, 'Total'])->name('servicecenter.total');
-        Route::get('/service-center/pending', [ServiceCenterController::class, 'Pending'])->name('servicecenter.pending');
-        Route::get('/service-center/ratting', [ServiceCenterController::class, 'Ratting'])->name('servicecenter.ratting');
-
-
-        Route::get('/appointment', [AppointmentController::class, 'Appoint'])->name('appointment');
-        Route::get('/appointment/create', [AppointmentController::class, 'Create'])->name('appointment.create');
-        Route::post('/appointment/form', [AppointmentController::class, 'Form'])->name('appointment.form');
 
 
         Route::get('/payment', [PaymentController::class, 'Gateway'])->name('payment');

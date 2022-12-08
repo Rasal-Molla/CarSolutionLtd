@@ -56,13 +56,13 @@
                     <div class="row mx-4">
                         <div class="col-12 col-sm-6">
                             <label for="">Service Name</label>
-                            <select name="service_id" id="">
+                            <select name="service_id" id="" class="form-control">
                                 <option value="{{$serviceData->id}}">{{$serviceData->service_name}}</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                             <label for="">Service Center Name</label>
-                            <select name="service_center_id" id="">
+                            <select name="service_center_id" id="" class="form-control">
                                 <option value="{{$serviceData->user->id}}">{{$serviceData->user->name}}</option>
                             </select>
                         </div>

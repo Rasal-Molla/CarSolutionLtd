@@ -5,7 +5,8 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+        <div class="col-10">
             <div class="mb-3">
             <h2>Booking Information</h2>
             </div>
@@ -16,11 +17,8 @@
                     <th scope="col">Customer</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Service Center</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Model</th>
                     <th scope="col">Service</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Address-1</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -33,11 +31,8 @@
                     <td>{{$list->Customer_name}}</td>
                     <td>{{$list->phone}}</td>
                     <td>{{$list->serviceCenter->name}}</td>
-                    <td>{{$list->brand->brand_name}}</td>
-                    <td>{{$list->model}}</td>
                     <td>{{$list->service->service_name}}</td>
-                    <td>{{$list->address}}</td>
-                    <td>{{$list->address_1}}</td>
+                    <td>{{$list->price}}</td>
                     <td>{{$list->status}}</td>
                     <td>
                         @if($list->status == 'Pending')
@@ -45,11 +40,11 @@
                         <a href="{{route('customer.bookingDelete', $list->id)}}" class="btn btn-danger">Delete</a>
                         @elseif($list->status == 'Approved')
 
-                            Progressing
+                        Process
 
                         @else
 
-                            Done
+                        <a href="{{route('customer.bookingDetails', $list->id)}}" class="btn btn-success">Details</a>
 
                         @endif
                     </td>
@@ -58,6 +53,7 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-1"></div>
     </div>
 </div>
 

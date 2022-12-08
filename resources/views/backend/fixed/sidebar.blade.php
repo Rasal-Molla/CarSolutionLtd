@@ -18,8 +18,6 @@
                     <a href="{{route('user')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Customer</a>
                     <a href="{{route('service')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Services</a>
                     <a href="{{route('category')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Categories</a>
-                    <a href="{{route('servicecenter')}}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Services Centers</a>
-                    <a href="{{route('appointment')}}" class="nav-item nav-link"><i class="fa fa-info-circle me-2"></i>Appointments</a>
                     <a href="{{route('brand')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Brand</a>
                     <a href="{{route('payment')}}" class="nav-item nav-link"><i class="fa fa-credit-card me-2"></i>Payment</a>
                     <a href="{{route('feedback')}}" class="nav-item nav-link"><i class="fa fa-comments me-2"></i>Feedback</a>

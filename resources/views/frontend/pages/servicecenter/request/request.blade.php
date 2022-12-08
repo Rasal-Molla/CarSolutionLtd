@@ -41,7 +41,11 @@
                     <td>{{$data->price}}</td>
                     <td>{{$data->status}}</td>
                     <td>
+                        @if($data->status=='Pending' OR $data->status=='Approved')
                         <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
+                        @else
+                        Done
+                        @endif
                     </td>
                     </tr>
                     @endforeach

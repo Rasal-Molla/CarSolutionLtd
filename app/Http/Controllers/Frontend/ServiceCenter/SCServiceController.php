@@ -13,7 +13,7 @@ class SCServiceController extends Controller
     public function List()
     {
         $serviceList=Service::where('service_center_id',auth()->user()->id)->get();
-        return view('frontend.pages.servicecenter..service.service', compact('serviceList'));
+        return view('frontend.pages.servicecenter.service.service', compact('serviceList'));
     }
 
     public function Form()
