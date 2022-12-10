@@ -9,8 +9,14 @@ use Illuminate\Http\Request;
 class HomeBrandController extends Controller
 {
     public function List()
-    {   
+    {
         $brandList=Brand::all();
-        return view('frontend.pages.brand', compact('brandList'));
+        return view('frontend.pages.brand.brand', compact('brandList'));
+    }
+
+    public function Details($brand_id)
+    {
+        $brandInfo=Brand::find($brand_id);
+        return view('frontend.pages.brand.details', compact('brandInfo'));
     }
 }

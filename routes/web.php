@@ -2,14 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
 use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
 use App\Http\Controllers\Frontend\HomeAboutController;
-use App\Http\Controllers\Frontend\HomeBookingController;
 use App\Http\Controllers\Frontend\HomeBrandController;
 use App\Http\Controllers\Frontend\HomeCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -23,7 +21,6 @@ use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
 use App\Http\Controllers\Frontend\WebUserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ServiceCenterController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Customer;
@@ -63,6 +60,21 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::get('/booking/delete/{booking_id}', [CustomerBookingController::class, 'Delete'])->name('customer.bookingDelete');
     Route::get('/booking/details/{booking_id}', [CustomerBookingController::class, 'Details'])->name('customer.bookingDetails');
 
+
+
+    // SSLCOMMERZ Start
+    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+    //SSLCOMMERZ END
 
 });
 
@@ -104,9 +116,19 @@ Route::get('/service-center/view/{service_center_id}', [HomeServiceCenterControl
 
 
 Route::get('/service/list', [HomeServiceController::class, 'List'])->name('Home.service');
+Route::get('/service/details/{service_id}', [HomeServiceController::class, 'Details'])->name('Home.serviceDetails');
+
+
 Route::get('/brand/list', [HomeBrandController::class, 'List'])->name('Home.brand');
+Route::get('/brand/details/{brand_id}', [HomeBrandController::class, 'Details'])->name('Home.brandDetails');
+
 Route::get('/about-us', [HomeAboutController::class, 'About'])->name('Home.about');
+
 Route::get('/category', [HomeCategoryController::class, 'Category'])->name('Home.category');
+Route::get('/category/details/{category_id}', [HomeCategoryController::class, 'Details'])->name('Home.categoryDetails');
+
+Route::get('/contact', [ContactController::class, 'Contact'])->name('Contact');
+Route::post('/contact/store', [ContactController::class, 'Store'])->name('contact.store');
 
 
 
@@ -158,7 +180,10 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
 
 
         Route::get('/payment', [PaymentController::class, 'Gateway'])->name('payment');
-        Route::get('/feedback', [FeedbackController::class, 'Message'])->name('feedback');
+
+        Route::get('/contact', [ContactController::class, 'Message'])->name('contact');
+        Route::get('/contact/delete/{contact_id}', [ContactController::class, 'Delete'])->name('contact.delete');
+
         Route::get('/report', [ReportController::class, 'List'])->name('report');
     });
 

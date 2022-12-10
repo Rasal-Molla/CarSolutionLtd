@@ -12,7 +12,7 @@ class CustomerProfileController extends Controller
    {
       return view('frontend.pages.customer.profile.profile');
    }
-   
+
    public function Update(Request $request)
    {
       $request->validate([
@@ -28,7 +28,7 @@ class CustomerProfileController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
-            'password'=>$request->password
+            
         ]);
 
       notify()->success('Profile update successfully!');
