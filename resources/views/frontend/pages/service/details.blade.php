@@ -92,7 +92,7 @@ body {
                                         </div>
                                         <div class="col-lg-4 text-center">
                                             <div class="row">
-                                                <div class="col-md-6"><a href="" class="btn btn-success">Book</a></div>
+                                                <div class="col-md-6"><a href="{{route('Home.serviceCenter.servicewise.bookingView', $serviceInfo->id)}}" class="btn btn-success">Book</a></div>
                                                 <div class="col-md-6"><a href="{{route('Home.service')}}" class="btn btn-success">Back</a></div>
                                             </div>
                                             </div>
