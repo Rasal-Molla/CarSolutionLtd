@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers\Frontend\ServiceCenter;
+
+use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use Illuminate\Http\Request;
+
+class SCReportController extends Controller
+{
+
+    public function ReportGenerate(Request $request)
+    {
+        if($request->from_date && $request->to_date)
+        {
+            $startDate= $request->from_date;
+            $endDate= $request->to_date;
+            $reportdata=Booking::whereBetween('created_at', [$startDate,$endDate])->where('service_center_id',auth()->user()->id)->where('status','Released')->get();
+            return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
+        }
+        else
+        {
+            $reportdata=Booking::get();
+            return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
+        }
+    }
+}

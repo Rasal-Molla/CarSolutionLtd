@@ -18,28 +18,28 @@
                     <th scope="col">ID</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Model</th>
+                    <th scope="col">Service Center</th>
                     <th scope="col">Service</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Transction</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($completeWorkList as $key=>$data)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Rasel</td>
-                    <td>01700585588</td>
-                    <td>Audi</td>
-                    <td>SUV</td>
-                    <td>Air Filter</td>
-                    <td>3000 BDT</td>
-                    <td>Relesed</td>
-                    <td>
-                        <a href="" class="btn btn-danger">Delete</a>
-                    </td>
-                    </tr>
+                        <th scope="row">{{$key+1}}</th>
+                        <td>{{$data->Customer_name}}</td>
+                        <td>{{$data->phone}}</td>
+                        <td>{{$data->serviceCenter->name}}</td>
+                        <td>{{$data->service->service_name}}</td>
+                        <td>{{$data->price}}</td>
+                        <td>{{$data->payment}}</td>
+                        <td>{{$data->transaction_id}}</td>
+                        <td>{{$data->status}}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

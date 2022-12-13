@@ -5,10 +5,7 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-1">
-
-        </div>
-        <div class="col-10">
+        <div class="col-12">
             <div class="mb-3">
             <h2 class="fs-5">Request Table</h2>
             </div>
@@ -22,8 +19,9 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
-                    <th scope="col">Special Request</th>
+                    <th scope="col">Request</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Payment</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -39,9 +37,13 @@
                     <td>{{$data->service->service_name}}</td>
                     <td>{{$data->special_request}}</td>
                     <td>{{$data->price}}</td>
+                    <td>{{$data->payment}}</td>
                     <td>{{$data->status}}</td>
                     <td>
-                        @if($data->status=='Pending' OR $data->status=='Approved')
+                        @if($data->status=='Approved')
+                            <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
+                            <a href="{{route('screquest.delete', $data->id)}}" class="btn btn-danger">Delete</a>
+                        @elseif ($data->status=='Progress' OR $data->status=='50% Done')
                         <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
                         @else
                         Done
@@ -52,9 +54,6 @@
                 </tbody>
                 </table>
             </div>
-        </div>
-        <div class="col-1">
-
         </div>
     </div>
 </div>

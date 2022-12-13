@@ -1,30 +1,32 @@
 <?php
 
+use App\Http\Middleware\Customer;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
-use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategoryController;
+use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\WebUserController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\HomeAboutController;
 use App\Http\Controllers\Frontend\HomeBrandController;
-use App\Http\Controllers\Frontend\HomeCategoryController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\HomeServiceController;
-use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
-use App\Http\Controllers\Frontend\ServiceCenter\SCCompletedController;
+use App\Http\Controllers\Frontend\HomeCategoryController;
+use App\Http\Controllers\Frontend\HomeServiceCenterController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCProfileController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCRequestController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
-use App\Http\Controllers\Frontend\WebUserController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\Customer;
-use Illuminate\Routing\Controllers\Middleware;
+use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
+use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCCompletedController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,18 +65,13 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
 
 
     // SSLCOMMERZ Start
-    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('payNow');
     Route::post('/success', [SslCommerzPaymentController::class, 'success']);
     Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
     Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
-    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-    //SSLCOMMERZ END
 
 });
 
@@ -98,9 +95,14 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
     Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');
     Route::get('/request/edit/{request_id}', [SCRequestController::class, 'Edit'])->name('screquest.editForm');
     Route::put('/request/update/{request_id}', [SCRequestController::class, 'Update'])->name('screquest.update');
+    Route::get('/request/delete/{request_id}', [SCRequestController::class, 'Delete'])->name('screquest.delete');
 
 
     Route::get('/complete', [SCCompletedController::class, 'List'])->name('sccompleted.list');
+
+
+    Route::get('/report', [SCReportController::class, 'ReportGenerate'])->name('screport.info');
+    Route::post('/report/generate', [SCReportController::class, 'ReportGenerate'])->name('screport.generate');
 
 
 });

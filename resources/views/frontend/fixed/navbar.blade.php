@@ -43,7 +43,7 @@
                     <a href="{{route('scservice.list')}}" class="dropdown-item" type="button">Service</a>
                     <a href="{{route('sccompleted.list')}}" class="dropdown-item" type="button">Completed</a>
                     <a href="" class="dropdown-item" type="button">Payment</a>
-                    <a href="" class="dropdown-item" type="button">Invoice</a>
+                    <a href="{{route('screport.info')}}" class="dropdown-item" type="button">Report</a>
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
                 </div>
                 </div>

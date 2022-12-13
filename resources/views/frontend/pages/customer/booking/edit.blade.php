@@ -18,16 +18,16 @@
                     <div class="modal-body">
                     <div>
                         <label for="">Customer Name</label>
-                        <input required value="{{auth()->user()->name}}" name="customer_name" type="text" class="form-control" placeholder="Enter customer name">
+                        <input required value="{{auth()->user()->name}}" name="customer_name" type="text" class="form-control" placeholder="Enter customer name" readonly>
                     </div>
                     <div>
                         <label for="">Phone</label>
-                        <input required value="{{auth()->user()->phone}}" name="phone" type="text" class="form-control" placeholder="Enter phone">
+                        <input required value="{{auth()->user()->phone}}" name="phone" type="text" class="form-control" placeholder="Enter phone" readonly>
                     </div>
                     <label for="">Service Center</label>
                     <select name="service_center_id" class="form-control" id="">
-                        @foreach($serviceCenter as $data)
-                        <option required @if($serviceCenter->service_center_id==$data->id) selected @endif value="{{$data->id}}" class="form-control">{{$data->name}}</option>
+                        @foreach($service_center as $data)
+                        <option required value="{{$data->id}}" class="form-control">{{$data->name}}</option>
                         @endforeach
                     </select>
                     <label for="">Brand</label>
@@ -47,8 +47,8 @@
                         @endforeach
                     </select>
                     <div>
-                        <label for="">Special Request</label>
-                        <input required value="{{$booking->special_request}}" name="special_request" type="text" class="form-control" placeholder="Enter special request">
+                        <label for="">Request</label>
+                        <input required name="special_request" type="text" class="form-control" placeholder="Enter special request">
                     </div>
                     <button type="submit" class="btn btn-success mt-3" >Update</button>
                     </div>

@@ -49,7 +49,7 @@
             </div>
             <div class="col-12">
 
-                <form action="{{route('webservice.booking')}}" method="post">
+                <form action="{{route('payNow')}}" method="post">
 
                     @csrf
 
@@ -67,7 +67,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="row mx-4">
                         <div class="col-12 col-sm-6">
                             <label for="">Customer Name</label>
@@ -94,16 +93,6 @@
                     </div>
                     <div class="row mx-4">
                         <div class="col-12 col-sm-6">
-                            <label for="">Special Request</label>
-                            <input class="form-control" name="special_request">
-                        </div>
-                        <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                            <label for="">Price</label>
-                            <input class="form-control" name="price" value="{{$serviceData->price}}" readonly>
-                        </div>
-                    </div>
-                    <div class="row mx-4">
-                        <div class="col-12 col-sm-6">
                             <label for="">Address 1</label>
                             <input type="text" class="form-control" value="{{auth()->user()->address}}" name="address"
                                 placeholder="Enter your address" readonly>
@@ -112,6 +101,16 @@
                             <label for="">Address 2 (Optional)</label>
                             <input class="form-control" name="address_1" placeholder="Enter pick-up address ">
                         </div>
+                    </div>
+                    <div class="row mx-4">
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                            <label for="">Price</label>
+                            <input class="form-control" name="price" value="{{$serviceData->price}}" readonly>
+                        </div>
+                       <!-- <div class="col-12 col-sm-6">
+                            <label for="">Special Request</label>
+                            <input class="form-control" name="special_request">
+                        </div> -->
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">

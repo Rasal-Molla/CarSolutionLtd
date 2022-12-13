@@ -19,7 +19,9 @@
                     <th scope="col">Service Center</th>
                     <th scope="col">Service</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Payment</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Transaction</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -33,14 +35,13 @@
                     <td>{{$list->serviceCenter->name}}</td>
                     <td>{{$list->service->service_name}}</td>
                     <td>{{$list->price}}</td>
+                    <td>{{$list->payment}}</td>
                     <td>{{$list->status}}</td>
+                    <td>{{$list->transaction_id}}</td>
                     <td>
-                        @if($list->status == 'Pending')
+                        @if($list->status == 'Approved')
                         <a href="{{route('customer.bookingEdit', $list->id)}}" class="btn btn-success">Update</a>
                         <a href="{{route('customer.bookingDelete', $list->id)}}" class="btn btn-danger">Delete</a>
-                        @elseif($list->status == 'Approved')
-
-                        Process
 
                         @else
 

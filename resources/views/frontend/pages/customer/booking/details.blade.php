@@ -30,6 +30,12 @@
                 <div class="d-flex justify-content-between pb-1">
                   <p class="small">Special Request: {{$bookingData->special_request}}</p>
                 </div>
+                <div class="d-flex justify-content-between pb-1">
+                  <p class="small">Status: {{$bookingData->status}}</p>
+                </div>
+                <div class="d-flex justify-content-between pb-1">
+                  <p class="small">Transaction ID: {{$bookingData->transaction_id}}</p>
+                </div>
 
                 <div class="d-flex justify-content-between">
                   <p class="fw-bold">Total Price:</p>

@@ -39,4 +39,17 @@ class SCRequestController extends Controller
         notify()->success('Responsed!');
         return redirect()->route('screquest.list');
     }
+
+    public function Delete($request_id)
+    {
+        $deleteRequest=Booking::find($request_id);
+        if($deleteRequest)
+        {
+            $deleteRequest->delete();
+            notify()->success('Delete successfully');
+            return redirect()->back();
+        }
+            notify()->error('Service Request Not Found');
+            return redirect()->route('Home');
+    }
 }

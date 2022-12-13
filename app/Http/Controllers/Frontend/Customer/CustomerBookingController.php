@@ -39,9 +39,10 @@ class CustomerBookingController extends Controller
     public function Update(Request $request, $booking_id)
     {
         $bookingUpdate=Booking::find($booking_id);
+        // dd($request->all());/
         $bookingUpdate->update([
 
-            'service_center_id'=>$request->service_center,
+            'service_center_id'=>$request->service_center_id,
             'brand_id'=>$request->brand,
             'service_id'=>$request->service,
             'model'=>$request->model,

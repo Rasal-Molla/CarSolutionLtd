@@ -47,10 +47,6 @@
                         @endforeach
                     </select>
                     <div>
-                        <label for="">Special Request</label>
-                        <input required value="{{$requestInfo->special_request}}" name="special_request" type="text" class="form-control" placeholder="Enter special request">
-                    </div>
-                    <div>
                         <label for="">Address</label>
                         <input required value="{{$requestInfo->address}}" name="address" type="text" class="form-control" readonly>
                     </div>
@@ -60,11 +56,12 @@
                     </div>
                     <div>
                         <label for="">Price</label>
-                        <input required value="{{$requestInfo->price}}" name="price" type="text" class="form-control" placeholder="Enter amount">
+                        <input required value="{{$requestInfo->price}}" name="price" type="text" class="form-control" placeholder="Enter amount" readonly>
                     </div>
                     <label for="">Status</label>
                     <select name="status" id="" class="form-control">
-                        <option value="Approved">Approved</option>
+                        <option value="Progress">Progress</option>
+                        <option value="50% Done">50% Done</option>
                         <option value="Released">Released</option>
                     </select>
                     <button type="submit" class="btn btn-success mt-3" >Response</button>

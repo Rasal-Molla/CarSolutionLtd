@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Library\SslCommerz\SslCommerzNotification;
@@ -21,17 +22,18 @@ class SslCommerzPaymentController extends Controller
 
     public function index(Request $request)
     {
+        // dd($request->all());
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = '10'; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->price; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = 'Customer Name';
+        $post_data['cus_name'] = $request->Customer_name;
         $post_data['cus_email'] = 'customer@mail.com';
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
@@ -39,7 +41,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['cus_state'] = "";
         $post_data['cus_postcode'] = "";
         $post_data['cus_country'] = "Bangladesh";
-        $post_data['cus_phone'] = '8801XXXXXXXXX';
+        $post_data['cus_phone'] = $request->phone;
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
@@ -64,18 +66,35 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_d'] = "ref004";
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+        // $update_product = DB::table('orders')
+        //     ->where('transaction_id', $post_data['tran_id'])
+        //     ->updateOrInsert([
+        //         'name' => $post_data['cus_name'],
+        //         'email' => $post_data['cus_email'],
+        //         'phone' => $post_data['cus_phone'],
+        //         'amount' => $post_data['total_amount'],
+        //         'status' => 'Pending',
+        //         'address' => $post_data['cus_add1'],
+        //         'transaction_id' => $post_data['tran_id'],
+        //dd($post_data);
+        //         'currency' => $post_data['currency']
+        //     ]);
+            Booking::create([
+                'Customer_name'=>$request->Customer_name,
+                'phone'=>$request->phone,
+                'service_center_id'=>$request->service_center_id,
+                'brand_id'=>$request->brand_id,
+                'model'=>$request->model,
+                'service_id'=>$request->service_id,
+                'special_request'=>$request->special_request,
+                'price'=>$request->price,
+                'transaction_id'=>$post_data['tran_id'],
+                'user_id'=>auth()->user()->id,
+                'address'=>auth()->user()->address,
+                'address_1'=>$request->address_1,
+                'payment'=>'Paid'
             ]);
+
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
