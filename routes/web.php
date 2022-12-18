@@ -24,6 +24,7 @@ use App\Http\Controllers\Frontend\ServiceCenter\SCRequestController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
 use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
 use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
+use App\Http\Controllers\Frontend\Customer\DuePaymentController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCompletedController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCReportController;
@@ -53,6 +54,14 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
 
     Route::get('/booking-info', [CustomerBookingController::class, 'BookingInfo'])->name('customer.booking');
     Route::get('/booking/form', [CustomerBookingController::class, 'Form'])->name('customer.bookingForm');
+    Route::get('/due/payment/{due_id}', [CustomerBookingController::class, 'DuePayment'])->name('duePayment');
+
+// ssl commerze due payment clearance
+    Route::post('/pay/{id}', [DuePaymentController::class, 'index'])->name('payNow.due');
+    Route::post('/success', [DuePaymentController::class, 'success']);
+    Route::post('/fail', [DuePaymentController::class, 'fail']);
+    Route::post('/cancel', [DuePaymentController::class, 'cancel']);
+// ssl commerze due payment clearance
 
     Route::get('/service-center/view/book-now/{booking_id}', [HomeServiceCenterController::class, 'BookingView'])->name('Home.serviceCenter.servicewise.bookingView');
     Route::post('/service-center/view/book-now/store', [HomeServiceCenterController::class, 'Store'])->name('webservice.booking');

@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <label for="">Message</label>
-                        <textarea required name="message" class="form-control" type="text" id="" cols="30" rows="10" placeholder="Enter message"></textarea>
+                        <textarea required name="message" class="form-control" type="text" id="" cols="30" rows="5" placeholder="Enter message"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success mt-3" >Send Message</button>
                     </div>

@@ -107,6 +107,10 @@
                             <label for="">Price</label>
                             <input class="form-control" name="price" value="{{$serviceData->price}}" readonly>
                         </div>
+                        <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                            <label for="">Advance Payment</label>
+                            <input class="form-control" name="advance_payment"  type="number">
+                        </div>
                        <!-- <div class="col-12 col-sm-6">
                             <label for="">Special Request</label>
                             <input class="form-control" name="special_request">

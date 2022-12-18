@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend\Customer;
 
-use App\Models\Booking;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 use App\Library\SslCommerz\SslCommerzNotification;
 
-class SslCommerzPaymentController extends Controller
+class DuePaymentController extends Controller
 {
-
-    // public function exampleEasyCheckout()
+     // public function exampleEasyCheckout()
     // {
     //     return view('exampleEasycheckout');
     // }
@@ -20,20 +20,22 @@ class SslCommerzPaymentController extends Controller
         return view('frontend.pages.payment.exampleHosted');
     }
 
-    public function index(Request $request)
+    public function index(Request $request,$id)
     {
         // dd($request->all());
+        $booking = Booking::find($id);
+        // dd($booking);
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = $request->advance_payment; # You cant not pay less than 10
+        $post_data['total_amount'] = $booking->due_payment; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = $request->Customer_name;
+        $post_data['cus_name'] = $booking->Customer_name;
         $post_data['cus_email'] = 'customer@mail.com';
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
@@ -41,7 +43,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['cus_state'] = "";
         $post_data['cus_postcode'] = "";
         $post_data['cus_country'] = "Bangladesh";
-        $post_data['cus_phone'] = $request->phone;
+        $post_data['cus_phone'] = $booking->phone;
         $post_data['cus_fax'] = "";
 
         # SHIPMENT INFORMATION
@@ -79,23 +81,11 @@ class SslCommerzPaymentController extends Controller
         //dd($post_data);
         //         'currency' => $post_data['currency']
         //     ]);
-            Booking::create([
-                'Customer_name'=>$request->Customer_name,
-                'phone'=>$request->phone,
-                'service_center_id'=>$request->service_center_id,
-                'brand_id'=>$request->brand_id,
-                'model'=>$request->model,
-                'service_id'=>$request->service_id,
-                'special_request'=>$request->special_request,
-                'price'=>$request->price,
-                'advance_payment'=>$request->advance_payment,
-                'due_payment'=>($request->price - $request->advance_payment),
-                'transaction_id'=>$post_data['tran_id'],
-                'user_id'=>auth()->user()->id,
-                'address'=>auth()->user()->address,
-                'address_1'=>$request->address_1,
-                'amount'=>'Paid'
-            ]);
+        $booking->update([
+            'due_payment'=>($booking->due_payment - $post_data['total_amount']),
+            'advance_payment'=>($booking->due_payment + $post_data['total_amount']),
+            'status'=>'paid',
+        ]);
 
 
         $sslc = new SslCommerzNotification();
@@ -182,7 +172,6 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -191,34 +180,7 @@ class SslCommerzPaymentController extends Controller
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_detials = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
 
-        if ($order_detials->status == 'Pending') {
-            $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
-
-            if ($validation) {
-                /*
-                That means IPN did not work or IPN URL was not set in your merchant panel. Here you need to update order status
-                in order table as Processing or Complete.
-                Here you can also sent sms or email for successfull transaction to customer
-                */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
-
-                echo "<br >Transaction is successfully Completed";
-            }
-        } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
-            /*
-             That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
-             */
-            echo "Transaction is successfully Completed";
-        } else {
-            #That means something wrong happened. You can redirect customer to your product page.
-            echo "Invalid Transaction";
-        }
 
 
     }
@@ -308,5 +270,4 @@ class SslCommerzPaymentController extends Controller
             echo "Invalid Data";
         }
     }
-
 }

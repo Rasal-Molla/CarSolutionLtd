@@ -5,8 +5,7 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
+        <div class="col-12">
             <div class="mb-3">
             <h2>Booking Information</h2>
             </div>
@@ -19,9 +18,9 @@
                     <th scope="col">Service Center</th>
                     <th scope="col">Service</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Payment</th>
+                    <th scope="col">Advance</th>
+                    <th scope="col">Due</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Transaction</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -35,9 +34,13 @@
                     <td>{{$list->serviceCenter->name}}</td>
                     <td>{{$list->service->service_name}}</td>
                     <td>{{$list->price}}</td>
-                    <td>{{$list->payment}}</td>
+                    <td>{{$list->advance_payment}}</td>
+                    <td>@if ($list->due_payment)
+                            <a href="{{route('duePayment', $list->id)}}" class="btn btn-danger">Clear {{$list->due_payment}} BDT</a>
+                    @else
+                        0.00 BDT
+                    @endif</td>
                     <td>{{$list->status}}</td>
-                    <td>{{$list->transaction_id}}</td>
                     <td>
                         @if($list->status == 'Approved')
                         <a href="{{route('customer.bookingEdit', $list->id)}}" class="btn btn-success">Update</a>
@@ -54,7 +57,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-1"></div>
     </div>
 </div>
 

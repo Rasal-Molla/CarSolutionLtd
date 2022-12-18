@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Frontend\ServiceCenter;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SCReportController extends Controller
 {
 
     public function ReportGenerate(Request $request)
     {
+
         if($request->from_date && $request->to_date)
         {
             $startDate= $request->from_date;
@@ -20,7 +22,7 @@ class SCReportController extends Controller
         }
         else
         {
-            $reportdata=Booking::get();
+            $reportdata=Booking::where('service_center_id',auth()->user()->id)->where('status','Released')->get();
             return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
         }
     }

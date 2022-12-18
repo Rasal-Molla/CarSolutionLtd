@@ -9,8 +9,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total User</p>
-                                <h6 class="mb-0">1234</h6>
+                                <p class="mb-2">Total Customer</p>
+                                <h6 class="mb-0">{{$totalCustomer}}</h6>
                             </div>
                         </div>
                     </div>
@@ -18,8 +18,8 @@
                         <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Service Center</p>
-                                <h6 class="mb-0">34</h6>
+                                <p class="mb-2">Service Center</p>
+                                <h6 class="mb-0">{{$totalServiceCenter}}</h6>
                             </div>
                         </div>
                     </div>
@@ -44,50 +44,73 @@
                 </div>
             </div>
 
-            <!-- Recent Sales Start -->
+            <!-- Recent service center Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Recent Service Center</h6>
-                        <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
                                     <th scope="col">ID</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+                                @foreach ($serviceCenter as $key=>$data)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$data->name}}</td>
+                                        <td>{{$data->email}}</td>
+                                        <td>{{$data->phone}}</td>
+                                        <td>{{$data->address}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <!-- Recent Sales End -->
+            <!-- Recent service center End -->
+
+                        <!-- Recent customer Start -->
+                        <div class="container-fluid pt-4 px-4">
+                            <div class="bg-secondary text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Recent Customer</h6>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                        <thead>
+                                            <tr class="text-white">
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($customer as $key=>$data)
+                                                <tr>
+                                                    <td>{{$key+1}}</td>
+                                                    <td>{{$data->name}}</td>
+                                                    <td>{{$data->email}}</td>
+                                                    <td>{{$data->phone}}</td>
+                                                    <td>{{$data->address}}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Recent customer end -->
+
+
 @endsection
-            

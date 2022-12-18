@@ -24,7 +24,9 @@ return new class extends Migration
             $table->foreignId('service_id');
             $table->string('special_request', 200)->nullable();
             $table->string('price', 150);
-            $table->string('payment');
+            $table->string('amount');
+            $table->double('advance_payment');
+            $table->double('due_payment');
             $table->string('status')->default('Approved');
             $table->string('address');
             $table->string('transaction_id');

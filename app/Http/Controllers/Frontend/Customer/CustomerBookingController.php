@@ -76,4 +76,10 @@ class CustomerBookingController extends Controller
         return view('frontend.pages.customer.booking.details', compact('bookingData'));
     }
 
+    public function DuePayment($due_id)
+    {
+        $duePayment=Booking::find($due_id);
+        return view('frontend.pages.customer.duePayment', compact('duePayment'));
+    }
+
 }
