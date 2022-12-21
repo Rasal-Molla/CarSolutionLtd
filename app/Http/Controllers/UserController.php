@@ -38,9 +38,8 @@ class UserController extends Controller
             $fileName=date('Ymdhmi'). '.'. $request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('/uploads',$fileName);
         }
-    
-    User::create
-        ([
+
+    User::create([
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>$request->password,
@@ -78,7 +77,7 @@ class UserController extends Controller
         $credintials=$request->except('_token');
         //dd($credintials);
         if(Auth::attempt($credintials))
-        {   
+        {
             if(auth()->user()->role=='admin')
             {
                 return redirect()->route('dashboard')->with('message', 'Login successfully');

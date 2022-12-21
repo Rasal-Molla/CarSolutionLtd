@@ -29,17 +29,13 @@
                 <label for="status" class="form-label">Status:</label>
                 <select name="status" class="form-select mb-3" aria-label="Default select example">
                     <option selected value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>                
+                    <option value="Inactive">Inactive</option>
                 </select>
                 <div class="mb-4">
                     <label for="image" class="form-label">Select Image:</label>
                     <input required name="image" class="form-control bg-dark" type="file" id="image">
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </form>
     </div>
 </div>

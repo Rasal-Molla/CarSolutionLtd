@@ -9,7 +9,7 @@
                 <i class="fa fa-plus fa-3x text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Create New Service</p>
-                                
+
                     </div>
             </div></a>
         </div>
@@ -55,7 +55,6 @@
                                         <td>{{$list->price}} BDT</td>
                                         <td>{{$list->status}}</td>
                                         <td>
-                                            <a class="btn btn-success" href="{{route('service.edit',$list->id)}}">Update</a>
                                             <a class="btn btn-danger" href="{{route('service.delete',$list->id)}}">Delete</a>
                                         </td>
                                     </tr>

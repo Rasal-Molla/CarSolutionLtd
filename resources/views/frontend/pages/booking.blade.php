@@ -53,6 +53,12 @@
 
                     @csrf
 
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <p class="alert alert-danger">{{$error}}</p>
+                        @endforeach
+                    @endif
+
                     <div class="row mx-4">
                         <div class="col-12 col-sm-6">
                             <label for="">Service Name</label>
@@ -82,13 +88,13 @@
                             <label for="">Brand Name</label>
                             <select name="brand_id" class="form-control" id="">
                                 @foreach ($brandList as $data)
-                                <option value="{{$data->id}}">{{$data->brand_name}}</option>
+                                    <option value="{{$data->id}}">{{$data->brand_name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                             <label for="">Model</label>
-                            <input class="form-control" name="model" value="">
+                            <input required class="form-control" name="model" type="text" id="model">
                         </div>
                     </div>
                     <div class="row mx-4">
@@ -99,7 +105,7 @@
                         </div>
                         <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                             <label for="">Address 2 (Optional)</label>
-                            <input class="form-control" name="address_1" placeholder="Enter pick-up address ">
+                            <input class="form-control" name="address_1" type="text" id="address_1" placeholder="Enter pick-up address ">
                         </div>
                     </div>
                     <div class="row mx-4">
@@ -109,7 +115,7 @@
                         </div>
                         <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                             <label for="">Advance Payment</label>
-                            <input class="form-control" name="advance_payment"  type="number">
+                            <input required class="form-control" name="advance_payment"  type="number" id="advance_payment">
                         </div>
                        <!-- <div class="col-12 col-sm-6">
                             <label for="">Special Request</label>
@@ -123,7 +129,7 @@
                         </div>
                     </div>
 
-            </div>
+                </div>
             </form>
         </div>
     </div>

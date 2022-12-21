@@ -45,7 +45,10 @@ class CategoryController extends Controller
 
         ]);
 
-        return redirect()->back()->with('message','New category added');
+        notify()->success('New category added');
+        return redirect()->back();
+
+        return redirect()->back()->with('message','Wrong information');
     }
 
     public function Delete($category_id){
@@ -54,11 +57,13 @@ class CategoryController extends Controller
         if($data)
         {
             $data->delete();
-            return redirect()->back()->with('message','Category delete successfully.');
+            notify()->success('Category Deleted');
+            return redirect()->back();;
         }
         else
         {
-            return redirect()->back()->with('error','Category not found.');
+            notify()->error('Category not found');
+            return redirect()->back();
         }
 
         //   Product::findOrFail($product_id)->delete();
@@ -81,10 +86,17 @@ class CategoryController extends Controller
     }
 
     public function Update(Request $request, $category_id)
-    {   $catUpdate=Category::find($category_id);
+    {
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'status'=>'required',
+        ]);
+
+        $catUpdate=Category::find($category_id);
         $catImage=$catUpdate->image;
         if($request->hasFile('image'))
-        {   
+        {
             $removeFile=public_path().'/uploads/'.$catImage;
             File::delete($removeFile);
             $catImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
@@ -99,7 +111,10 @@ class CategoryController extends Controller
 
         ]);
 
-        return redirect()->route('category')->with('update','Category Updated!');
+        notify()->success('Category Updated');
+        return redirect()->route('category');
+
+        return redirect()->back()->with('error', 'Provide category info');
     }
 
 }

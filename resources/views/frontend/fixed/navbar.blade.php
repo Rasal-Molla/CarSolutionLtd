@@ -25,8 +25,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="{{route('customer.profile')}}" class="dropdown-item" type="button">Profile</a>
                     <a href="{{route('customer.booking')}}" class="dropdown-item" type="button">Booking</a>
-                    <a href="" class="dropdown-item" type="button">Payment</a>
-                    <a href="" class="dropdown-item" type="button">Invoice</a>
+                    <a href="{{route('customer.paymentinfo')}}" class="dropdown-item" type="button">Payment</a>
                     <a href="{{route('user.logout')}}" class="dropdown-item" type="button">Logout</a>
                 </div>
                 </div>

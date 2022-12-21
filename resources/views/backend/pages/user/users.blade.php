@@ -7,7 +7,7 @@
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-plus fa-3x text-primary"></i>
                     <div class="ms-3">
-                        <p class="mb-2">Create User</p>          
+                        <p class="mb-2">Create User</p>
                     </div>
             </div></a>
         </div>
@@ -49,8 +49,7 @@
                                 <td>{{$data->phone}}</td>
                                 <td>{{$data->address}}</td>
                                 <td>
-                                    <a href="" class="btn btn-outline-success">Update</a>
-                                    <a href="{{route('user.delete',$data->id)}}" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{route('user.delete',$data->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

@@ -22,12 +22,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>photo</td>
-                    <td>Air Filter</td>
-                    <td>Active</td>
-                    </tr>
+                    @foreach ($categoryList as $key=>$data)
+                        <tr>
+                            <th scope="row">{{$key+$categoryList->firstItem()}}</th>
+                            <td>
+                                <img width="70px;" src="{{url('/uploads/'.$data->image)}}" alt="Category_image">
+                            </td>
+                            <td>{{$data->name}}</td>
+                            <td>{{$data->status}}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

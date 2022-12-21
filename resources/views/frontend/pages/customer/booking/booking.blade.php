@@ -18,6 +18,7 @@
                     <th scope="col">Service Center</th>
                     <th scope="col">Service</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Payment</th>
                     <th scope="col">Advance</th>
                     <th scope="col">Due</th>
                     <th scope="col">Status</th>
@@ -33,12 +34,13 @@
                     <td>{{$list->phone}}</td>
                     <td>{{$list->serviceCenter->name}}</td>
                     <td>{{$list->service->service_name}}</td>
-                    <td>{{$list->price}}</td>
-                    <td>{{$list->advance_payment}}</td>
+                    <td>{{$list->price}} BDT</td>
+                    <td>{{$list->amount}}</td>
+                    <td>{{$list->advance_payment}} BDT</td>
                     <td>@if ($list->due_payment)
                             <a href="{{route('duePayment', $list->id)}}" class="btn btn-danger">Clear {{$list->due_payment}} BDT</a>
                     @else
-                        0.00 BDT
+                        0 BDT
                     @endif</td>
                     <td>{{$list->status}}</td>
                     <td>

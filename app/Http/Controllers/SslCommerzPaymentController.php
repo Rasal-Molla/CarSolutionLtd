@@ -94,7 +94,8 @@ class SslCommerzPaymentController extends Controller
                 'user_id'=>auth()->user()->id,
                 'address'=>auth()->user()->address,
                 'address_1'=>$request->address_1,
-                'amount'=>'Paid'
+                'status'=>'Approved',
+                'amount'=>'Not clear'
             ]);
 
 

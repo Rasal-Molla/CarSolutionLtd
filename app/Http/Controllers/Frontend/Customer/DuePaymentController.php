@@ -22,7 +22,8 @@ class DuePaymentController extends Controller
 
     public function index(Request $request,$id)
     {
-        // dd($request->all());
+        //dd($request->all());
+
         $booking = Booking::find($id);
         // dd($booking);
         # Here you have to receive all the order data to initate the payment.
@@ -82,9 +83,9 @@ class DuePaymentController extends Controller
         //         'currency' => $post_data['currency']
         //     ]);
         $booking->update([
-            'due_payment'=>($booking->due_payment - $post_data['total_amount']),
-            'advance_payment'=>($booking->due_payment + $post_data['total_amount']),
-            'status'=>'paid',
+            'due_payment'=>0,
+            'advance_payment'=>0,
+            'amount'=>'Paid',
         ]);
 
 

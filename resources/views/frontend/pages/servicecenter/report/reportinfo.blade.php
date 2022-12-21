@@ -24,7 +24,7 @@
                         <label for="">To</label>
                         <input required name="to_date" type="date" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg mt-3" >Submit</button>
+                    <button type="submit" class="btn btn-success btn-md mt-3" style="border-radius: 10px" >Submit</button>
                     </div>
                 </form>
                 </div>
@@ -76,7 +76,7 @@
 <div >
     <div class="row ">
         <div class="col-md-5"></div>
-        <div class="col-md-2"><button type="submit" onclick="printDiv('printableArea')" value="print a div!" class="btn btn-success btn-lg">Print</button></div>
+        <div class="col-md-2"><button type="submit" onclick="printDiv('printableArea')" value="print a div!" style="border-radius: 10px" class="btn btn-success btn-md">Print</button></div>
         <div class="col-md-5"></div>
     </div>
 </div>

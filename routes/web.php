@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\ServiceCenter\SCProfileController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCRequestController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCServiceController;
 use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
+use App\Http\Controllers\Frontend\Customer\CustomerPaymentController;
 use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
 use App\Http\Controllers\Frontend\Customer\DuePaymentController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
@@ -70,6 +71,9 @@ Route::group(['middleware'=>'auth', 'customer'],function(){
     Route::put('/booking/update/{booking_id}', [CustomerBookingController::class, 'Update'])->name('customer.bookingUpdate');
     Route::get('/booking/delete/{booking_id}', [CustomerBookingController::class, 'Delete'])->name('customer.bookingDelete');
     Route::get('/booking/details/{booking_id}', [CustomerBookingController::class, 'Details'])->name('customer.bookingDetails');
+
+
+    Route::get('/payment', [CustomerPaymentController::class, 'PaymentInfo'])->name('customer.paymentinfo');
 
 
 

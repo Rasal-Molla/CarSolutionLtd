@@ -35,6 +35,11 @@ class HomeServiceCenterController extends Controller
 
     public function Store(Request $request)
     {
+        $request->validate([
+            'model'=>'required',
+            'advance_payment'=>'required|numeric|gt:0'
+        ]);
+
         Booking::create([
             'Customer_name'=>$request->Customer_name,
             'phone'=>$request->phone,
@@ -51,6 +56,8 @@ class HomeServiceCenterController extends Controller
 
         notify()->success('Booking successfully!');
         return redirect()->route('customer.booking');
+
+        return redirect()->back()->with('error','Fillup the form properly');
     }
 
 }

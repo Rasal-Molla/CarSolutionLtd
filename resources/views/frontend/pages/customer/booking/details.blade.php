@@ -34,11 +34,19 @@
                   <p class="small">Status: {{$bookingData->status}}</p>
                 </div>
                 <div class="d-flex justify-content-between pb-1">
-                  <p class="small">Transaction ID: {{$bookingData->transaction_id}}</p>
+                  <p class="small">Payment Status: {{$bookingData->amount}}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">Advance amount:</p>
+                    <p class="fw-bold" style="color: #35558a;">BDT {{$bookingData->advance_payment}}/=</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="fw-bold">Due amount:</p>
+                    <p class="fw-bold" style="color: #35558a;">BDT {{$bookingData->due_payment}}/=</p>
                 </div>
 
                 <div class="d-flex justify-content-between">
-                  <p class="fw-bold">Total Price:</p>
+                  <p class="fw-bold">Price:</p>
                   <p class="fw-bold" style="color: #35558a;">BDT {{$bookingData->price}}/=</p>
                 </div>
                 <hr class="mt-2 mb-4"

@@ -19,10 +19,11 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Model</th>
                     <th scope="col">Service</th>
-                    <th scope="col">Request</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Payment</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Advance</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Request</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -35,10 +36,11 @@
                     <td>{{$data->brand->brand_name}}</td>
                     <td>{{$data->model}}</td>
                     <td>{{$data->service->service_name}}</td>
-                    <td>{{$data->special_request}}</td>
                     <td>{{$data->price}}</td>
-                    <td>{{$data->payment}}</td>
+                    <td>{{$data->amount}}</td>
+                    <td>{{$data->advance_payment}} BDT</td>
                     <td>{{$data->status}}</td>
+                    <td>{{$data->special_request}}</td>
                     <td>
                         @if($data->status=='Approved')
                             <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>

@@ -25,7 +25,7 @@ class SCServiceController extends Controller
     {
         $request->validate([
             'service_name'=>'required',
-            'price'=>'required',
+            'price'=>'required|numeric|gt:0',
             'status'=>'required'
         ]);
 
@@ -46,6 +46,9 @@ class SCServiceController extends Controller
 
         notify()->success('Service Added successfully!');
         return redirect()->route('scservice.list');
+
+
+        return redirect()->back()->with('error','Proper info');
     }
 
     public function UpdateForm($service_list)
@@ -56,6 +59,13 @@ class SCServiceController extends Controller
 
     public function UpdateStore(Request $request, $service_id)
     {
+        $request->validate([
+            'service_name'=>'required',
+            'price'=>'required|numeric|gt:0',
+            'description'=>'required'
+
+        ]);
+
         $list=Service::find($service_id);
         $serviceImage=$list->image;
         if($request->hasFile('image'))
@@ -75,6 +85,8 @@ class SCServiceController extends Controller
 
         notify()->success('Service update successfully!');
         return redirect()->route('scservice.list');
+
+        return redirect()->back()->with('error','Proper info');
     }
 
     public function Delete($service_delete)

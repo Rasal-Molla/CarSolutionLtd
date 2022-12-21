@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service_center;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +15,7 @@ class WebUserController extends Controller
 
             'name'=>'required',
             'email'=>'required|email',
-            'phone'=>'required',
+            'phone'=>'required|regex:/(01)[0-9]{9}/',
             'address'=>'required',
             'country'=>'required',
             'password'=>'required'
@@ -40,9 +39,11 @@ class WebUserController extends Controller
             'password'=>bcrypt($request->password),
             'role'=>'customer'
         ]);
-        
+
         notify()->success('SignUp done!');
         return redirect()->route('Home');
+
+        return redirect()->back()->with('error','Provide proper details');
     }
 
     public function Login(Request $request)
@@ -76,7 +77,7 @@ class WebUserController extends Controller
                 notify()->error('You are not a customer!');
                 return redirect()->back();
             }
-           
+
         }
         return redirect()->back();
 
@@ -95,7 +96,7 @@ class WebUserController extends Controller
 
             'name'=>'required',
             'email'=>'required|email',
-            'phone'=>'required',
+            'phone'=>'required|regex:/(01)[0-9]{9}/',
             'address'=>'required',
             'country'=>'required',
             'password'=>'required'
@@ -121,6 +122,8 @@ class WebUserController extends Controller
         ]);
         notify()->success('SignUp done!');
         return redirect()->route('Home');
+
+        return redirect()->back()->with('error','Provide proper details');
 
     }
 

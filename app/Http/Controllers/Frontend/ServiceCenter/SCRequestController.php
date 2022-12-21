@@ -14,6 +14,7 @@ class SCRequestController extends Controller
     public function List()
     {
         $bookingInfo=Booking::where('service_center_id',auth()->user()->id)->get();
+        //dd($bookingInfo);
         return view('frontend.pages.servicecenter.request.request', compact('bookingInfo'));
     }
 

@@ -18,7 +18,7 @@ class CustomerProfileController extends Controller
       $request->validate([
          'name'=>'required',
          'email'=>'required|email',
-         'phone'=>'required',
+         'phone'=>'required|regex:/(01)[0-9]{9}/',
          'address'=>'required'
       ]);
 
@@ -28,10 +28,12 @@ class CustomerProfileController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone,
             'address'=>$request->address,
-            
+
         ]);
 
       notify()->success('Profile update successfully!');
       return redirect()->back();
+
+      return redirect()->back()->with('error','Provide details');
    }
 }

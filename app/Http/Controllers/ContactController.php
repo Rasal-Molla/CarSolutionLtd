@@ -20,10 +20,11 @@ class ContactController extends Controller
 
     public function Store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
 
             'name'=>'required',
-            'phone'=>'required',
+            'phone'=>'required|regex:/(01)[0-9]{9}/',
             'email'=>'required|email',
             'message'=>'required'
         ]);
@@ -37,6 +38,8 @@ class ContactController extends Controller
 
         notify()->success('Message send done!');
         return redirect()->route('Home');
+
+        return redirect()->back()->with('error','Please provide proper info');
     }
 
     public function Delete($contact_id)

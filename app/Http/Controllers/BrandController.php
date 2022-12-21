@@ -24,6 +24,7 @@ class BrandController extends Controller
         $request->validate([
 
             'brand_name'=>'required|unique:brands',
+            'description'=> 'required',
             'status'=>'required',
             'image'=>'required'
         ]);
@@ -42,7 +43,11 @@ class BrandController extends Controller
             'status'=>$request->status,
             'image'=>$imageName
         ]);
-        return redirect()->back()->with('message','Brand added successfully');
+
+        notify()->success('Brand added successfully');
+        return redirect()->back();
+
+        return redirect()->back()->with('message', 'Provide Proper Brand info');
     }
 
     public function Delete($brand_id)
@@ -51,11 +56,13 @@ class BrandController extends Controller
         if($brand_delete)
         {
             $brand_delete->delete();
-            return redirect()->back()->with('message','Brand deleted successfully');
+            notify()->success('Brand deleted successfully');
+            return redirect()->back();
         }
         else
         {
-            return redirect()->back()->with('error','Brand not found');
+            notify()->error('Brand not found');
+            return redirect()->back();
         }
     }
 
@@ -73,10 +80,16 @@ class BrandController extends Controller
 
     public function Update(Request $request, $brand_id)
     {
+        $request->validate([
+            'brand_name'=>'required',
+            'description'=>'required',
+            'status'=>'required'
+        ]);
+
         $brand_update=Brand::find($brand_id);
         $brandImage=$brand_update->image;
         if($request->hasFile('image'))
-        {   
+        {
             $removeFile=public_path().'/uploads/'.$brandImage;
             File::delete($removeFile);
             $brandImage=date('Ymdhmi').'.'.$request->file('image')->getClientOriginalExtension();
@@ -90,7 +103,11 @@ class BrandController extends Controller
             'image'=>$brandImage
 
         ]);
-        return redirect()->route('brand')->with('update','Brand updated successfully');
+
+        notify()->success('Brand updated successfully');
+        return redirect()->route('brand');
+
+        return redirect()->back()->with('error','Fillup all the info');
     }
 
 }

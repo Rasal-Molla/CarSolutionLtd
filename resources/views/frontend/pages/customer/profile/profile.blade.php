@@ -23,21 +23,28 @@
             <form action="{{route('customer.profileUpdate')}}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
+
+                @if($errors->any())
+                    @foreach($errors->all as $error)
+                        <p class="alert alert-danger">{{$error}}</p>
+                    @endforeach
+                @endif
+
                     <div>
                         <label for="">Name</label>
-                        <input required value="{{auth()->user()->name}}" name="name" type="text" class="form-control" required placeholder="Enter name">
+                        <input required value="{{auth()->user()->name}}" name="name" type="text" id="name" class="form-control" required placeholder="Enter name">
                     </div>
                     <div>
                         <label for="">Email</label>
-                        <input required value="{{auth()->user()->email}}" name="email" type="email" class="form-control" required placeholder="Enter email">
+                        <input required value="{{auth()->user()->email}}" name="email" type="email" id="email" class="form-control" required placeholder="Enter email">
                     </div>
                     <div>
                         <label for="">Phone</label>
-                        <input required value="{{auth()->user()->phone}}" name="phone" type="text" class="form-control" required placeholder="Enter number">
+                        <input required value="{{auth()->user()->phone}}" name="phone" type="tel" id="phone" class="form-control" required placeholder="Enter number">
                     </div>
                     <div>
                         <label for="">Address</label>
-                        <input required value="{{auth()->user()->address}}" name="address" type="text" class="form-control" required placeholder="Enter address">
+                        <input required value="{{auth()->user()->address}}" name="address" type="text" id="address" class="form-control" required placeholder="Enter address">
                     </div>
                         <button type="submit" class=" btn btn-success mt-3" >Update</button>
                     </div>

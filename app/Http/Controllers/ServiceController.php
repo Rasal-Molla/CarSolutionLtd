@@ -46,7 +46,7 @@ class ServiceController extends Controller
             'status'=>$request->status,
             'image'=>$fileName
         ]);
-        
+
         return redirect()->back()->with('message','Service added successfully');
     }
 
@@ -56,16 +56,18 @@ class ServiceController extends Controller
         if($service_delete)
         {
             $service_delete->delete();
-            return redirect()->back()->with('message','Service deleted successfully');
+            notify()->success('Service Delete successfully');
+            return redirect()->back();
         }
         else
         {
-            return redirect()->back()->with('error','Service not found');
+            notify()->error('No service found');
+            return redirect()->back();
         }
     }
 
     public function Edit($service_id)
-    {   
+    {
         $service_list=Service::find($service_id);
         return view('backend.pages.service.edit', compact('service_list'));
     }
@@ -92,8 +94,8 @@ class ServiceController extends Controller
             'status'=>$request->status,
             'image'=>$fileName
         ]);
-        
+
         return redirect()->route('service')->with('update','Service updated successfully');
     }
-    
+
 }
