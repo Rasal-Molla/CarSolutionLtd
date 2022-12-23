@@ -24,6 +24,19 @@
                         @endif
 
                     <div class="modal-body">
+
+                    <label for="">Brand Name</label>
+                    <select name="brand_name" id="" class="form-control">
+                        @foreach ($serviceinfo as $data)
+                            <option value="{{$data->id}}">{{$data->brand->brand_name}}</option>
+                        @endforeach
+                    </select>
+                    <label for="">Category Name</label>
+                    <select name="category_name" id="" class="form-control">
+                        @foreach ($serviceinfo as $data)
+                            <option value="{{$data->id}}">{{$data->category->name}}</option>
+                        @endforeach
+                    </select>
                     <div>
                         <label for="">Service Name</label>
                         <input required value="{{$serviceData->service_name}}" name="service_name" id="service_name" type="text" class="form-control" placeholder="Enter name">

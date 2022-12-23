@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container-fluid pt-4 px-4">
+{{-- <div class="container-fluid pt-4 px-4">
     <div class="row g-2">
         <a href="{{route('service.create')}}"><div class="col-sm-6 col-xl-3">
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
@@ -14,7 +14,7 @@
             </div></a>
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">

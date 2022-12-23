@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_center_id');
+            $table->foreignId('brand_id');
             $table->string('name', 25)->unique();
             $table->text('description')->nullable();
             $table->string('status', 50)->default('Active');

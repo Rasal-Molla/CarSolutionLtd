@@ -13,6 +13,7 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Service Center</th>
@@ -30,6 +31,7 @@
                     @foreach($bookingList as $key=>$list)
                 <tr>
                     <th scope="row">{{$key+1}}</th>
+                    <td>{{$list->created_at->format('d/m/Y')}}</td>
                     <td>{{$list->Customer_name}}</td>
                     <td>{{$list->phone}}</td>
                     <td>{{$list->serviceCenter->name}}</td>

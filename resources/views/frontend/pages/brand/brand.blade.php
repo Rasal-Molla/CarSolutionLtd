@@ -14,7 +14,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="position-relative overflow-hidden">
-                            <img style="width: 100%; height:100%;" class="img-fluid" src="{{url('/uploads/'.$data->image)}}" alt="Image">
+                            <img style="width: 320px; height:270px;" class="img-fluid" src="{{url('/uploads/'.$data->image)}}" alt="Image">
                         </div>
                         <div class="bg-light text-center p-4">
                             <h5 class="fw-bold mb-0">{{$data->brand_name}}</h5>

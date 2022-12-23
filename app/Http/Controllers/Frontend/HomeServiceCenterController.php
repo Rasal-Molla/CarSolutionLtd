@@ -20,7 +20,7 @@ class HomeServiceCenterController extends Controller
     public function View($service_center_id)
     {
         $serviceCenter=User::find($service_center_id);
-        $serviceList=Service::where('service_center_id', $serviceCenter->id)->get();
+        $serviceList=Service::where('service_center_id', $serviceCenter->id)->where('status','active')->get();
         return view('frontend.pages.webServiceCenter.view',compact('serviceCenter','serviceList'));
     }
 

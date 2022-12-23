@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend\ServiceCenter;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +14,15 @@ class SCServiceController extends Controller
 {
     public function List()
     {
-        $serviceList=Service::where('service_center_id',auth()->user()->id)->get();
+        $serviceList=Service::with('brand','category', 'user')->where('service_center_id',auth()->user()->id)->get();
         return view('frontend.pages.servicecenter.service.service', compact('serviceList'));
     }
 
     public function Form()
     {
-        return view('frontend.pages.servicecenter.service.create');
+        $brandinfo=Brand::where('service_center_id', auth()->user()->id)->get();
+        $categoryinfo=Category::where('service_center_id', auth()->user()->id)->get();
+        return view('frontend.pages.servicecenter.service.create', compact('brandinfo','categoryinfo'));
     }
 
     public function Store(Request $request)
@@ -41,6 +45,8 @@ class SCServiceController extends Controller
             'status'=>$request->status,
             'description'=>$request->description,
             'image'=>$serviceImage,
+            'brand_id'=>$request->brand_name,
+            'category_id'=>$request->category_name,
             'service_center_id'=>auth()->user()->id
         ]);
 
@@ -53,8 +59,9 @@ class SCServiceController extends Controller
 
     public function UpdateForm($service_list)
     {
+        $serviceinfo=Service::with('brand','category')->where('service_center_id', auth()->user()->id)->get();
         $serviceData=Service::find($service_list);
-        return view('frontend.pages.servicecenter.service.edit',compact('serviceData'));
+        return view('frontend.pages.servicecenter.service.edit',compact('serviceData','serviceinfo'));
     }
 
     public function UpdateStore(Request $request, $service_id)
@@ -77,6 +84,8 @@ class SCServiceController extends Controller
         }
         $list->update([
             'service_name'=>$request->service_name,
+            'brand_id'=>$request->brand_name,
+            'category_id'=>$request->category_name,
             'price'=>$request->price,
             'status'=>$request->status,
             'description'=>$request->description,

@@ -38,6 +38,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <a href="{{route('scprofile')}}" class="dropdown-item" type="button">Profile</a>
                     <a href="{{route('screquest.list')}}" class="dropdown-item" type="button">Request</a>
+                    <a href="{{route('scbrand.list')}}" class="dropdown-item" type="button">Brand</a>
                     <a href="{{route('sccategory.list')}}" class="dropdown-item" type="button">Category</a>
                     <a href="{{route('scservice.list')}}" class="dropdown-item" type="button">Service</a>
                     <a href="{{route('sccompleted.list')}}" class="dropdown-item" type="button">Completed</a>

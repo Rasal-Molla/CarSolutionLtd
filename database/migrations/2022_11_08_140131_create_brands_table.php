@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('service_center_id');
             $table->string('brand_name', 150)->unique();
             $table->string('status', 150)->default('Active');
             $table->text('description')->nullable();

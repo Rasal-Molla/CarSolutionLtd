@@ -17,8 +17,13 @@ class SCReportController extends Controller
         {
             $startDate= $request->from_date;
             $endDate= $request->to_date;
+            $request->validate([
+                'from_date'=>'before_or_equal:now',
+                'to_date'=>'after_or_equal:now'
+            ]);
             $reportdata=Booking::whereBetween('created_at', [$startDate,$endDate])->where('service_center_id',auth()->user()->id)->where('status','Released')->get();
             return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
+            
         }
         else
         {

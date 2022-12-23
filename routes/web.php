@@ -26,6 +26,7 @@ use App\Http\Controllers\Frontend\Customer\CustomerBookingController;
 use App\Http\Controllers\Frontend\Customer\CustomerPaymentController;
 use App\Http\Controllers\Frontend\Customer\CustomerProfileController;
 use App\Http\Controllers\Frontend\Customer\DuePaymentController;
+use App\Http\Controllers\Frontend\ServiceCenter\SCBrandController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCategoryController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCCompletedController;
 use App\Http\Controllers\Frontend\ServiceCenter\SCReportController;
@@ -101,8 +102,18 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
     Route::put('/service/update/{service_id}', [SCServiceController::class, 'UpdateStore'])->name('scservice.update');
     Route::get('/service/delete/{service_id}', [SCServiceController::class, 'Delete'])->name('scservice.delete');
 
+    Route::get('/brand', [SCBrandController::class, 'List'])->name('scbrand.list');
+    Route::get('/brand/create', [SCBrandController::class, 'Create'])->name('scbrand.create');
+    Route::post('/brand/create/store', [SCBrandController::class, 'Store'])->name('scbrand.store');
+    Route::get('/brand/edit/{brand_id}', [SCBrandController::class, 'Edit'])->name('scbrand.update');
+    Route::put('/brand/update/{brand_id}', [SCBrandController::class, 'Update'])->name('scbrand.updateStore');
+
 
     Route::get('/category',[SCCategoryController::class, 'List'])->name('sccategory.list');
+    Route::get('/category/create', [SCCategoryController::class, 'Create'])->name('sccategory.create');
+    Route::post('/category/create/store', [SCCategoryController::class, 'Store'])->name('sccategory.store');
+    Route::get('/category/edit/{category_id}', [SCCategoryController::class, 'Edit'])->name('sccategory.update');
+    Route::put('/category/update/{category_id}', [SCCategoryController::class, 'Update'])->name('sccategory.updateStore');
 
 
     Route::get('/request', [SCRequestController::class, 'List'])->name('screquest.list');

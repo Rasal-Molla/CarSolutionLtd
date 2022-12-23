@@ -13,6 +13,21 @@
                     <h2 class="fs-5">Reports</h2>
                 </div>
             <div>
+                <div class="container">
+                    <div class="container">
+                        <div class="container bg-danger">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 <form action="{{route('screport.generate')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                     <div class="modal-body">
@@ -63,7 +78,7 @@
                             <td>{{$data->phone}}</td>
                             <td>{{$data->service->service_name}}</td>
                             <td>{{$data->price}}</td>
-                            <td>{{$data->payment}}</td>
+                            <td>{{$data->amount}}</td>
                             <td>{{$data->status}}</td>
                         </tr>
                     @endforeach

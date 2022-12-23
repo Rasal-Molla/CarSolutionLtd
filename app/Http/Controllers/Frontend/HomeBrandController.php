@@ -10,8 +10,27 @@ class HomeBrandController extends Controller
 {
     public function List()
     {
-        $brandList=Brand::all();
-        return view('frontend.pages.brand.brand', compact('brandList'));
+
+        if(!auth()->user()){
+            $brandList=Brand::where('status', 'active')->get();
+
+            return view('frontend.pages.brand.brand', compact('brandList'));
+
+        }
+        elseif(auth()->user()->role=='service_center')
+        {
+            $brandList=Brand::where('service_center_id',auth()->user()->id)->get();
+            return view('frontend.pages.brand.brand', compact('brandList'));
+        }
+        else
+        {
+
+            $brandList=Brand::where('status','active')->get();
+
+             return view('frontend.pages.brand.brand', compact('brandList'));
+
+        }
+
     }
 
     public function Details($brand_id)

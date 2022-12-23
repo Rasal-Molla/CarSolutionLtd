@@ -9,10 +9,10 @@
             </div>
             <div class="col-md-8">
                 <div class="mt-3">
-                    <h2 class="fs-5">Service Form</h2>
+                    <h2 class="fs-5">Category Create Form</h2>
                 </div>
             <div>
-                <form action="{{route('scservice.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('sccategory.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         @if($errors->any())
@@ -22,27 +22,16 @@
                         @endif
 
                     <div class="modal-body">
-
+                    <div>
+                        <label for="">Category Name</label>
+                        <input required name="name" type="text" id="name" class="form-control" placeholder="Enter name">
+                    </div>
                     <label for="">Brand Name</label>
-                    <select name="brand_name" id="" class="form-control">
-                        @foreach ($brandinfo as $data)
+                    <select name="brand_id" id="" class="form-control">
+                        @foreach ($brandlist as $data)
                             <option value="{{$data->id}}">{{$data->brand_name}}</option>
                         @endforeach
                     </select>
-                    <label for="">Category Name</label>
-                    <select name="category_name" id="" class="form-control">
-                        @foreach ($categoryinfo as $data)
-                            <option value="{{$data->id}}">{{$data->name}}</option>
-                        @endforeach
-                    </select>
-                    <div>
-                        <label for="">Service Name</label>
-                        <input required name="service_name" type="text" id="service_name" class="form-control" placeholder="Enter name">
-                    </div>
-                    <div>
-                        <label for="">Price</label>
-                        <input required name="price" type="number" id="price" class="form-control" placeholder="Enter price">
-                    </div>
                     <div>
                         <label for="">Description</label>
                         <input required name="description" type="text" id="description" class="form-control" placeholder="Enter description">

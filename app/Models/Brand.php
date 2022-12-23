@@ -10,4 +10,9 @@ class Brand extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function brand()
+    {
+        return $this->belongsTo(User::class, 'service_center_id','id');
+    }
 }

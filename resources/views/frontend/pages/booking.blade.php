@@ -115,7 +115,7 @@
                         </div>
                         <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                             <label for="">Advance Payment</label>
-                            <input required class="form-control" name="advance_payment"  type="number" id="advance_payment">
+                            <input required class="form-control" name="advance_payment" max="100000" type="number" id="advance_payment">
                         </div>
                        <!-- <div class="col-12 col-sm-6">
                             <label for="">Special Request</label>

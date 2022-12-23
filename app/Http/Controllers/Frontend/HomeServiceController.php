@@ -12,7 +12,7 @@ class HomeServiceController extends Controller
     public function List()
     {
         if(!auth()->user()){
-            $serviceList=Service::all();
+            $serviceList=Service::where('status', 'active')->get();
 
             return view('frontend.pages.service.service', compact('serviceList'));
 
@@ -25,7 +25,7 @@ class HomeServiceController extends Controller
         else
         {
 
-            $serviceList=Service::all();
+            $serviceList=Service::where('status','active')->get();
 
              return view('frontend.pages.service.service', compact('serviceList'));
 

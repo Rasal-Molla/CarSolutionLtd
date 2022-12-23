@@ -10,8 +10,25 @@ class HomeCategoryController extends Controller
 {
     public function Category()
     {
-        $categoryList=Category::all();
-        return view('frontend.pages.category.category', compact('categoryList'));
+        if(!auth()->user()){
+            $categoryList=Category::where('status', 'active')->get();
+
+            return view('frontend.pages.category.category', compact('categoryList'));
+
+        }
+        elseif(auth()->user()->role=='service_center')
+        {
+            $categoryList=Category::where('service_center_id',auth()->user()->id)->get();
+            return view('frontend.pages.category.category', compact('categoryList'));
+        }
+        else
+        {
+
+            $categoryList=Category::where('status','active')->get();
+
+             return view('frontend.pages.category.category', compact('categoryList'));
+
+        }
     }
 
     public function Details($category_id)

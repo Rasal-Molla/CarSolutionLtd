@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_center_id')->constrained('users');
+            $table->foreignId('service_center_id');
+            $table->foreignId('brand_id');
+            $table->foreignId('category_id');
             $table->string('service_name', 200);
             $table->string('price', 150);
             $table->string('status', 150)->default('Active');

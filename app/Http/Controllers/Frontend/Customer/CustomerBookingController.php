@@ -13,7 +13,7 @@ class CustomerBookingController extends Controller
 {
     public function BookingInfo()
     {
-        $bookingList=Booking::where('user_id', auth()->user()->id)->with('serviceCenter')->get();
+        $bookingList=Booking::where('user_id', auth()->user()->id)->whereDate('created_at', '=', date('Y-m-d'))->with('serviceCenter')->orderBy('id','DESC')->get();
 
         // dd($bookingList);
         return view('frontend.pages.customer.booking.booking', compact('bookingList'));

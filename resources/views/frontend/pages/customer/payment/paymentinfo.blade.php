@@ -37,7 +37,6 @@
                         <td>{{$data->status}}</td>
                         <td>
                             <a class="btn btn-success" href="{{route('customer.bookingDetails', $data->id)}}">Details</a>
-                            <a class="btn btn-danger" href="">Delete</a>
                         </td>
                     </tr>
                     @endforeach

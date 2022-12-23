@@ -22,10 +22,17 @@ class SslCommerzPaymentController extends Controller
 
     public function index(Request $request)
     {
-        // dd($request->all());
+        if($request->price < $request->advance_payment){
+            notify()->error('sorry','advance payment should not be greater than actual price');
+            return back();
+        }
         # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
+
+        $request->validate([
+            'advance_payment'=>'required|numeric|gt:0'
+        ]);
 
         $post_data = array();
         $post_data['total_amount'] = $request->advance_payment; # You cant not pay less than 10
@@ -79,7 +86,8 @@ class SslCommerzPaymentController extends Controller
         //dd($post_data);
         //         'currency' => $post_data['currency']
         //     ]);
-            Booking::create([
+
+            $booking = Booking::create([
                 'Customer_name'=>$request->Customer_name,
                 'phone'=>$request->phone,
                 'service_center_id'=>$request->service_center_id,
@@ -95,8 +103,16 @@ class SslCommerzPaymentController extends Controller
                 'address'=>auth()->user()->address,
                 'address_1'=>$request->address_1,
                 'status'=>'Approved',
-                'amount'=>'Not clear'
+                'amount'=> 'No paid',
             ]);
+            if($request->price == $request->advance_payment){
+                $booking->update([
+                    'amount'=>'Paid',
+                    'advance_payment'=>0,
+                ]);
+            }
+
+
 
 
         $sslc = new SslCommerzNotification();
