@@ -180,6 +180,7 @@ class DuePaymentController extends Controller
 
         $sslc = new SslCommerzNotification();
 
+        notify()->success('Due clear done');
         return redirect()->route('Home');
 
         #Check order status in order tabel against the transaction id or order id.
