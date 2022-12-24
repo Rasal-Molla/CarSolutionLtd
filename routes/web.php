@@ -138,6 +138,9 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
 Route::get('/', [HomeController::class, 'Home'])->name('Home');
 Route::get('/service-center', [HomeServiceCenterController::class, 'List'])->name('Home.serviceCenter');
 Route::get('/service-center/view/{service_center_id}', [HomeServiceCenterController::class, 'View'])->name('Home.servicecenter.view');
+Route::get('/service-center/view/total-service/{allservice_id}', [HomeServiceCenterController::class, 'Allservice'])->name('servicecenter.totalservice');
+Route::get('/service-center/view/total-category/{allcategory_id}', [HomeServiceCenterController::class, 'Allcategory'])->name('servicecenter.totalcategory');
+Route::get('/service-center/view/total-brand/{allbrand_id}', [HomeServiceCenterController::class, 'Allbrand'])->name('servicecenter.totalbrand');
 
 
 

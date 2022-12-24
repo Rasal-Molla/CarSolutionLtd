@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,6 +59,25 @@ class HomeServiceCenterController extends Controller
         return redirect()->route('customer.booking');
 
         return redirect()->back()->with('error','Fillup the form properly');
+    }
+
+    public function Allservice($service_center_id)
+    {
+        $serviceCenter=User::find($service_center_id);
+        $serviceList=Service::where('service_center_id', $serviceCenter->id)->where('status','active')->get();
+        return view('frontend.pages.ServiceCenterDetails.totalservice',compact('serviceCenter','serviceList'));
+    }
+    public function Allcategory($service_center_id)
+    {
+        $serviceCenter=User::find($service_center_id);
+        $categoryList=Category::with('brand')->where('service_center_id', $serviceCenter->id)->where('status','active')->get();
+        return view('frontend.pages.ServiceCenterDetails.totalcategory',compact('serviceCenter','categoryList'));
+    }
+    public function Allbrand($service_center_id)
+    {
+        $serviceCenter=User::find($service_center_id);
+        $brandList=Brand::where('service_center_id', $serviceCenter->id)->where('status','active')->get();
+        return view('frontend.pages.ServiceCenterDetails.totalbrand',compact('serviceCenter','brandList'));
     }
 
 }

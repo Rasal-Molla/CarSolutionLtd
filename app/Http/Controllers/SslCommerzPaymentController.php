@@ -236,7 +236,7 @@ class SslCommerzPaymentController extends Controller
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
-
+        return to_route('Home');
 
     }
 
@@ -258,6 +258,7 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
+        return to_route('Home');
 
     }
 
@@ -279,7 +280,7 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-
+        return to_route('Home');
 
     }
 
@@ -324,6 +325,7 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Invalid Data";
         }
+        return to_route('Home');
     }
 
 }

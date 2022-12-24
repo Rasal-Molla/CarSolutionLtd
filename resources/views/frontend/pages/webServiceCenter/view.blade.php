@@ -28,36 +28,30 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
-                        <h4 class="font-weight-bold mt-0 mb-4">Our Service</h4>
-                        <div class="row">
-                            @foreach($serviceList as $list)
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <a href="#">
-                                            <img style="width: 230px;" src="{{url('/uploads/'.$list->image)}}" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1">Name: {{$list->service_name}}</h6>
-                                            <p class="text-gray">Price: {{$list->price}}</p>
-                                            <p class="text-gray mb-3">Status: {{$list->status}}</p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <a href="{{route('Home.serviceCenter.servicewise.bookingView',$list->id)}}" class="btn btn-success">Book Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Total Service</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('servicecenter.totalservice',$serviceCenter->id)}}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Total Category</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('servicecenter.totalcategory',$serviceCenter->id)}}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-info text-white mb-4">
+                <div class="card-body">Total Brand</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="{{route('servicecenter.totalbrand', $serviceCenter->id)}}">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
