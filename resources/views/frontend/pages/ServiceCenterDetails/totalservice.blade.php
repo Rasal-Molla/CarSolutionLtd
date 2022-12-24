@@ -46,6 +46,8 @@
                                     <div class="p-3 position-relative">
                                         <div class="list-card-body">
                                             <h6 class="mb-1">Name: {{$list->service_name}}</h6>
+                                            <h6 class="mb-1">Brand: {{$list->brand->brand_name}}</h6>
+                                            <h6 class="mb-1">Category: {{$list->category->name}}</h6>
                                             <p class="text-gray">Price: {{$list->price}}</p>
                                             <p class="text-gray mb-3">Status: {{$list->status}}</p>
                                         </div>

@@ -35,7 +35,7 @@ class HomeServiceController extends Controller
 
     public function Details($service_id)
     {
-        $serviceInfo=Service::with('user')->find($service_id);
+        $serviceInfo=Service::with('user','brand', 'category')->find($service_id);
         return view('frontend.pages.service.details', compact('serviceInfo'));
     }
 }

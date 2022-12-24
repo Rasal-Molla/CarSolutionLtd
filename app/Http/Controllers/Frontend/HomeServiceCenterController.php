@@ -64,7 +64,7 @@ class HomeServiceCenterController extends Controller
     public function Allservice($service_center_id)
     {
         $serviceCenter=User::find($service_center_id);
-        $serviceList=Service::where('service_center_id', $serviceCenter->id)->where('status','active')->get();
+        $serviceList=Service::with('brand','category')->where('service_center_id', $serviceCenter->id)->where('status','active')->get();
         return view('frontend.pages.ServiceCenterDetails.totalservice',compact('serviceCenter','serviceList'));
     }
     public function Allcategory($service_center_id)

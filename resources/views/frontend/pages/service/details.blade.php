@@ -72,7 +72,9 @@ body {
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h1 class="m-0 p-0">Service Center: {{$serviceInfo->user->name}}</h1>
-                                    <span>Service Name: {{$serviceInfo->service_name}}</span>
+                                    <span>Service Name: {{$serviceInfo->service_name}}</span> <br>
+                                    <span>Brand Name: {{$serviceInfo->brand->brand_name}}</span> <br>
+                                    <span>Category Name: {{$serviceInfo->category->name}}</span>
                                 </div>
                                 <div class="col-lg-12">
                                     <p class="m-0 p-0 price-pro">Price: {{$serviceInfo->price}} BDT</p>
