@@ -10,25 +10,71 @@ use Illuminate\Support\Facades\Validator;
 class SCReportController extends Controller
 {
 
+    public function Report()
+    {
+        $reports=Booking::where('service_center_id',auth()->user()->id)->where('status','Released')->get();
+        return view('frontend.pages.servicecenter.report.reportinfo',compact('reports'));
+    }
+
+
     public function ReportGenerate(Request $request)
     {
 
-        if($request->from_date && $request->to_date)
-        {
-            $startDate= $request->from_date;
-            $endDate= $request->to_date;
-            $request->validate([
-                'from_date'=>'before_or_equal:now',
-                'to_date'=>'after_or_equal:now'
+    //        $request->validate([
+    //            'from_date'    => 'required|date',
+    //            'to_date'      => 'required|date|after:from_date',
+    //        ]);
+
+            $validator = Validator::make($request->all(), [
+                'from_date'    => 'required|date',
+                'to_date'      => 'required|date|after:from_date',
             ]);
-            $reportdata=Booking::whereBetween('created_at', [$startDate,$endDate])->where('service_center_id',auth()->user()->id)->where('status','Released')->get();
-            return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
-            
+
+            if($validator->fails())
+            {
+    //            notify()->error($validator->getMessageBag());
+
+                notify()->error('From date and to date required and to should greater then from date.');
+                return redirect()->back();
+            }
+
+
+
+           $from=$request->from_date;
+           $to=$request->to_date;
+
+
+    //       $status=$request->status;
+
+            $reports=Booking::whereBetween('created_at', [$from, $to])->where('service_center_id',auth()->user()->id)->where('status','Released')->get();
+
+            return view('frontend.pages.servicecenter.report.reportinfo',compact('reports'));
+
         }
-        else
-        {
-            $reportdata=Booking::where('service_center_id',auth()->user()->id)->where('status','Released')->get();
-            return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
-        }
-    }
+
+
+
+
+
+
+
+
+    //     if($request->from_date && $request->to_date)
+    //     {
+    //         $startDate= $request->from_date;
+    //         $endDate= $request->to_date;
+    //         $request->validate([
+    //             'from_date'=>'before_or_equal:now',
+    //             'to_date'=>'after_or_equal:now'
+    //         ]);
+    //         $reportdata=Booking::whereBetween('created_at', [$startDate,$endDate])->where('service_center_id',auth()->user()->id)->where('status','Released')->get();
+    //         return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
+
+    //     }
+    //     else
+    //     {
+    //         $reportdata=Booking::where('service_center_id',auth()->user()->id)->where('status','Released')->get();
+    //         return view('frontend.pages.servicecenter.report.reportinfo', compact('reportdata'));
+    //     }
+
 }

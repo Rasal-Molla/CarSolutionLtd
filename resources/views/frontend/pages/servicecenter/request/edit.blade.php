@@ -61,7 +61,7 @@
                     <label for="">Status</label>
                     <select name="status" id="" class="form-control">
                         <option value="Progress">Progress</option>
-                        <option value="50% Done">50% Done</option>
+                        <option value="Cancle">Cancle</option>
                         <option value="Released">Released</option>
                     </select>
                     <button type="submit" class="btn btn-success mt-3" >Response</button>

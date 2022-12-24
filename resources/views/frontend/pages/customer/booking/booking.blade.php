@@ -48,7 +48,7 @@
                     <td>
                         @if($list->status == 'Approved')
                         <a href="{{route('customer.bookingEdit', $list->id)}}" class="btn btn-success">Update</a>
-                        <a href="{{route('customer.bookingDelete', $list->id)}}" class="btn btn-danger">Delete</a>
+                        {{-- <a href="{{route('customer.bookingDelete', $list->id)}}" class="btn btn-danger">Delete</a> --}}
 
                         @else
 

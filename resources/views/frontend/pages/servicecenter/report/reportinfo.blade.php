@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{route('screport.generate')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('screport.generate')}}" method="get">
                         @csrf
                     <div class="modal-body">
                     <div>
@@ -71,14 +71,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reportdata as  $key=>$data )
+                    @foreach ($reports as  $key=>$data )
                         <tr>
                             <th scope="row">{{$key+1}}</th>
                             <td>{{$data->Customer_name}}</td>
                             <td>{{$data->phone}}</td>
                             <td>{{$data->service->service_name}}</td>
                             <td>{{$data->price}}</td>
-                            <td>{{$data->amount}}</td>
+                            <td>{{$data->payment}}</td>
                             <td>{{$data->status}}</td>
                         </tr>
                     @endforeach

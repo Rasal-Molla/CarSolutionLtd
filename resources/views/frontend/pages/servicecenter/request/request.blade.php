@@ -44,11 +44,13 @@
                     <td>
                         @if($data->status=='Approved')
                             <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
-                            <a href="{{route('screquest.delete', $data->id)}}" class="btn btn-danger">Delete</a>
-                        @elseif ($data->status=='Progress' OR $data->status=='50% Done')
+                            {{-- <a href="{{route('screquest.delete', $data->id)}}" class="btn btn-danger">Delete</a> --}}
+                        @elseif ($data->status=='Progress')
                         <a href="{{route('screquest.editForm', $data->id)}}" class="btn btn-success">Update</a>
+                        @elseif ($data->status=='Cancle')
+                            Done
                         @else
-                        Done
+                            Done
                         @endif
                     </td>
                     </tr>

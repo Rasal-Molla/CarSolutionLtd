@@ -125,8 +125,8 @@ Route::group(['middleware'=>'auth', 'servicecenter', 'prefix'=>'service-manager'
     Route::get('/complete', [SCCompletedController::class, 'List'])->name('sccompleted.list');
 
 
-    Route::get('/report', [SCReportController::class, 'ReportGenerate'])->name('screport.info');
-    Route::post('/report/generate', [SCReportController::class, 'ReportGenerate'])->name('screport.generate');
+    Route::get('/report', [SCReportController::class, 'Report'])->name('screport.info');
+    Route::get('/report/generate', [SCReportController::class, 'ReportGenerate'])->name('screport.generate');
 
 
 });
