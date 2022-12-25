@@ -23,12 +23,13 @@
     </div>
 </div>
 
-<div class="container-fluid pt-4 px-4">
+<div class="container-fluid pt-4 px-4"id='printableArea'>
     <div class="bg-secondary text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">All Released Boking</h6>
+            <h6 class="mb-0">All Released Boking Reports</h6>
         </div>
         <div class="table-responsive">
+            <h1 class="mb-3">Date: {{date('Y-m-d')}}</h1>
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
                     <tr class="text-white">
@@ -54,6 +55,32 @@
         </div>
     </div>
 </div>
+
+
+<div class="container-fluid mt-3 mb-3">
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2"><button type="submit" onclick="printDiv('printableArea')" value="print a div!" style="border-radius: 5px" class="btn btn-success btn-md">Print Report</button></div>
+        <div class="col-md-5"></div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function printDiv(divName)
+        {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+</script>
 
 
 @endsection
