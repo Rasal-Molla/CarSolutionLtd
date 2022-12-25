@@ -26,6 +26,7 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Brand image</th>
+                                <th scope="col">Service center</th>
                                 <th scope="col">Brand Name</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -47,6 +48,7 @@
                                 <td>
                                     <img width="50px" src="{{url('/uploads/'.$list->image)}}" alt="Brand_image">
                                 </td>
+                                <td>{{$list->brand->name}}</td>
                                 <td>{{$list->brand_name}}</td>
                                 <td>{{$list->status}}</td>
                                 <td>
@@ -58,7 +60,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{$brand_list->links()}}
+                    {{-- {{$brand_list->links()}} --}}
                 </div>
             </div>
         </div>

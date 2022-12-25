@@ -26,6 +26,7 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Image</th>
+                                        <th scope="col">Service Center</th>
                                         <th scope="col">Service Name</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Status</th>
@@ -51,6 +52,7 @@
                                         <td>
                                             <img width="50px" src="{{url('/uploads/'.$list->image)}}" alt="Service Image">
                                         </td>
+                                        <td>{{$list->user->name}}</td>
                                         <td>{{$list->service_name}}</td>
                                         <td>{{$list->price}} BDT</td>
                                         <td>{{$list->status}}</td>

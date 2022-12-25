@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function List(){
 
-        $list=Category::paginate(5);
+        $list=Category::with('user')->get();
 
         return view('backend.pages.category.categories', compact('list'));
     }

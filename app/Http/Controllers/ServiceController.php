@@ -10,7 +10,8 @@ class ServiceController extends Controller
 {
     public function List(){
 
-        $service_list=Service::all();
+        $service_list=Service::with('user')->get();
+        //dd($service_list);
         return view('backend.pages.service.services', compact('service_list'));
     }
 

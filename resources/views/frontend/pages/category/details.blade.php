@@ -71,6 +71,12 @@ body {
                         <div class="right-side-pro-detail border p-3 m-0">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    <h1 class="m-0 p-0">Service center: {{$categoryInfo->user->name}}</h1>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h1 class="m-0 p-0">Brand name: {{$categoryInfo->brand->brand_name}}</h1>
+                                </div>
+                                <div class="col-lg-12">
                                     <h1 class="m-0 p-0">Category Name: {{$categoryInfo->name}}</h1>
                                 </div>
                                 <div class="col-lg-12">

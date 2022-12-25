@@ -35,7 +35,7 @@ class HomeBrandController extends Controller
 
     public function Details($brand_id)
     {
-        $brandInfo=Brand::find($brand_id);
+        $brandInfo=Brand::with('brand')->find($brand_id);
         return view('frontend.pages.brand.details', compact('brandInfo'));
     }
 }

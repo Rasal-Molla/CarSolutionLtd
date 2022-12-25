@@ -33,7 +33,7 @@ class HomeCategoryController extends Controller
 
     public function Details($category_id)
     {
-        $categoryInfo=Category::find($category_id);
+        $categoryInfo=Category::with('user','brand')->find($category_id);
         return view('frontend.pages.category.details', compact('categoryInfo'));
     }
 }
