@@ -214,7 +214,8 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
         Route::get('/contact', [ContactController::class, 'Message'])->name('contact');
         Route::get('/contact/delete/{contact_id}', [ContactController::class, 'Delete'])->name('contact.delete');
 
-        Route::get('/report', [ReportController::class, 'List'])->name('report');
+        Route::get('/report', [ReportController::class, 'report'])->name('report');
+        Route::get('/report/generate', [ReportController::class, 'reportGenerate'])->name('report.search');
     });
 
 });
