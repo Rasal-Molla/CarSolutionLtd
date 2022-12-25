@@ -15,6 +15,13 @@ class UserController extends Controller
 
         return view('backend.pages.user.users',compact('user_list'));
     }
+    public function serviceCenter(){
+
+        $user_list=User::where('role', 'service_center')->get();
+        //dd($user_list);
+
+        return view('backend.pages.user.servicecenter',compact('user_list'));
+    }
 
     public function Create()
     {

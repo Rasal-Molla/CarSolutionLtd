@@ -16,12 +16,13 @@
                 <div class="navbar-nav w-100">
                     <a href="{{route('dashboard')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{route('user')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Customer</a>
+                    <a href="{{route('servicecenter.list')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Service Center</a>
                     <a href="{{route('service')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Services</a>
                     <a href="{{route('category')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Categories</a>
                     <a href="{{route('brand')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Brand</a>
-                    <a href="{('payment')}}" class="nav-item nav-link"><i class="fa fa-credit-card me-2"></i>Payment</a>
-                    <a href="{{route('contact')}}" class="nav-item nav-link"><i class="fa fa-comments me-2"></i>Contact</a>
-                    <a href="{('report')}}" class="nav-item nav-link"><i class="fa fa-flag me-2"></i>Reports</a>
+                    <a href="{{route('payment')}}" class="nav-item nav-link"><i class="fa fa-credit-card me-2"></i>Payment</a>
+                    {{-- <a href="{{route('contact')}}" class="nav-item nav-link"><i class="fa fa-comments me-2"></i>Contact</a> --}}
+                    <a href="{{route('report')}}" class="nav-item nav-link"><i class="fa fa-flag me-2"></i>Reports</a>
                 </div>
             </nav>
         </div>

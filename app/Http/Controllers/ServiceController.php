@@ -95,7 +95,8 @@ class ServiceController extends Controller
             'image'=>$fileName
         ]);
 
-        return redirect()->route('service')->with('update','Service updated successfully');
+        notify()->success('Service updated successfully','Done');
+        return redirect()->route('service');
     }
 
 }

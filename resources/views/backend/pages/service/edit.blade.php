@@ -28,13 +28,13 @@
                 </div>
                 <select required name="status" class="form-select mb-3" aria-label="Default select example">
                     <option @if($service_list->status=='Active') selected @endif value="Active">Active</option>
-                    <option @if($service_list->status=='Inactive') selected @endif value="Inactive">Inactive</option>                
+                    <option @if($service_list->status=='Inactive') selected @endif value="Inactive">Inactive</option>
                 </select>
                 <div class="mb-4">
                     <label for="image" class="form-label">Select Image:</label>
                     <input name="image" class="form-control bg-dark" type="file" id="image">
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-success">Update</button>
             </form>
     </div>
 </div>

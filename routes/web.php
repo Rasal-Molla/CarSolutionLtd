@@ -177,6 +177,7 @@ Route::group(['middleware'=>'auth', 'prefix'=>'admin'], function(){
 
         Route::get('/', [AdminController::class, 'Dashboard'])->name('dashboard');
         Route::get('/user', [UserController::class, 'List'])->name('user');
+        Route::get('/user/service-center', [UserController::class, 'serviceCenter'])->name('servicecenter.list');
         Route::get('/user/create-user', [UserController::class, 'Create'])->name('user.create');
         Route::post('/user/form', [UserController::class, 'Form'])->name('user.form');
         Route::get('/user/delete/{user_id}', [UserController::class, 'Delete'])->name('user.delete');

@@ -55,7 +55,8 @@
                                         <td>{{$list->price}} BDT</td>
                                         <td>{{$list->status}}</td>
                                         <td>
-                                            <a class="btn btn-danger" href="{{route('service.delete',$list->id)}}">Delete</a>
+                                            <a class="btn btn-success" href="{{route('service.edit',$list->id)}}">Update</a>
+                                            {{-- <a class="btn btn-danger" href="{{route('service.delete',$list->id)}}">Delete</a> --}}
                                         </td>
                                     </tr>
                                     @endforeach
