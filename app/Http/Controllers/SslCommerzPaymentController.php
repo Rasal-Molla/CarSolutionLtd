@@ -244,8 +244,8 @@ class SslCommerzPaymentController extends Controller
 
     public function fail(Request $request)
     {
-        notify()->success('Payment failed');
-        return redirect()->route('Home');
+        notify()->error('Payment failed');
+        return back ('Home');
         // $tran_id = $request->input('tran_id');
 
         // $order_detials = DB::table('orders')
@@ -284,7 +284,8 @@ class SslCommerzPaymentController extends Controller
         } else {
             echo "Transaction is Invalid";
         }
-        return to_route('Home');
+        notify()->error('Payment cancle');
+        return back ('Home');
 
     }
 
